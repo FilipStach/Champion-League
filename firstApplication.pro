@@ -12,6 +12,7 @@ SOURCES += \
     CircuitTraining.cpp \
     Coach.cpp \
     Defender.cpp \
+    FileReader.cpp \
     Footballer.cpp \
     RecoveryTraining.cpp \
     main.cpp \
@@ -21,6 +22,7 @@ HEADERS += \
     CircuitTraining.h \
     Coach.h \
     Defender.h \
+    FileReader.h \
     Footballer.h \
     RecoveryTraining.h \
     mainwindow.h

@@ -39,4 +39,7 @@ std::string Footballer::getName(){
 std::string Footballer::getSurrname(){
     return this->name[1];
 }
+Footballer::~Footballer(){
+    delete this->name;
+}
 

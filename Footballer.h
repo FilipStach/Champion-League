@@ -23,6 +23,7 @@ public:
     std::string getName();
     std::string getSurrname();
     virtual string toString();
+    ~Footballer();
 
 
 };
