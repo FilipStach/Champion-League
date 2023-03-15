@@ -1,3 +1,4 @@
+#pragma once
 #ifndef FOOTBALLER_H
 #define FOOTBALLER_H
 #include <string>
@@ -9,16 +10,19 @@ class Footballer
 private:
     int stamina;
     int value;
-    vector <std::string> name;
+    std::string photo;
+    std::string name[2];
 
 public:
     Footballer();
+    Footballer(int value, std::string photo, std::string name[]);
     void decreaseStamina();
     void increaseStamina();
     int getStamina();
     int getValue();
-    string toString();
-    string train();
+    std::string getName();
+    std::string getSurrname();
+    virtual string toString();
 
 
 };
