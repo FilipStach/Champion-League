@@ -9,22 +9,34 @@ CONFIG += c++17
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-    CircuitTraining.cpp \
+    Club.cpp \
     Coach.cpp \
     Defender.cpp \
     FileReader.cpp \
     Footballer.cpp \
-    RecoveryTraining.cpp \
+    GoalKeeper.cpp \
+    HeadersTraining.cpp \
+    Midfielder.cpp \
+    PassesTraining.cpp \
+    ShootingTraining.cpp \
+    Striker.cpp \
+    TackleTraining.cpp \
     main.cpp \
     mainwindow.cpp
 
 HEADERS += \
-    CircuitTraining.h \
+    Club.h \
     Coach.h \
     Defender.h \
     FileReader.h \
     Footballer.h \
-    RecoveryTraining.h \
+    GoalKeeper.h \
+    HeadersTraining.h \
+    Midfielder.h \
+    PassesTraining.h \
+    ShootingTraining.h \
+    Striker.h \
+    TackleTraining.h \
     mainwindow.h
 
 FORMS += \

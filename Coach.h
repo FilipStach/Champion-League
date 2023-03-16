@@ -1,24 +1,21 @@
 #pragma once
-#ifndef COACH_H
-#define COACH_H
-
-
 #include <string>
+using namespace std;
 class Coach
 {
-public:
+private:
     std::string name[2];
     int skills;
     int value;
-    std::string tactics;
+    string tactics;
 
 public:
     Coach();
-    Coach(std::string name[], int skills, int value, std::string tactics);
+    Coach(string name[], int skills, int value, string tactics);
     int getValue();
     int getSkills();
-    std::string getTactics();
-    std::string toString();
+    string getName();
+    string getTactics();
+    string toString();
+    ~Coach();
 };
-
-#endif // COACH_H

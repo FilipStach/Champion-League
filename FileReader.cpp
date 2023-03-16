@@ -14,7 +14,7 @@ vector<vector<string>> FileReader::readFile(string fileName){
     vector<vector<string>> output;
 //    std::ifstream in("footballers.txt");
     fstream in;
-    in.open("footballers.txt", ios::in);
+    in.open(fileName, ios::in);
     if(in.is_open()){
         cout<<"file opened"<<endl;
     }

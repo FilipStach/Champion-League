@@ -1,5 +1,4 @@
-#ifndef FILEREADER_H
-#define FILEREADER_H
+#pragma once
 #include <vector>
 
 #include <string>
@@ -11,5 +10,3 @@ public:
     FileReader();
     std::vector<std::vector<std::string>> readFile(std::string file);
 };
-
-#endif // FILEREADER_H

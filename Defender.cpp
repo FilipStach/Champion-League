@@ -3,14 +3,16 @@
 #include "Footballer.cpp"
 #include<cstdlib>
 #include "Coach.h"
-#include "Coach.cpp"
+#include <iostream>
+//#include "Coach.cpp"
+using namespace std;
 Defender::Defender()
 {
     cout<<"You are inside default constructor"<< endl;
 }
-Defender::Defender(int value, std::string photo, std::string name[],int marking, int tackle) : Footballer(value, photo, name){
+Defender::Defender(int value, std::string name[],int headers, int tackle) : Footballer(value,name){
     cout<<"Check if name works fine"<< endl;
-    this->marking=marking;
+    this->headers=headers;
     this->tackle=tackle;
 }
 
@@ -21,28 +23,35 @@ std::string Defender::toString(){
 }
 std::string Defender::fullToString(){
     return "Defender " + Footballer::getName()+" "+Footballer::getSurrname() +
-            Footballer::toString() + "\nMarking: "+std::to_string(this->marking)+
+            Footballer::toString() + "\nHeaders: "+std::to_string(this->headers)+
             "\nTackle: "+std::to_string(this->tackle);
 }
-void Defender::recover(){
-    cout <<"\nYour defender "+this->getName()+" "+this->getSurrname()+" will rest now"<< endl;
-    this->increaseStamina();
-}
-void Defender::trainCircuitly(Coach coach){
-    cout <<"\nYour defender "+this->getName()+" "+this->getSurrname()+" will train marking and tackles now "<< endl;
+
+void Defender::trainHeaders(Coach coach){
     srand((unsigned) time(NULL));
     int random = rand()%6;
     if(coach.getSkills()>=random){
-        this->marking+=coach.getSkills()-random;
-        this->tackle+=coach.getSkills()-random;
-        cout << "Defender training succesful, skills increased by "+ std::to_string(coach.getSkills()-random)<< endl;
+        this->headers+=coach.getSkills()-random;
+        cout << "Defender training succesful, headers increased by "+ std::to_string(coach.getSkills()-random)<< endl;
     }
     else{
         cout << "Defender training unsuccesful"<< endl;
     }
     this->decreaseStamina();
-    coach.skills=8;
 }
+void Defender::trainTackles(Coach coach){
+    srand((unsigned) time(NULL));
+    int random = rand()%6;
+    if(coach.getSkills()>=random){
+        this->tackle+=coach.getSkills()-random;
+        cout << "Defender training succesful, tackles increased by "+ std::to_string(coach.getSkills()-random)<< endl;
+    }
+    else{
+        cout << "Defender training unsuccesful"<< endl;
+    }
+    this->decreaseStamina();
+}
+
 
 
 //void Defender::changeSkill(Coach coach){

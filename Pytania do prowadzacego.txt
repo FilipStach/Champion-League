@@ -1,0 +1,13 @@
+1.Czy właściwe jest podszywanie się pod interface (biorąc pod uwagę, że nie wszystkie klasy pochodne moga miec ten sam trening)
+2.Czy są wymogi co do złożoności klasy czy np bylo by lepiej rozbić klasę bardziej.
+3.Zabezpieczanie wejścia i pliku.
+
+
+    void changeSkill(Coach coach);
+coach
+
+    void change_Skill(Coach *coach); - zmienia
+&coach
+
+    void change__Skill(Coach &coach);- zmienia
+coach

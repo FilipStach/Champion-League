@@ -1,12 +1,12 @@
-
+#pragma once
 #include "Coach.h"
 #include <iostream>
 Coach::Coach()
 {
-      std::cout<<"Inside default constructor Caoch"<< std::endl;;
+      cout<<"Inside default constructor Caoch"<< endl;
 }
 
-Coach::Coach(std::string name[], int skills, int value, std::string tactics){
+Coach::Coach(string name[], int skills, int value, string tactics){
     this->name[0]=name[0];
     this->name[1]=name[1];
     this->skills = skills;
@@ -19,9 +19,15 @@ int Coach::getValue(){
 int Coach::getSkills(){
     return this->skills;
 }
-std::string Coach::getTactics(){
+string Coach::getTactics(){
     return this->tactics;
 }
-std::string Coach::toString(){
+string Coach::toString(){
     return "Coach " + this->name[0] + " " + this->name[1] + "\nTactics: " + this->tactics + "\nValue: "+ std::to_string(this->value);
+}
+string Coach::getName(){
+    return this->name[0]+" "+this->name[1];
+}
+Coach::~Coach(){
+
 }

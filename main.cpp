@@ -1,27 +1,50 @@
-
+#include "GoalKeeper.h"
 #include "Defender.h"
+#include "Midfielder.h"
+#include "Striker.h"
 #include "Coach.h"
+#include "Club.h"
 #include "iostream"
 #include "FileReader.h"
 using namespace std;
+void changey(int &y){
+    y=5;
 
+}
 int main()
 {
     int value = 2000000;
     std::string photo = "filip.jpg";
-    std::string name[] = {"Filip", "Stach"};
+    std::string name1[] = {"Filip", "Stach"};
+    std::string name2[] = {"Ann", "Lex"};
+    std::string name3[] = {"Filip", "Spurs"};
+    std::string name4[] = {"Kanry", "Stach"};
     std::string coachName[]= {"Pep","Guardiola"};
-    int marking = 56;
-    int tackle = 42;
-    std::string tactics = "4-4-2";
-    Defender defender(value, photo, name,marking, tackle);
+    string tactics = "4-4-2";
     int skills = 5;
-    value = 3000000;
-    Coach coach(coachName,  skills,  value, tactics);
-    FileReader fileReader;
-    vector<vector<string>> output;
-        output = fileReader.readFile("footballers.txt");
-    cout<<"kaka"<<endl;
+    int shooting = 56;
+    int reflex = 42;
+    int tackle = 23;
+    int passes = 67;
+    int headers = 89;
+    Goalkeeper *goalkeeper = new Goalkeeper( value,name1,tackle, reflex);
+    Defender *defender = new Defender( value,name2,headers,tackle);
+    Midfielder *midfielder = new Midfielder( value,name3,shooting,passes,tackle);
+    Striker *striker = new Striker( value,name4,shooting,passes,headers);
+    Coach *coach = new Coach(coachName,  skills,  value, tactics);
+    Club club(*goalkeeper,*defender,*midfielder,*striker, *coach);
+    cout<<club.toString()<<endl;
+    delete goalkeeper;
+    delete defender;
+    delete midfielder;
+    delete striker;
+    delete coach;
+    cout<<club.toString()<<endl;
+    int y=4;
+    changey(y);
+    cout<< to_string(y)<<endl;
+
+
 }
 //#include <sstream>
 //#include <iostream>
