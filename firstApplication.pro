@@ -10,6 +10,7 @@ CONFIG += c++17
 
 SOURCES += \
     Club.cpp \
+    ClubsContainer.cpp \
     Coach.cpp \
     Defender.cpp \
     FileReader.cpp \
@@ -26,6 +27,7 @@ SOURCES += \
 
 HEADERS += \
     Club.h \
+    ClubsContainer.h \
     Coach.h \
     Defender.h \
     FileReader.h \

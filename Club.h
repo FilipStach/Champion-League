@@ -6,9 +6,9 @@ using namespace std;
 class Club
 {
 private:
-    unordered_map<int,Footballer> lineup;
+    unordered_map<int,Footballer*> lineup;
     string name;
-    Coach coach;
+    Coach* coach;
     int teamStrength;
 public:
     Club();

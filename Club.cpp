@@ -7,17 +7,18 @@ Club::Club()
 
 }
 Club::Club(Footballer &player1, Footballer &player2,
-           Footballer &player3, Footballer &player4, Coach &coach){
+           Footballer &player3, Footballer &player4, Coach &coach1){
     Footballer *footballer= &player1;
     Footballer *footballer2= &player2;
     Footballer *footballer3= &player3;
     Footballer *footballer4= &player4;
-    Coach *coach1 = &coach;
-    this->lineup.insert(make_pair(111,*footballer));
-    lineup[222]=*footballer2;
-    lineup[333]=*footballer3;
-    lineup[444]=*footballer4;
-    this->coach=*coach1;
+//    Footballer *footy = &player1;
+//    striker=&player1;
+    lineup[111]=footballer;
+    lineup[222]=footballer2;
+    lineup[333]=footballer3;
+    lineup[444]=footballer4;
+    coach = &coach1;
     CalcTeamStrength();
 
 }
@@ -32,17 +33,17 @@ string Club::getName(){
 }
 string Club::toString(){
     string players = "\nPlayers: \n";
-    unordered_map<int, Footballer>::iterator it
+    unordered_map<int, Footballer*>::iterator it
             = lineup.begin();
     while (it != lineup.end()) {
-           players+=it->second.getName()+" "+it->second.getSurrname()+"\n";
+           players+=it->second->getName()+" "+it->second->getSurrname()+"\n";
            it++;
        }
 
-    return this->name +"\nCoach: "+coach.getName()+"\n"+players;
+    return this->name +"\nCoach: "+coach->getName()+"\n"+players;
 }
 Club::~Club(){
-    unordered_map<int, Footballer>::iterator it
+    unordered_map<int, Footballer*>::iterator it
             = lineup.begin();
     while (it != lineup.end()) {
 //            delete &(it->second);

@@ -42,7 +42,7 @@ int main()
     cout<<club.toString()<<endl;
     int y=4;
     changey(y);
-    cout<< to_string(y)<<endl;
+    cout<< club.toString()<<endl;
 
 
 }
@@ -97,5 +97,64 @@ int main()
 //        myFile.close();
 //    }
 //    system("pause>0");
+//#include "iostream"
+//class COczko {
+//public:
+//COczko() { kolor = "szary"; }
+//string dajKolor() { return kolor; }
+//void changeColor() { kolor="niebieski";}
+//private:
+//string kolor;
+//};
+//class CMisio {
+//private:
+//COczko lewe;
+//COczko prawe;
+//public:
+//COczko& dajLewe() { return lewe; }
+//COczko& dajPrawe() { return prawe; }
+//};
+//int main() {
+//CMisio misio;
 
+//std::cout<<"Kolor oczka lewego: "+(misio.dajLewe()).dajKolor()+
+//        "\nKolor oczka prawego: "+(misio.dajPrawe()).dajKolor()<<std::endl;
+//};
+//#include <string>
+//#include "iostream"
+//class CTowar
+//{
+//private:
+//    int ilosc;
+//    std::string nazwa;
 
+//public:
+//    CTowar()
+//    {
+//        nazwa = "";
+//        ilosc = 0;
+//    }
+//    void setNazwa(std::string _n) { nazwa = _n; }
+//    void setIlosc(int _i) { ilosc = _i; }
+//    void pisz() { std::cout << nazwa << ", ilosc: " << ilosc; }
+
+////    CTowar operator+(int const x){
+////        this->ilosc+=x;
+////        return *this;
+////    }
+//    CTowar operator+(int const x){
+//        CTowar towar;
+//        towar.setNazwa(this->nazwa);
+//        towar.setIlosc(this->ilosc+x);
+//        return towar;
+//    }
+//};
+
+//int main()
+//{
+//    CTowar a;
+//    a.setNazwa("jaja");
+//    a.setIlosc(5);
+//    a = a + 5;
+//    a.pisz();
+//};
