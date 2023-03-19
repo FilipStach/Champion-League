@@ -6,11 +6,12 @@ Coach::Coach()
       cout<<"Inside default constructor Caoch"<< endl;
 }
 
-Coach::Coach(string name[], int skills, int value, string tactics){
+Coach::Coach(string name[], int skills, int value, string tactics, int id){
     this->name[0]=name[0];
     this->name[1]=name[1];
     this->skills = skills;
     this->value = value;
+    this->id = id;
     this->tactics = tactics;
 }
 int Coach::getValue(){
@@ -27,6 +28,9 @@ string Coach::toString(){
 }
 string Coach::getName(){
     return this->name[0]+" "+this->name[1];
+}
+int Coach::getId(){
+    return this->id;
 }
 Coach::~Coach(){
 

@@ -12,7 +12,7 @@ private:
 public:
     Defender();
     using Footballer::Footballer;
-    Defender(int value,std::string name[],int headers, int tackle);
+    Defender(int value,std::string name[],int headers, int tackle, int id);
     std::string toString();
     std::string fullToString();
     void trainHeaders(Coach coach);

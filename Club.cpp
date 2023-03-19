@@ -7,25 +7,25 @@ Club::Club()
 
 }
 Club::Club(Footballer &player1, Footballer &player2,
-           Footballer &player3, Footballer &player4, Coach &coach1){
+           Footballer &player3, Footballer &player4, Coach &coach1, int id){
     Footballer *footballer= &player1;
     Footballer *footballer2= &player2;
     Footballer *footballer3= &player3;
     Footballer *footballer4= &player4;
 //    Footballer *footy = &player1;
 //    striker=&player1;
-    lineup[111]=footballer;
-    lineup[222]=footballer2;
-    lineup[333]=footballer3;
-    lineup[444]=footballer4;
+    lineup[footballer->getId()]=footballer;
+    lineup[footballer2->getId()]=footballer2;
+    lineup[footballer3->getId()]=footballer3;
+    lineup[footballer4->getId()]=footballer4;
     coach = &coach1;
-    CalcTeamStrength();
+    calcTeamStrength();
 
 }
-void Club::CalcTeamStrength(){
+void Club::calcTeamStrength(){
     this->teamStrength=0;
 }
-int Club::GetTeamStrength(){
+int Club::getTeamStrength(){
     return this->teamStrength;
 }
 string Club::getName(){

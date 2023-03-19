@@ -11,7 +11,7 @@ private:
 public:
     Goalkeeper();
     using Footballer::Footballer;
-    Goalkeeper(int value,std::string name[],int tackle, int reflex);
+    Goalkeeper(int value,std::string name[],int tackle, int reflex, int id);
     std::string toString();
     std::string fullToString();
     void trainTackles(Coach coach);

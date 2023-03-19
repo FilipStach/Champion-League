@@ -10,13 +10,15 @@ private:
     string name;
     Coach* coach;
     int teamStrength;
+    int id;
 public:
     Club();
-    Club(Footballer &player1, Footballer &player2, Footballer &player3, Footballer &player4, Coach &coach);
-    void CalcTeamStrength();
+    Club(Footballer &player1, Footballer &player2, Footballer &player3, Footballer &player4, Coach &coach, int id);
+    void calcTeamStrength();
     string getName();
     string toString();
-    int GetTeamStrength();
+    int getTeamStrength();
+    int getId();
     ~Club();
 
 };

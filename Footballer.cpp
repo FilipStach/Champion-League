@@ -7,10 +7,11 @@ Footballer::Footballer()
 {
     cout << "You are inside default cosntructor"<<endl;
 }
-Footballer::Footballer(int value, std::string name[]){
+Footballer::Footballer(int value, std::string name[], int id){
     cout << "You are inside param cosntructor"<<endl;
     this->stamina = 5;
     this->value = value;
+    this->id = id;
     this->name[0] = name[0];
     this->name[1] = name[1];
 
@@ -27,6 +28,9 @@ int Footballer::getStamina(){
 }
 int Footballer::getValue(){
     return this->value;
+}
+int Footballer::getId(){
+    return this->id;
 }
 string Footballer::toString(){
 

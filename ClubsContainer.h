@@ -8,7 +8,7 @@ using namespace std;
 class ClubsContainer
 {
 private:
-    unordered_map<int,Club*> lineup;
+    unordered_map<int,Club*> clubs;
 
 public:
     ClubsContainer();

@@ -8,5 +8,5 @@ private:
 
 public:
     FileReader();
-    std::vector<std::vector<std::string>> readFile(std::string file);
+    static std::vector<std::vector<std::string>> readFile(std::string file);
 };
