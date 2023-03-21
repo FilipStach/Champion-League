@@ -14,6 +14,14 @@ Coach::Coach(string name[], int skills, int value, string tactics, int id){
     this->id = id;
     this->tactics = tactics;
 }
+Coach::Coach(Coach& coach){
+    this->id=coach.id;
+    this->name[0]=coach.name[0];
+    this->name[1]=coach.name[1];
+    this->skills=coach.skills;
+    this->value = coach.value;
+    this->tactics = coach.tactics;
+}
 int Coach::getValue(){
     return this->value;
 }

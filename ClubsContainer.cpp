@@ -15,7 +15,6 @@ ClubsContainer::ClubsContainer(vector<vector<string>> data){
     Coach* coach;
     int qualifier;
     int i = 0;
-    int counter=0;
     int id;
     for(vector<string> element : data){
         if(element.size()==2){
@@ -57,10 +56,8 @@ ClubsContainer::ClubsContainer(vector<vector<string>> data){
         }
         }
         i++;
-        if(i==4){
-            this->clubs[id]=new Club(*playersArray[0],*playersArray[1],*playersArray[2],*playersArray[3], *coach,id);
+        if(i==6){
+            this->clubs[id]=new Club(*playersArray[0],*playersArray[1],*playersArray[2],*playersArray[3], *coach,id, clubName);
         }
-        counter++;
-
     }
 }

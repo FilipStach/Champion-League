@@ -5,16 +5,21 @@ using namespace std;
 
 Footballer::Footballer()
 {
-    cout << "You are inside default cosntructor"<<endl;
 }
 Footballer::Footballer(int value, std::string name[], int id){
-    cout << "You are inside param cosntructor"<<endl;
     this->stamina = 5;
     this->value = value;
     this->id = id;
     this->name[0] = name[0];
     this->name[1] = name[1];
 
+}
+Footballer::Footballer(Footballer& footballer){
+    this->stamina = 5;
+    this->value = footballer.value;
+    this->id = footballer.id;
+    this->name[0] = footballer.name[0];
+    this->name[1] = footballer.name[1];
 }
  void Footballer::decreaseStamina(){
     this->stamina--;
@@ -45,6 +50,9 @@ string Footballer::getSurrname(){
 void Footballer::recoveryTraining(){
     this->stamina =5;
     cout <<"\n"+this->getName()+" "+this->getSurrname()+"'s stamina increased to 5!"<< endl;
+}
+string* Footballer::getFullName(){
+    return this->name;
 }
 Footballer::~Footballer(){
 

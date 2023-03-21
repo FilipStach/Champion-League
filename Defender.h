@@ -11,8 +11,9 @@ private:
     int tackle;
 public:
     Defender();
-    using Footballer::Footballer;
+//    using Footballer::Footballer;
     Defender(int value,std::string name[],int headers, int tackle, int id);
+    Defender(Defender& defender);
     std::string toString();
     std::string fullToString();
     void trainHeaders(Coach coach);

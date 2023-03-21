@@ -15,7 +15,11 @@ Striker::Striker(int value, std::string name[],int shooting, int passes,int head
     this->passes=passes;
     this->headers=headers;
 }
-
+Striker::Striker(Striker& striker):Footballer(striker.getValue(),striker.getFullName(),striker.getId()){
+    this->shooting = striker.shooting;
+    this->headers = striker.headers;
+    this->passes = striker.passes;
+}
 std::string Striker::toString(){
 
     return "Striker " + Footballer::getName()+" "+Footballer::getSurrname() +

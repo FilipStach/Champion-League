@@ -15,6 +15,11 @@ Midfielder::Midfielder(int value, std::string name[],int shooting, int passes, i
     this->passes=passes;
     this->tackles=tackles;
 }
+Midfielder::Midfielder(Midfielder& midfielder):Footballer(midfielder.getValue(),midfielder.getFullName(),midfielder.getId()){
+    this->passes = midfielder.passes;
+    this->shooting = midfielder.shooting;
+    this->tackles = midfielder.tackles;
+}
 
 std::string Midfielder::toString(){
 

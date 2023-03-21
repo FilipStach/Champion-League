@@ -13,6 +13,7 @@ private:
 public:
     Coach();
     Coach(string name[], int skills, int value, string tactics, int id);
+    Coach(Coach& coach);
     int getValue();
     int getSkills();
     int getId();

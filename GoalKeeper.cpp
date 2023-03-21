@@ -14,6 +14,10 @@ Goalkeeper::Goalkeeper(int value,std::string name[],int tackle, int reflex, int 
     this->tackle=tackle;
     this->reflex=reflex;
 }
+Goalkeeper::Goalkeeper(Goalkeeper& goalkeeper):Footballer(goalkeeper.getValue(),goalkeeper.getFullName(),goalkeeper.getId()){
+    this->reflex=goalkeeper.getReflex();
+    this->tackle=goalkeeper.getTackle();
+}
 
 std::string Goalkeeper::toString(){
 
@@ -49,5 +53,11 @@ void Goalkeeper::trainTackles(Coach coach){
         cout << "Goalkeeper training unsuccesful"<< endl;
     }
     this->decreaseStamina();
+}
+int Goalkeeper::getTackle(){
+    return this->tackle;
+}
+int Goalkeeper::getReflex(){
+    return this->reflex;
 }
 

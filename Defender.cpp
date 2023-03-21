@@ -8,14 +8,15 @@
 using namespace std;
 Defender::Defender()
 {
-    cout<<"You are inside default constructor"<< endl;
 }
 Defender::Defender(int value, std::string name[],int headers, int tackle, int id) : Footballer(value,name,id){
-    cout<<"Check if name works fine"<< endl;
     this->headers=headers;
     this->tackle=tackle;
 }
-
+Defender::Defender(Defender& defender):Footballer(defender.getValue(),defender.getFullName(),defender.getId()){
+    this->headers = defender.headers;
+    this->tackle = defender.tackle;
+}
 std::string Defender::toString(){
 
     return "Defender " + Footballer::getName()+" "+Footballer::getSurrname() +

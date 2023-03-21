@@ -13,7 +13,8 @@ private:
     int id;
 public:
     Club();
-    Club(Footballer &player1, Footballer &player2, Footballer &player3, Footballer &player4, Coach &coach, int id);
+    Club(Footballer &player1, Footballer &player2, Footballer &player3, Footballer &player4, Coach &coach, int id, string name);
+    Club(Club& club);
     void calcTeamStrength();
     string getName();
     string toString();

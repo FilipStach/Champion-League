@@ -14,11 +14,13 @@ private:
 public:
     Footballer();
     Footballer(int value, string name[], int id);
+    Footballer(Footballer& footballer);
     void decreaseStamina();
     void increaseStamina();
     int getStamina();
     int getValue();
     int getId();
+    string* getFullName();
     string getName();
     string getSurrname();
     virtual string toString();

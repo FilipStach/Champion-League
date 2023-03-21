@@ -16,6 +16,7 @@ public:
     Striker();
     using Footballer::Footballer;
     Striker(int value,std::string name[],int shooting, int passes,int headers, int id);
+    Striker(Striker& striker);
     std::string toString();
     std::string fullToString();
     void trainShooting(Coach coach);
