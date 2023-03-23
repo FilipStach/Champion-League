@@ -17,6 +17,7 @@ public:
     using Footballer::Footballer;
     Striker(int value,std::string name[],int shooting, int passes,int headers, int id);
     Striker(Striker& striker);
+    Footballer* clone();
     std::string toString();
     std::string fullToString();
     void trainShooting(Coach coach);

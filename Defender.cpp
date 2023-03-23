@@ -17,6 +17,9 @@ Defender::Defender(Defender& defender):Footballer(defender.getValue(),defender.g
     this->headers = defender.headers;
     this->tackle = defender.tackle;
 }
+Footballer* Defender::clone(){
+    return new Defender(*this);
+}
 std::string Defender::toString(){
 
     return "Defender " + Footballer::getName()+" "+Footballer::getSurrname() +

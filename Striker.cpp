@@ -20,6 +20,9 @@ Striker::Striker(Striker& striker):Footballer(striker.getValue(),striker.getFull
     this->headers = striker.headers;
     this->passes = striker.passes;
 }
+Footballer* Striker::clone(){
+    return new Striker(*this);
+}
 std::string Striker::toString(){
 
     return "Striker " + Footballer::getName()+" "+Footballer::getSurrname() +

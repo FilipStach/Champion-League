@@ -13,6 +13,7 @@ public:
 //    using Footballer::Footballer;
     Goalkeeper(int value,std::string name[],int tackle, int reflex, int id);
     Goalkeeper(Goalkeeper& goalkeeper);
+    Footballer* clone();
     std::string toString();
     std::string fullToString();
     void trainTackles(Coach coach);

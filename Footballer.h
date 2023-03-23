@@ -24,6 +24,7 @@ public:
     string getName();
     string getSurrname();
     virtual string toString();
+    virtual Footballer* clone() = 0;
     void recoveryTraining();
     ~Footballer();
 

@@ -4,6 +4,9 @@
 #include "Midfielder.h"
 #include "Striker.h"
 
+
+#include <iostream>
+//#include <iterator>
 ClubsContainer::ClubsContainer()
 {
 
@@ -58,6 +61,22 @@ ClubsContainer::ClubsContainer(vector<vector<string>> data){
         i++;
         if(i==6){
             this->clubs[id]=new Club(*playersArray[0],*playersArray[1],*playersArray[2],*playersArray[3], *coach,id, clubName);
+            for(int j=0;j<4;j++){
+                delete playersArray[j];
+            }
+            delete coach;
         }
     }
+}
+unordered_map<int,Club*> ClubsContainer::getClubs(){
+    return this->clubs;
+}
+ClubsContainer::~ClubsContainer(){
+    unordered_map<int, Club*>::iterator it
+            = clubs.begin();
+    while (it != clubs.end()) {
+           delete it->second;
+
+           it++;
+       }
 }

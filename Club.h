@@ -5,7 +5,7 @@
 using namespace std;
 class Club
 {
-private:
+protected:
     unordered_map<int,Footballer*> lineup;
     string name;
     Coach* coach;

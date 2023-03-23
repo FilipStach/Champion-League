@@ -20,7 +20,9 @@ Midfielder::Midfielder(Midfielder& midfielder):Footballer(midfielder.getValue(),
     this->shooting = midfielder.shooting;
     this->tackles = midfielder.tackles;
 }
-
+Footballer* Midfielder::clone(){
+    return new Midfielder(*this);
+}
 std::string Midfielder::toString(){
 
     return "Midfielder " + Footballer::getName()+" "+Footballer::getSurrname() +

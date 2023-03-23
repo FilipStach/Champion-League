@@ -9,7 +9,8 @@ private:
     bool isActive;
 public:
     ChampionsLeague();
-    ChampionsLeague(int size, ClubsContainer clubsContainer);
+    ChampionsLeague(int size, ClubsContainer& clubsContainer, Club& myClub);
     void match();//ustala fazę na podstawie ilosci drozyn w mapie, przegraną drużynę usuwa z mapy
+    ~ChampionsLeague();
 };
 

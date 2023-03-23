@@ -16,9 +16,7 @@ vector<vector<string>> FileReader::readFile(string fileName){
     fstream in;
     in.open(fileName, ios::in);
     if(in.is_open()){
-        cout<<"file opened"<<endl;
         string str;
-        cout <<"You are inside fileRead"<< endl;
         while (getline(in, str))
         {
     //        std::vector<std::string> *vct = new std::vector<std::string>;
@@ -31,10 +29,10 @@ vector<vector<string>> FileReader::readFile(string fileName){
 
                    vct.push_back(segment);
                 }
-             cout<<"im between"<<endl;
             }
             output.push_back(vct);
         }
+        in.close();
         return output;
     }
     else{

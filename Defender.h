@@ -14,6 +14,7 @@ public:
 //    using Footballer::Footballer;
     Defender(int value,std::string name[],int headers, int tackle, int id);
     Defender(Defender& defender);
+    Footballer* clone();
     std::string toString();
     std::string fullToString();
     void trainHeaders(Coach coach);

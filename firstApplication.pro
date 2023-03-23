@@ -19,10 +19,12 @@ SOURCES += \
     GoalKeeper.cpp \
     HeadersTraining.cpp \
     Midfielder.cpp \
+    MyClub.cpp \
     PassesTraining.cpp \
     ShootingTraining.cpp \
     Striker.cpp \
     TackleTraining.cpp \
+    TransferWindow.cpp \
     main.cpp \
     mainwindow.cpp
 
@@ -37,10 +39,12 @@ HEADERS += \
     GoalKeeper.h \
     HeadersTraining.h \
     Midfielder.h \
+    MyClub.h \
     PassesTraining.h \
     ShootingTraining.h \
     Striker.h \
     TackleTraining.h \
+    TransferWindow.h \
     mainwindow.h
 
 FORMS += \

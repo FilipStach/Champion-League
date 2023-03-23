@@ -18,7 +18,9 @@ Goalkeeper::Goalkeeper(Goalkeeper& goalkeeper):Footballer(goalkeeper.getValue(),
     this->reflex=goalkeeper.getReflex();
     this->tackle=goalkeeper.getTackle();
 }
-
+Footballer* Goalkeeper::clone(){
+    return new Goalkeeper(*this);
+}
 std::string Goalkeeper::toString(){
 
     return "Goalkeeper " + Footballer::getName()+" "+Footballer::getSurrname() +

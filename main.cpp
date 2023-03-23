@@ -1,3 +1,4 @@
+#include "ChampionsLeague.h"
 #include "GoalKeeper.h"
 #include "Defender.h"
 #include "Midfielder.h"
@@ -7,6 +8,8 @@
 #include "iostream"
 #include "FileReader.h"
 #include "ClubsContainer.h"
+#include "MyClub.h"
+
 using namespace std;
 
 int main()
@@ -30,25 +33,28 @@ int main()
     Midfielder *midfielder = new Midfielder( value,name3,shooting,passes,tackle,58);
     Striker *striker = new Striker( value,name4,shooting,passes,headers,34);
     Coach *coach = new Coach(coachName,  skills,  value, tactics,89);
+//    Club *club = new Club(*goalkeeper,*defender,*midfielder,*striker,*coach, 102, "Lech Poznan");
+////    Club *club2 = new Club(*club);
+////    delete club2;
+//    delete goalkeeper;
+//    delete defender;
+//    delete midfielder;
+//    delete striker;
+//    delete coach;
 
-    Goalkeeper *goalkeeper2 = new Goalkeeper(*goalkeeper);
-    Defender *defender2 = new Defender( *defender);
-    Midfielder *midfielder2 = new Midfielder( *midfielder);
-    Striker *striker2 = new Striker( *striker);
-    Coach *coach2 = new Coach(*coach);
-    Club club(*goalkeeper,*defender,*midfielder,*striker,*coach, 58, "Manchester City");
-    delete goalkeeper;
-    delete defender;
-    delete midfielder;
-    delete striker;
-    delete coach;
 
-    cout<< "deff"<< endl;
-//    Club club(*goalkeeper,*defender,*midfielder,*striker,*coach);
-//    std::string output = club.toString();
-//    std::cout<<output<<endl;
-//    std::vector<std::vector<std::string>> vector = FileReader::readFile("clubs.txt");
+//    cout<< "deff"<< endl;
+
+    std::vector<std::vector<std::string>> vector = FileReader::readFile("clubs.txt");
+
+    MyClub* club = new MyClub(vector);
+        cout<<"lol"<<endl;
 //    ClubsContainer* tournament = new ClubsContainer(vector);
+//    ChampionsLeague* cm = new ChampionsLeague(7, *tournament, *club);
+//    delete tournament;
+//    delete club;
+//    delete cm;
+
 //    std::cout << "break'" <<endl;
 
 }
