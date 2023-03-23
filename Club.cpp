@@ -76,6 +76,8 @@ string Club::toString(){
 }
 
 Club::~Club(){
+    cout<<"Club destructor"<<endl;
+
     unordered_map<int, Footballer*>::iterator it
             = lineup.begin();
     while (it != lineup.end()) {

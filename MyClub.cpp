@@ -8,47 +8,43 @@ MyClub::MyClub()
 {
 
 }
-MyClub::MyClub(std::vector<std::vector<std::string>> data){
-    TransferWindow::conductTransferWindow(data,*this);
-    string clubName;
-    string name[2];
-    int qualifier;
-    int i;
-//    for(vector<string> element : data){
+MyClub::MyClub(vector<vector<string>> players, vector<vector<string>> coaches){
+    this->coach = NULL;
+    srand (time(NULL));
+    this->name= "Student FC";
+    this->id = rand()%900+100;
+    this->budget = 27500;
+    this->trainings =5;
+    TransferWindow::conductTransferWindow(players, coaches,*this);
 
-//        qualifier = stoi(element[0])%5;
-//        switch(qualifier){
-//            case 0:
-//                name[0] = element[1];
-//                name[1] = element[2];
-//                coach = new Coach(name, stoi(element[3]), stoi(element[4]), element[5],stoi(element[0]));
-//                break;
-//            case 1:
-//                name[0] = element[2];
-//                name[1] = element[3];
-//                playersArray[0] = new Goalkeeper(stoi(element[1]),name,stoi(element[4]),stoi(element[5]),stoi(element[0]));
-//                break;
-//            case 2:
-//                name[0] = element[2];
-//                name[1] = element[3];
-//                playersArray[1] = new Defender(stoi(element[1]),name,stoi(element[4]),stoi(element[5]),stoi(element[0]));
-//                break;
-//            case 3:
-//                name[0] = element[2];
-//                name[1] = element[3];
-//                playersArray[2] = new Midfielder(stoi(element[1]),name,stoi(element[4]),stoi(element[5]),stoi(element[6]),stoi(element[0]));
-//                break;
-//            case 4:
-//                name[0] = element[2];
-//                name[1] = element[3];
-//                playersArray[3] = new Striker(stoi(element[1]),name,stoi(element[4]),stoi(element[5]),stoi(element[6]),stoi(element[0]));
-//                break;
-//            default:
-//                cout<<"Something want wrong while assigning clubs"<<endl;
-//                break;
-//        }
-//        i++;
+}
+int MyClub::getBudget(){
+    return this->budget;
+}
+int MyClub::getSize(){
+    return this->squad.size();
+}
+void MyClub::buyPlayer(Footballer& player){
+    this->squad[player.getId()] = &player;
+    this->budget -= player.getValue();
+}
+void MyClub::buyCoach(Coach& coach){
+    this->coach = &coach;
+    this->budget -= coach.getValue();
+}
+bool MyClub::hasCoach(){
+    return this->coach!=NULL ? true : false;
+}
+MyClub::~MyClub(){
+    cout<<"MyClub destructor"<<endl;
+    unordered_map<int, Footballer*>::iterator it
+            = squad.begin();
+    while (it != lineup.end()) {
+           delete it->second;
+        it++;
+       }
+}
+void MyClub::pickLineUp(){
+    int id[] = {3,4,6,7};
 
-//            delete coach;
-//    }
 }

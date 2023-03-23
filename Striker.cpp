@@ -10,7 +10,6 @@ Striker::Striker()
     cout<<"You are inside default constructor"<< endl;
 }
 Striker::Striker(int value, std::string name[],int shooting, int passes,int headers, int id) : Footballer(value,name,id){
-    cout<<"Check if name works fine"<< endl;
     this->shooting=shooting;
     this->passes=passes;
     this->headers=headers;

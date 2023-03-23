@@ -10,7 +10,6 @@ Midfielder::Midfielder()
     cout<<"You are inside default constructor"<< endl;
 }
 Midfielder::Midfielder(int value, std::string name[],int shooting, int passes, int tackles, int id) : Footballer(value,name,id){
-    cout<<"Check if name works fine"<< endl;
     this->shooting=shooting;
     this->passes=passes;
     this->tackles=tackles;

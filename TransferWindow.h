@@ -11,7 +11,5 @@ class TransferWindow
 {
 public:
     TransferWindow();
-    static void conductTransferWindow(vector<vector<string>> vector, MyClub& club){
-       cout<<"I am in transfer window"<<endl;
-    }
+    static void conductTransferWindow(vector<vector<string>> players, vector<vector<string>> coaches, MyClub& club);
 };

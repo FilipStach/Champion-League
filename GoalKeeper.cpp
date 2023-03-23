@@ -10,7 +10,6 @@ Goalkeeper::Goalkeeper()
     cout<<"You are inside default constructor"<< endl;
 }
 Goalkeeper::Goalkeeper(int value,std::string name[],int tackle, int reflex, int id) : Footballer(value,name,id){
-    cout<<"Check if name works fine"<< endl;
     this->tackle=tackle;
     this->reflex=reflex;
 }

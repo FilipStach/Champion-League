@@ -6,10 +6,18 @@ class MyClub : public Club
 private:
     int budget;
     int trainings;
+    unordered_map<int,Footballer*> squad;
 public:
     MyClub();
-    MyClub( std::vector<std::vector<std::string>> vector);
+    MyClub(vector<vector<string>> players, vector<vector<string>> coaches);
     bool training();
     void recovery();
+    void pickLineUp();
+    int getBudget();
+    int getSize();
+    void buyPlayer(Footballer &player);
+    void buyCoach(Coach& coach);
+    bool hasCoach();
+    ~MyClub();
 
 };
