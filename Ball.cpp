@@ -2,11 +2,11 @@
 
 Ball::Ball()
 {
-    this->ballPosition = backField;
+    this->ballPosition = BACKFIELD;
 }
-GamePhase Ball::getBallPosition() const{
+GamePhase Ball::getBallPosition(){
     return this->ballPosition;
 }
-int Ball::getCounter() const{
+int Ball::getCounter(){
     return this->counter;
 }

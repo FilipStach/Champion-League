@@ -61,7 +61,7 @@ int Goalkeeper::getTackle(){
 int Goalkeeper::getReflex(){
     return this->reflex;
 }
-int Goalkeeper::getAbility(Abilities ability) const{
+int Goalkeeper::getAbility(Abilities ability){
     switch(ability){
     case REFLEX:
         return this->reflex;

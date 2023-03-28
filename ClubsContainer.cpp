@@ -71,6 +71,13 @@ ClubsContainer::ClubsContainer(vector<vector<string>> data){
 unordered_map<int,Club*> ClubsContainer::getClubs() const{
     return this->clubs;
 }
+bool ClubsContainer::contains(int clubId){
+    return this->clubs.count(clubId);
+}
+void ClubsContainer::deleteClub(int clubId){
+    delete this->clubs[clubId];
+    this->clubs.erase(clubId);
+}
 ClubsContainer::~ClubsContainer(){
     unordered_map<int, Club*>::iterator it
             = clubs.begin();

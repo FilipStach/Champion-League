@@ -22,22 +22,22 @@ Coach::Coach(Coach& coach){
     this->value = coach.value;
     this->tactics = coach.tactics;
 }
-int Coach::getValue() const{
+int Coach::getValue(){
     return this->value;
 }
-int Coach::getSkills() const{
+int Coach::getSkills(){
     return this->skills;
 }
-string Coach::getTactics() const{
+string Coach::getTactics(){
     return this->tactics;
 }
 string Coach::toString(){
     return "Coach " + this->name[0] + " " + this->name[1] + "\nTactics: " + this->tactics + "\nValue: "+ std::to_string(this->value);
 }
-string Coach::getName() const{
+string Coach::getName(){
     return this->name[0]+" "+this->name[1];
 }
-int Coach::getId() const{
+int Coach::getId(){
     return this->id;
 }
 Coach::~Coach(){

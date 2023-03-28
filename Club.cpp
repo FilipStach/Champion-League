@@ -57,13 +57,13 @@ Club::Club(Club& club){
 void Club::calcTeamStrength(){
     this->teamStrength=0;
 }
-int Club::getTeamStrength() const{
+int Club::getTeamStrength(){
     return this->teamStrength;
 }
 string Club::getName(){
     return this->name;
 }
-int Club::getId() const{
+int Club::getId(){
     return this->id;
 }
 string Club::toString(){
@@ -128,7 +128,7 @@ double Club::matchFactor(WeatherStation weatherStation, GamePhase ballPosition, 
         }
     }
 }
-int Club::getAbilities(Abilities ability) const{
+int Club::getAbilities(Abilities ability){
     int counter;
     int output;
     unordered_map<int, Footballer*>::iterator it

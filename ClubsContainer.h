@@ -15,6 +15,8 @@ public:
     ClubsContainer(vector<vector<string>>);
     ~ClubsContainer();
     unordered_map<int,Club*> getClubs() const;
+    void deleteClub(int id);
+    bool contains(int clubId);
 
 };
 

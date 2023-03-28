@@ -62,6 +62,9 @@ PlayersContainer::~PlayersContainer(){
            it++;
        }
 }
+bool PlayersContainer::contains(int playerId){
+    return this->players.count(playerId);
+}
 int PlayersContainer::getMinPrice(){
     return this->minPrice;
 }

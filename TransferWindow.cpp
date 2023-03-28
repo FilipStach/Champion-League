@@ -17,20 +17,19 @@ void TransferWindow::conductTransferWindow(vector<vector<string>> players, vecto
     int coachId = 5;
     int i = 0;
     while(!club.hasCoach()){
-        if(coachesContainer->getCoaches().count(coachId) && coachesContainer->getCoaches().count(coachId)&&coachesContainer->getCoaches()[coachId]->getValue() <= club.getBudget()){
+        if(coachesContainer->contains(coachId)&&coachesContainer->getCoaches()[coachId]->getValue() <= club.getBudget()){
         club.buyCoach(*coachesContainer->getCoaches()[coachId]);
         coachesContainer->deleteCoach(coachId);
         }
         else if(!coachesContainer->getCoaches().count(coachId)){
             cout<<"Invalid coach id"<<endl;
-            //here write in new id
         }
         else{
             cout<<"Coach too expensive"<<endl;
         }
     }
     while(club.getBudget() >= playersContainer->getMinPrice() && club.getSize()<6){
-        if(playersContainer->getPlayers().count(playersId[i]) && playersContainer->getPlayers()[playersId[i]]->getValue() <= club.getBudget()){
+        if(playersContainer->contains(playersId[i]) && playersContainer->getPlayers()[playersId[i]]->getValue() <= club.getBudget()){
             club.buyPlayer(*playersContainer->getPlayers()[playersId[i]]);
             playersContainer->deletePlayer(playersId[i]);
             i++;

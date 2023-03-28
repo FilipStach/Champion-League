@@ -44,8 +44,7 @@ int main()
     int passes = 67;
     int headers = 89;
 //    Goalkeeper *goalkeeper = new Goalkeeper( value,name1,tackle, reflex,52);
-    Defender *defender = new Defender( value,name2,headers,tackle,54);
-    defender->getValue() = 200;
+//    Defender *defender = new Defender( value,name2,headers,tackle,54);
 //    Midfielder *midfielder = new Midfielder( value,name3,shooting,passes,tackle,58);
 //    Striker *striker = new Striker( value,name4,shooting,passes,headers,34);
 //    Coach *coach = new Coach(coachName,  skills,  value, tactics,89);
@@ -76,17 +75,18 @@ int main()
 //            cout<< "invalid value" <<endl;
 //    }
 
-//    std::vector<std::vector<std::string>> vector = FileReader::readFile("players.txt");
-//    std::vector<std::vector<std::string>> vector2 = FileReader::readFile("coaches.txt");
-//    std::vector<std::vector<std::string>> vector3 = FileReader::readFile("clubs.txt");
-//    MyClub* myClub = new MyClub(vector, vector2);
-//    myClub->pickLineUp();
+    std::vector<std::vector<std::string>> vector = FileReader::readFile("players.txt");
+    std::vector<std::vector<std::string>> vector2 = FileReader::readFile("coaches.txt");
+    std::vector<std::vector<std::string>> vector3 = FileReader::readFile("clubs.txt");
+    MyClub* myClub = new MyClub(vector, vector2);
+    myClub->pickLineUp();
 //    cout<<"BREAK"<<endl;
-//    ClubsContainer* clubsContainer = new ClubsContainer(vector3);
-//    ChampionsLeague* cm = new ChampionsLeague(7, *clubsContainer, *myClub);
-//    delete clubsContainer;
-//    delete myClub;
-//    delete cm;
+    ClubsContainer* clubsContainer = new ClubsContainer(vector3);
+    ChampionsLeague* cm = new ChampionsLeague(7, *clubsContainer, *myClub);
+    cm->playNextRound();
+    delete clubsContainer;
+    delete myClub;
+    delete cm;
 //    thread worker2(function2);
 //    thread worker1(function1);
 

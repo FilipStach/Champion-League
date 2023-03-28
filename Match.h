@@ -10,8 +10,8 @@ private:
     Club* deffendingTeam;
     Ball* ball;
     ChampionsLeague* tournament;
-    int team1Goals;
-    int team2Goals;
+    int attackingTeamGoals;
+    int deffendingTeamGoals;
 public:
     Match();
     Match(Club& fistTeam, Club& secondTeam,ChampionsLeague& cl);

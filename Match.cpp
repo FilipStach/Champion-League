@@ -6,12 +6,12 @@ Match::Match()
 
 }
 Match::Match(Club& fistTeam, Club& secondTeam,ChampionsLeague& cl){
-    this->team1 = &fistTeam;
-    this->team2 = &secondTeam;
+    this->attackingTeam = &fistTeam;
+    this->deffendingTeam = &secondTeam;
     this->tournament = &cl;
     this->ball = new Ball();
-    this->team1Goals = 0;
-    this->team2Goals = 0;
+    this->attackingTeamGoals = 1;
+    this->deffendingTeamGoals = 2;
 }
 void Match::playMatch(){
     int minutes=0;
@@ -19,16 +19,26 @@ void Match::playMatch(){
     double fieldFactor;
     double passesFacotr;
     while(minutes<=90){
-        if(ball->getBallPosition()==backField){
+        if(ball->getBallPosition()==BACKFIELD){
 
         }
-        else if(ball->getBallPosition()==midField){
+        else if(ball->getBallPosition()==MIDFIELD){
 
         }
         else{
 
         }
+        minutes++;
     }
+}
+void Match::switchTeams(){
+    Club* tempClub = this->attackingTeam;
+    this->attackingTeam = this->deffendingTeam;
+    this->deffendingTeam = tempClub;
+
+    int tempGoals = this->attackingTeamGoals;
+    this->attackingTeamGoals = this->deffendingTeamGoals;
+    this->deffendingTeamGoals = tempGoals;
 }
 Match::~Match(){
     delete this->ball;

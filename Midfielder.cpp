@@ -68,7 +68,7 @@ void Midfielder::trainTackles(Coach coach){
     }
     this->decreaseStamina();
 }
-int Midfielder::getAbility(Abilities ability) const{
+int Midfielder::getAbility(Abilities ability){
     switch(ability){
     case PASSES:
         return this->passes;

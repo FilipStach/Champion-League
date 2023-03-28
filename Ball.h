@@ -12,7 +12,7 @@ public:
     void updateRisk();
     void increaseCounter();
     void resetCounter();
-    GamePhase getBallPosition() const;
-    int getCounter() const;
+    GamePhase getBallPosition();
+    int getCounter();
 };
 

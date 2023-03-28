@@ -17,6 +17,6 @@ public:
     void trainShooting(Coach coach);
     void trainPasses(Coach coach);
     void trainTackles(Coach coach);
-    int getAbility(Abilities ability) const;
+    int getAbility(Abilities ability);
 
 };

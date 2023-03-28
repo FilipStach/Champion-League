@@ -18,6 +18,6 @@ public:
     void trainReflex(Coach coach);
     int getTackle();
     int getReflex();
-    int getAbility(Abilities ability) const;
+    int getAbility(Abilities ability);
 
 };

@@ -16,6 +16,7 @@ public:
     unordered_map<int,Footballer*> getPlayers() const;
     int getMinPrice();
     void deletePlayer(int id);
+    bool contains(int playerId);
     void calcMinPrice();
 };
 

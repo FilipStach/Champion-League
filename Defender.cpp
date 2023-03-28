@@ -55,7 +55,7 @@ void Defender::trainTackles(Coach coach){
     }
     this->decreaseStamina();
 }
-int Defender::getAbility(Abilities ability) const{
+int Defender::getAbility(Abilities ability){
     switch(ability){
     case HEADERS:
         return this->headers;

@@ -27,6 +27,7 @@ unordered_map<int,Coach*> CoachesContainer::getCoaches() const{
     return this->coaches;
 }
 void CoachesContainer::deleteCoach(int id){
+
     this->coaches.erase(id);
 }
 CoachesContainer::~CoachesContainer(){

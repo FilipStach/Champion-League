@@ -68,7 +68,7 @@ void Striker::trainHeaders(Coach coach){
     }
     this->decreaseStamina();
 }
-int Striker::getAbility(Abilities ability) const{
+int Striker::getAbility(Abilities ability){
     switch(ability){
     case HEADERS:
         return this->headers;
