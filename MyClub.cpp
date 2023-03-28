@@ -37,14 +37,22 @@ bool MyClub::hasCoach(){
 }
 MyClub::~MyClub(){
     cout<<"MyClub destructor"<<endl;
-    unordered_map<int, Footballer*>::iterator it
+    unordered_map<int, Footballer*>::iterator it1
+            = lineup.begin();
+    while (it1 != lineup.end()) {
+           this->squad.erase(it1->second->getId());
+        it1++;
+       }
+    unordered_map<int, Footballer*>::iterator it2
             = squad.begin();
-    while (it != lineup.end()) {
-           delete it->second;
-        it++;
+    while (it2 != lineup.end()) {
+           delete it2->second;
+        it2++;
        }
 }
 void MyClub::pickLineUp(){
-    int id[] = {3,4,6,7};
-
+    int id[] = {2,3,4,6};
+    for(int i: id){
+        this->lineup[i] = this->squad[i];
+    }
 }

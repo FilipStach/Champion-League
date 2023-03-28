@@ -17,7 +17,7 @@ void TransferWindow::conductTransferWindow(vector<vector<string>> players, vecto
     int coachId = 5;
     int i = 0;
     while(!club.hasCoach()){
-        if(coachesContainer->getCoaches().count(coachId) &&coachesContainer->getCoaches()[coachId]->getValue() <= club.getBudget()){
+        if(coachesContainer->getCoaches().count(coachId) && coachesContainer->getCoaches().count(coachId)&&coachesContainer->getCoaches()[coachId]->getValue() <= club.getBudget()){
         club.buyCoach(*coachesContainer->getCoaches()[coachId]);
         coachesContainer->deleteCoach(coachId);
         }

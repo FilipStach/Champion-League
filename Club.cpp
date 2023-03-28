@@ -22,6 +22,7 @@ Club::Club(Footballer &player1, Footballer &player2,
     this->name = name;
     this->id = id;
     calcTeamStrength();
+    this->hasBall=false;
 
 }
 Club::Club(Club& club){
@@ -47,6 +48,7 @@ Club::Club(Club& club){
     lineup[tempVector[3]->getId()]=tempVector[3]->clone();
     this->name = club.getName();
     this->id = club.getId();
+    this->hasBall = club.hasBall;
     for(int i = 0;i<tempVector.size();i++){
         delete tempVector[i];
     }
@@ -55,13 +57,13 @@ Club::Club(Club& club){
 void Club::calcTeamStrength(){
     this->teamStrength=0;
 }
-int Club::getTeamStrength(){
+int Club::getTeamStrength() const{
     return this->teamStrength;
 }
 string Club::getName(){
     return this->name;
 }
-int Club::getId(){
+int Club::getId() const{
     return this->id;
 }
 string Club::toString(){
@@ -74,7 +76,72 @@ string Club::toString(){
 
     return this->name +"\nCoach: "+coach->getName()+"\n"+players;
 }
-
+double Club::matchFactor(WeatherStation weatherStation, GamePhase ballPosition, bool hasBall){
+    double weatherFactor;
+    if(weatherStation.getWeather()==RAINY){
+        weatherFactor = 1;
+    }
+    else if(weatherStation.getWeather()==SNOWY){
+        if(this->coach->getTactics()=="attack"){
+            weatherFactor = 0.95;
+        }
+        else if(this->coach->getTactics()=="deffend"){
+            weatherFactor = 1.05;
+        }
+        else{
+            weatherFactor = 1;
+        }
+    }
+    else{
+        if(this->coach->getTactics()=="attack"){
+            weatherFactor = 1.05;
+        }
+        else if(this->coach->getTactics()=="deffend"){
+            weatherFactor = 0.95;
+        }
+        else{
+            weatherFactor = 1;
+        }
+    }
+    if(ballPosition == BACKFIELD ){
+        if(hasBall){
+            return this->getAbilities(PASSES)*weatherFactor;
+        }
+        else{
+            return this->getAbilities(REFLEX)*weatherFactor;
+        }
+    }
+    else if(ballPosition == MIDFIELD){
+        if(hasBall){
+            return (this->getAbilities(PASSES)+this->getAbilities(HEADERS))*weatherFactor;
+        }
+        else{
+            return (this->getAbilities(TACKLES)+this->getAbilities(HEADERS))*weatherFactor;
+        }
+    }
+    else{
+        if(hasBall){
+            return (this->getAbilities(SHOOTING)+this->getAbilities(HEADERS))*weatherFactor;
+        }
+        else{
+            return (this->getAbilities(TACKLES))*weatherFactor;
+        }
+    }
+}
+int Club::getAbilities(Abilities ability) const{
+    int counter;
+    int output;
+    unordered_map<int, Footballer*>::iterator it
+            = lineup.begin();
+    while (it != lineup.end()) {
+           if(it->second->getAbility(ability)>0){
+               counter++;
+               output+=it->second->getAbility(ability);
+           }
+        it++;
+       }
+    return output/(counter*0.9);
+}
 Club::~Club(){
     cout<<"Club destructor"<<endl;
 

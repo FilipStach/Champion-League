@@ -1,8 +1,10 @@
 #pragma once
 #include "Coach.h"
-class ShootingTraining
+class ShootingAbility
 {
+protected:
+    int shooting;
 public:
-    ShootingTraining();
+    ShootingAbility();
     virtual void trainShooting(Coach coach) = 0;
 };

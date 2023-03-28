@@ -1,20 +1,15 @@
 #pragma once
 #include "Coach.h"
 #include "Footballer.h"
-#include "HeadersTraining.h"
-#include "PassesTraining.h"
-#include "ShootingTraining.h"
+#include "HeaderAbility.h"
+#include "PassingAbility.h"
+#include "ShootingAbility.h"
 
-class Striker: public Footballer,public ShootingTraining, public PassesTraining, public HeadersTraining
+class Striker: public Footballer,public ShootingAbility, public PassingAbility, public HeaderAbility
 {
-private:
 
-    int shooting;
-    int passes;
-    int headers;
 public:
     Striker();
-    using Footballer::Footballer;
     Striker(int value,std::string name[],int shooting, int passes,int headers, int id);
     Striker(Striker& striker);
     Footballer* clone();
@@ -23,4 +18,6 @@ public:
     void trainShooting(Coach coach);
     void trainPasses(Coach coach);
     void trainHeaders(Coach coach);
+    int getAbility(Abilities ability) const;
+
 };

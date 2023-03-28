@@ -10,7 +10,7 @@ private:
 public:
     MyClub();
     MyClub(vector<vector<string>> players, vector<vector<string>> coaches);
-    bool training();
+    void training();
     void recovery();
     void pickLineUp();
     int getBudget();

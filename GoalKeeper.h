@@ -1,17 +1,15 @@
 #pragma once
-#include "TackleTraining.h"
+#include "TackleAbility.h"
 #include "Coach.h"
 #include "Footballer.h"
 
-class Goalkeeper: public Footballer, public TackleTraining
+class Goalkeeper: public Footballer, public TackleAbility
 {
 private:
-    int tackle;
     int reflex;
 public:
     Goalkeeper();
-//    using Footballer::Footballer;
-    Goalkeeper(int value,std::string name[],int tackle, int reflex, int id);
+    Goalkeeper(int value,std::string name[],int tackles, int reflex, int id);
     Goalkeeper(Goalkeeper& goalkeeper);
     Footballer* clone();
     std::string toString();
@@ -20,5 +18,6 @@ public:
     void trainReflex(Coach coach);
     int getTackle();
     int getReflex();
+    int getAbility(Abilities ability) const;
 
 };

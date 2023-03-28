@@ -1,8 +1,10 @@
 #pragma once
 #include "Coach.h"
-class HeadersTraining
+class HeaderAbility
 {
+protected:
+    int headers;
 public:
-    HeadersTraining();
+    HeaderAbility();
     virtual void trainHeaders(Coach coach) = 0;
 };

@@ -9,13 +9,13 @@ Goalkeeper::Goalkeeper()
 {
     cout<<"You are inside default constructor"<< endl;
 }
-Goalkeeper::Goalkeeper(int value,std::string name[],int tackle, int reflex, int id) : Footballer(value,name,id){
-    this->tackle=tackle;
+Goalkeeper::Goalkeeper(int value,std::string name[],int tackles, int reflex, int id) : Footballer(value,name,id){
+    this->tackles=tackles;
     this->reflex=reflex;
 }
 Goalkeeper::Goalkeeper(Goalkeeper& goalkeeper):Footballer(goalkeeper.getValue(),goalkeeper.getFullName(),goalkeeper.getId()){
     this->reflex=goalkeeper.getReflex();
-    this->tackle=goalkeeper.getTackle();
+    this->tackles=goalkeeper.getTackle();
 }
 Footballer* Goalkeeper::clone(){
     return new Goalkeeper(*this);
@@ -27,7 +27,7 @@ std::string Goalkeeper::toString(){
 }
 std::string Goalkeeper::fullToString(){
     return "Goalkeeper " + Footballer::getName()+" "+Footballer::getSurrname() +
-            Footballer::toString() + "\nTackle: "+std::to_string(this->tackle)+
+            Footballer::toString() + "\nTackle: "+std::to_string(this->tackles)+
             "\nReflex: "+std::to_string(this->reflex);
 }
 
@@ -47,7 +47,7 @@ void Goalkeeper::trainTackles(Coach coach){
     srand((unsigned) time(NULL));
     int random = rand()%6;
     if(coach.getSkills()>=random){
-        this->tackle+=coach.getSkills()-random;
+        this->tackles+=coach.getSkills()-random;
         cout << "Goalkeeper training succesful, tackles increased by "+ std::to_string(coach.getSkills()-random)<< endl;
     }
     else{
@@ -56,9 +56,23 @@ void Goalkeeper::trainTackles(Coach coach){
     this->decreaseStamina();
 }
 int Goalkeeper::getTackle(){
-    return this->tackle;
+    return this->tackles;
 }
 int Goalkeeper::getReflex(){
     return this->reflex;
 }
+int Goalkeeper::getAbility(Abilities ability) const{
+    switch(ability){
+    case REFLEX:
+        return this->reflex;
+        break;
+    case TACKLES:
+        return this->tackles;
+        break;
+    default:
+        return 0;
+        break;
+    }
+}
+
 

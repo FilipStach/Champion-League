@@ -9,13 +9,13 @@ using namespace std;
 Defender::Defender()
 {
 }
-Defender::Defender(int value, std::string name[],int headers, int tackle, int id) : Footballer(value,name,id){
+Defender::Defender(int value, std::string name[],int headers, int tackles, int id) : Footballer(value,name,id){
     this->headers=headers;
-    this->tackle=tackle;
+    this->tackles=tackles;
 }
 Defender::Defender(Defender& defender):Footballer(defender.getValue(),defender.getFullName(),defender.getId()){
     this->headers = defender.headers;
-    this->tackle = defender.tackle;
+    this->tackles = defender.tackles;
 }
 Footballer* Defender::clone(){
     return new Defender(*this);
@@ -28,7 +28,7 @@ std::string Defender::toString(){
 std::string Defender::fullToString(){
     return "Defender " + Footballer::getName()+" "+Footballer::getSurrname() +
             Footballer::toString() + "\nHeaders: "+std::to_string(this->headers)+
-            "\nTackle: "+std::to_string(this->tackle);
+            "\nTackle: "+std::to_string(this->tackles);
 }
 
 void Defender::trainHeaders(Coach coach){
@@ -47,13 +47,26 @@ void Defender::trainTackles(Coach coach){
     srand((unsigned) time(NULL));
     int random = rand()%6;
     if(coach.getSkills()>=random){
-        this->tackle+=coach.getSkills()-random;
+        this->tackles+=coach.getSkills()-random;
         cout << "Defender training succesful, tackles increased by "+ std::to_string(coach.getSkills()-random)<< endl;
     }
     else{
         cout << "Defender training unsuccesful"<< endl;
     }
     this->decreaseStamina();
+}
+int Defender::getAbility(Abilities ability) const{
+    switch(ability){
+    case HEADERS:
+        return this->headers;
+        break;
+    case TACKLES:
+        return this->tackles;
+        break;
+    default:
+        return 0;
+        break;
+    }
 }
 
 

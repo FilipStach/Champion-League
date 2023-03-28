@@ -1,4 +1,5 @@
 #include "ChampionsLeague.h"
+#
 
 ChampionsLeague::ChampionsLeague()
 {
@@ -13,7 +14,9 @@ ChampionsLeague::ChampionsLeague(int tournamentSize, ClubsContainer& clubsContai
     clubs[myClub.getId()]= new Club(myClub);
     this->isActive = true;
     this->size = tournamentSize+1;
-
+}
+void ChampionsLeague::deleteClub(int id){
+    this->clubs.erase(id);
 }
 ChampionsLeague::~ChampionsLeague(){
     unordered_map<int, Club*>::iterator it

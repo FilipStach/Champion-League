@@ -12,6 +12,7 @@ Footballer::Footballer(int value, std::string name[], int id){
     this->id = id;
     this->name[0] = name[0];
     this->name[1] = name[1];
+    this->ball = NULL;
 
 }
 Footballer::Footballer(Footballer& footballer){
@@ -20,6 +21,7 @@ Footballer::Footballer(Footballer& footballer){
     this->id = footballer.id;
     this->name[0] = footballer.name[0];
     this->name[1] = footballer.name[1];
+    this->ball = footballer.ball;
 }
  void Footballer::decreaseStamina(){
     this->stamina--;
@@ -27,21 +29,21 @@ Footballer::Footballer(Footballer& footballer){
 void Footballer::increaseStamina(){
  this->stamina=5;
 }
-int Footballer::getStamina(){
+int Footballer::getStamina() const{
     return this->stamina;
             // sprawdz czy nie zmienia wartosc
 }
-int Footballer::getValue(){
+int Footballer::getValue() const{
     return this->value;
 }
-int Footballer::getId(){
+int Footballer::getId() const{
     return this->id;
 }
 string Footballer::toString(){
 
     return "\nValue: "+ std::to_string(this->value)+"\nStamina: "+ std::to_string(this->stamina);
 }
-string Footballer::getName(){
+string Footballer::getName() const{
     return this->name[0];
 }
 string Footballer::getSurrname(){
@@ -51,8 +53,14 @@ void Footballer::recoveryTraining(){
     this->stamina =5;
     cout <<"\n"+this->getName()+" "+this->getSurrname()+"'s stamina increased to 5!"<< endl;
 }
-string* Footballer::getFullName(){
+string* Footballer::getFullName() const{
     return this->name;
+}
+void Footballer::takeBall(Ball& gameBall){
+    this->ball = &gameBall;
+}
+Ball* Footballer::giveBall(){
+    return this->ball;
 }
 Footballer::~Footballer(){
 

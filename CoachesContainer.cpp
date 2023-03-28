@@ -23,7 +23,7 @@ CoachesContainer::CoachesContainer(vector<vector<string>> data){
         }
     }
 }
-unordered_map<int,Coach*> CoachesContainer::getCoaches(){
+unordered_map<int,Coach*> CoachesContainer::getCoaches() const{
     return this->coaches;
 }
 void CoachesContainer::deleteCoach(int id){
@@ -36,4 +36,7 @@ CoachesContainer::~CoachesContainer(){
            delete it->second;
            it++;
        }
+}
+bool CoachesContainer::contains(int coachId){
+    return this->coaches.count(coachId);
 }

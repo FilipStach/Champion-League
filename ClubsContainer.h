@@ -14,7 +14,8 @@ public:
     ClubsContainer();
     ClubsContainer(vector<vector<string>>);
     ~ClubsContainer();
-    unordered_map<int,Club*> getClubs();
+    unordered_map<int,Club*> getClubs() const;
+
 };
 
 

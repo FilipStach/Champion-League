@@ -13,7 +13,8 @@ public:
     CoachesContainer();
     CoachesContainer(vector<vector<string>>);
     ~CoachesContainer();
-    unordered_map<int,Coach*> getCoaches();
+    unordered_map<int,Coach*> getCoaches() const;
     void deleteCoach(int id);
+    bool contains(int coachId);
 };
 

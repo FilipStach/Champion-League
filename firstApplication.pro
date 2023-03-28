@@ -9,6 +9,7 @@ CONFIG += c++17
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    Ball.cpp \
     ChampionsLeague.cpp \
     Club.cpp \
     ClubsContainer.cpp \
@@ -18,19 +19,22 @@ SOURCES += \
     FileReader.cpp \
     Footballer.cpp \
     GoalKeeper.cpp \
-    HeadersTraining.cpp \
+    HeaderAbility.cpp \
+    Match.cpp \
     Midfielder.cpp \
     MyClub.cpp \
-    PassesTraining.cpp \
+    PassingAbility.cpp \
     PlayersContainer.cpp \
-    ShootingTraining.cpp \
+    ShootingAbility.cpp \
     Striker.cpp \
-    TackleTraining.cpp \
+    TackleAbility.cpp \
     TransferWindow.cpp \
+    WeatherStation.cpp \
     main.cpp \
     mainwindow.cpp
 
 HEADERS += \
+    Ball.h \
     ChampionsLeague.h \
     Club.h \
     ClubsContainer.h \
@@ -40,15 +44,17 @@ HEADERS += \
     FileReader.h \
     Footballer.h \
     GoalKeeper.h \
-    HeadersTraining.h \
+    HeaderAbility.h \
+    Match.h \
     Midfielder.h \
     MyClub.h \
-    PassesTraining.h \
+    PassingAbility.h \
     PlayersContainer.h \
-    ShootingTraining.h \
+    ShootingAbility.h \
     Striker.h \
-    TackleTraining.h \
+    TackleAbility.h \
     TransferWindow.h \
+    WeatherStation.h \
     mainwindow.h
 
 FORMS += \

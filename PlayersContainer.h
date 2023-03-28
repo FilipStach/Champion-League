@@ -13,8 +13,9 @@ public:
     PlayersContainer();
     PlayersContainer(vector<vector<string>>);
     ~PlayersContainer();
-    unordered_map<int,Footballer*> getPlayers();
+    unordered_map<int,Footballer*> getPlayers() const;
     int getMinPrice();
     void deletePlayer(int id);
+    void calcMinPrice();
 };
 

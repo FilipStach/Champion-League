@@ -68,7 +68,7 @@ ClubsContainer::ClubsContainer(vector<vector<string>> data){
         }
     }
 }
-unordered_map<int,Club*> ClubsContainer::getClubs(){
+unordered_map<int,Club*> ClubsContainer::getClubs() const{
     return this->clubs;
 }
 ClubsContainer::~ClubsContainer(){

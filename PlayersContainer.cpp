@@ -43,8 +43,16 @@ PlayersContainer::PlayersContainer(vector<vector<string>> data){
         this->minPrice = stoi(element[1])<this->minPrice ? stoi(element[1]) : this->minPrice;
     }
 }
-unordered_map<int,Footballer*> PlayersContainer::getPlayers(){
+unordered_map<int,Footballer*> PlayersContainer::getPlayers() const{
     return this->players;
+}
+void PlayersContainer::calcMinPrice(){
+    unordered_map<int, Footballer*>::iterator it
+            = players.begin();
+    while (it != players.end()) {
+           this->minPrice = (minPrice>it->second->getValue()) ? it->second->getValue() : this->minPrice;
+           it++;
+       }
 }
 PlayersContainer::~PlayersContainer(){
     unordered_map<int, Footballer*>::iterator it
@@ -59,4 +67,5 @@ int PlayersContainer::getMinPrice(){
 }
 void PlayersContainer::deletePlayer(int id){
     this->players.erase(id);
+    this->calcMinPrice();
 }
