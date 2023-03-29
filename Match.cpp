@@ -15,18 +15,78 @@ Match::Match(Club& fistTeam, Club& secondTeam,ChampionsLeague& cl){
 }
 void Match::playMatch(){
     int minutes=0;
-    double weatherFactor;
-    double fieldFactor;
-    double passesFacotr;
+    double passesFactor;
+    double attackingTeamFactor;
+    double deffendingTeamFactor;
+    int randNum;
     while(minutes<=90){
-        if(ball->getBallPosition()==BACKFIELD){
+        attackingTeamFactor = attackingTeam->matchFactor(this->tournament->getWeatherStation(), this->ball->getBallPosition(),true);
+        deffendingTeamFactor = deffendingTeam->matchFactor(this->tournament->getWeatherStation(), this->ball->getBallPosition(),false);
+        passesFactor = this->ball->getBallFactor();
+        if(this->ball->getCounter()>30){\
+            cout<<this->attackingTeam->getName()+" loses the ball!"<<endl;
+            this->deffendingTeam->takeBall(*this->attackingTeam->giveBall());
+            this->ball->resetCounter();
+            this->switchTeams();
 
+        }
+        if(ball->getBallPosition()==BACKFIELD){
+            if(attackingTeam->getAbilities(PASSES)*attackingTeamFactor*passesFactor>
+                    deffendingTeam->getAbilities(TACKLES)+deffendingTeamFactor){
+                randNum = rand()%2;
+                if(randNum == 1){
+                    attackingTeam->passBall();
+                }
+                else{
+                    this->ball->changeField(MIDFIELD);
+                }
+            }
+            else{
+                cout<<this->attackingTeam->getName()+" loses the ball!"<<endl;
+                this->deffendingTeam->takeBall(*this->attackingTeam->giveBall());
+                this->ball->resetCounter();
+                this->switchTeams();
+            }
         }
         else if(ball->getBallPosition()==MIDFIELD){
-
+            if(attackingTeam->getAbilities(PASSES)*attackingTeamFactor*passesFactor>
+                    deffendingTeam->getAbilities(HEADERS)+deffendingTeamFactor){
+                randNum = rand()%2;
+                if(randNum == 1){
+                    attackingTeam->passBall();
+                }
+                else{
+                    this->ball->changeField(FORWARDFIELD);
+                }
+            }
+            else{
+                cout<<this->attackingTeam->getName()+" loses the ball!"<<endl;
+                this->deffendingTeam->takeBall(*this->attackingTeam->giveBall());
+                this->ball->resetCounter();
+                this->switchTeams();
+            }
         }
         else{
-
+            if(attackingTeam->getAbilities(SHOOTING)*attackingTeamFactor*passesFactor>
+                    deffendingTeam->getAbilities(REFLEX)+deffendingTeamFactor){
+                randNum = rand()%2;
+                if(randNum == 1){
+                    attackingTeam->passBall();
+                }
+                else{
+                    this->attackingTeamGoals++;
+                    cout<<this->attackingTeam->getName()+" scores a GOAL!"<<endl;
+                    this->deffendingTeam->takeBall(*this->attackingTeam->giveBall());
+                    this->ball->resetCounter();
+                    this->switchTeams();
+                }
+            }
+            else{
+                cout<<this->attackingTeam->getName()+" loses the ball!"<<endl;
+                this->deffendingTeam->takeBall(*this->attackingTeam->giveBall());
+                this->ball->resetCounter();
+                this->switchTeams();
+            }
         }
         minutes++;
     }

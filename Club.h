@@ -25,8 +25,10 @@ public:
     int getId();
     double matchFactor(WeatherStation weatherStation, GamePhase ballPosition, bool isAttacking);
     int getAbilities(Abilities ability);
-    void takeBall(Ball& ball,Abilities ability);
+    void takeBall(Ball& ball);
     Ball* giveBall();
+    void passBall();
+    string getTactics();
     ~Club();
 
 };

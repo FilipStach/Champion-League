@@ -142,6 +142,47 @@ int Club::getAbilities(Abilities ability){
        }
     return output/(counter*0.9);
 }
+string Club::getTactics(){
+    return this->coach->getTactics();
+}
+void Club::passBall(){
+    int v1;
+    unordered_map<int, Footballer*>::iterator item;
+    unordered_map<int, Footballer*>::iterator it
+            = lineup.begin();
+    while (it != lineup.end()) {
+           if(it->second->giveBall()!=NULL){
+               do{
+                   v1 = rand() % lineup.size();
+                   item = lineup.begin();
+                   std::advance( item, v1);
+               }while(item->second->getAbility(TACKLES)!=0);
+               item->second->takeBall(*it->second->giveBall());
+           }
+        it++;
+       }
+}
+Ball* Club::giveBall(){
+    unordered_map<int, Footballer*>::iterator it
+            = lineup.begin();
+    while (it != lineup.end()) {
+           if(it->second->giveBall()!=NULL){
+               return it->second->giveBall();
+           }
+        it++;
+       }
+}
+void Club::takeBall(Ball& ball){
+    int v1;
+    unordered_map<int, Footballer*>::iterator item;
+
+   do{
+       v1 = rand() % lineup.size();
+       item = lineup.begin();
+       std::advance( item, v1);
+   }while(item->second->getAbility(TACKLES)!=0);
+   item->second->takeBall(ball);
+}
 Club::~Club(){
     cout<<"Club destructor"<<endl;
 

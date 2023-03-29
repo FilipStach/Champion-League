@@ -28,6 +28,9 @@ void ChampionsLeague::playNextRound(){
     match.switchTeams();
     match.playMatch();
 }
+WeatherStation ChampionsLeague::getWeatherStation() const{
+    return this->weather;
+}
 ChampionsLeague::~ChampionsLeague(){
     unordered_map<int, Club*>::iterator it
             = clubs.begin();

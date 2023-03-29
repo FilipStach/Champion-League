@@ -16,6 +16,7 @@ public:
     void playNextRound();//ustala fazę na podstawie ilosci drozyn w mapie, przegraną drużynę usuwa z mapy
     ~ChampionsLeague();
     void deleteClub(int id);
+    WeatherStation getWeatherStation() const;
 
 };
 

@@ -76,17 +76,17 @@ int main()
 //    }
 
     std::vector<std::vector<std::string>> vector = FileReader::readFile("players.txt");
-    std::vector<std::vector<std::string>> vector2 = FileReader::readFile("coaches.txt");
-    std::vector<std::vector<std::string>> vector3 = FileReader::readFile("clubs.txt");
-    MyClub* myClub = new MyClub(vector, vector2);
-    myClub->pickLineUp();
-//    cout<<"BREAK"<<endl;
-    ClubsContainer* clubsContainer = new ClubsContainer(vector3);
-    ChampionsLeague* cm = new ChampionsLeague(7, *clubsContainer, *myClub);
-    cm->playNextRound();
-    delete clubsContainer;
-    delete myClub;
-    delete cm;
+//    std::vector<std::vector<std::string>> vector2 = FileReader::readFile("coaches.txt");
+//    std::vector<std::vector<std::string>> vector3 = FileReader::readFile("clubs.txt");
+//    MyClub* myClub = new MyClub(vector, vector2);
+//    myClub->pickLineUp();
+////    cout<<"BREAK"<<endl;
+//    ClubsContainer* clubsContainer = new ClubsContainer(vector3);
+//    ChampionsLeague* cm = new ChampionsLeague(7, *clubsContainer, *myClub);
+//    cm->playNextRound();
+//    delete clubsContainer;
+//    delete myClub;
+//    delete cm;
 //    thread worker2(function2);
 //    thread worker1(function1);
 
