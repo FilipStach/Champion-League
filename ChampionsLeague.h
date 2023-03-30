@@ -17,6 +17,7 @@ public:
     ~ChampionsLeague();
     void deleteClub(int id);
     WeatherStation getWeatherStation() const;
+    void updateSize();
 
 };
 

@@ -29,6 +29,8 @@ public:
     Ball* giveBall();
     void passBall();
     string getTactics();
+    void reduceStamina();
+    bool hasStamina();
     ~Club();
 
 };

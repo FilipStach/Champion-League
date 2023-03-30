@@ -57,13 +57,13 @@ string* Footballer::getFullName(){
     return this->name;
 }
 void Footballer::takeBall(Ball& gameBall){
-    cout<< this->name[0]+" " + this->name[1]+" is on the ball now"<<endl;
     this->ball = &gameBall;
 }
-Ball* Footballer::giveBall(){
-    Ball* ball = this->ball;
+Ball* Footballer::giveBall() const{
+    return this->ball;
+}
+void Footballer::loseBall(){
     this->ball = NULL;
-    return ball;
 }
 Footballer::~Footballer(){
 

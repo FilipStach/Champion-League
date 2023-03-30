@@ -13,8 +13,8 @@ TransferWindow::TransferWindow()
 void TransferWindow::conductTransferWindow(vector<vector<string>> players, vector<vector<string>> coaches, MyClub& club){
     PlayersContainer* playersContainer = new PlayersContainer(players);
     CoachesContainer* coachesContainer = new CoachesContainer(coaches);
-    int playersId[] = {1,2,3,4,6,7};
-    int coachId = 5;
+    int playersId[] = {1,32,3,39,63,66};
+    int coachId = 15;
     int i = 0;
     while(!club.hasCoach()){
         if(coachesContainer->contains(coachId)&&coachesContainer->getCoaches()[coachId]->getValue() <= club.getBudget()){

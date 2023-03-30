@@ -4,6 +4,7 @@ Ball::Ball()
 {
     this->ballPosition = BACKFIELD;
     this->risk = 1;
+    this->counter = 0;
 }
 Ball::Ball(int risk)
 {
@@ -37,4 +38,7 @@ void Ball::resetCounter(){
 }
 void Ball::changeField(GamePhase field){
     this->ballPosition = field;
+}
+void Ball::increaseCounter(){
+    this->counter++;
 }

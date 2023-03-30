@@ -12,8 +12,8 @@ MyClub::MyClub(vector<vector<string>> players, vector<vector<string>> coaches){
     this->coach = NULL;
     srand (time(NULL));
     this->name= "Student FC";
-    this->id = rand()%900+100;
-    this->budget = 27500;
+    this->id = rand()%900+1000;
+    this->budget = 300;
     this->trainings =5;
     TransferWindow::conductTransferWindow(players, coaches,*this);
 
@@ -36,7 +36,6 @@ bool MyClub::hasCoach(){
     return this->coach!=NULL ? true : false;
 }
 MyClub::~MyClub(){
-    cout<<"MyClub destructor"<<endl;
     unordered_map<int, Footballer*>::iterator it1
             = lineup.begin();
     while (it1 != lineup.end()) {
@@ -51,7 +50,7 @@ MyClub::~MyClub(){
        }
 }
 void MyClub::pickLineUp(){
-    int id[] = {2,3,4,6};
+    int id[] = {1,32,3,39};
     for(int i: id){
         this->lineup[i] = this->squad[i];
     }

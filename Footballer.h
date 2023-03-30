@@ -30,7 +30,8 @@ public:
     virtual int getAbility(Abilities ability) = 0;
     void recoveryTraining();
     void takeBall(Ball& ball);
-    Ball* giveBall();
+    Ball* giveBall() const;
+    void loseBall();
     ~Footballer();
 
 

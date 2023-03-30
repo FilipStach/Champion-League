@@ -14,7 +14,8 @@
 #include "WeatherStation.h"
 #include "thread"
 #include "Ball.h"
-
+#include<iostream>
+#include<cstdlib>
 using namespace std;
 //void function1(){
 //    for(int i=0;i<200;i++){
@@ -43,6 +44,35 @@ int main()
     int tackle = 23;
     int passes = 67;
     int headers = 89;
+
+    int zero = 0;
+    int jeden=0;
+    int dwa=0;
+    int trzy = 0;
+//        srand((unsigned) time(NULL));
+
+//        for(int i = 0 ; i<=10000;i++){
+//        int random = rand()%4;
+//        switch(random){
+//        case 0:
+//            zero++;
+//            break;
+//        case 1:
+//            jeden++;
+//            break;
+//        case 2:
+//            dwa++;
+//            break;
+//        case 3:
+//            trzy++;
+//            break;
+//        }
+
+//        // Print the random number
+//        cout<<random<<" ";
+//        }
+//       cout<<zero<<" "<<jeden<< " "<<dwa<<" "<<trzy<<endl;
+
 //    Goalkeeper *goalkeeper = new Goalkeeper( value,name1,tackle, reflex,52);
 //    Defender *defender = new Defender( value,name2,headers,tackle,54);
 //    Midfielder *midfielder = new Midfielder( value,name3,shooting,passes,tackle,58);
@@ -76,17 +106,18 @@ int main()
 //    }
 
     std::vector<std::vector<std::string>> vector = FileReader::readFile("players.txt");
-//    std::vector<std::vector<std::string>> vector2 = FileReader::readFile("coaches.txt");
-//    std::vector<std::vector<std::string>> vector3 = FileReader::readFile("clubs.txt");
-//    MyClub* myClub = new MyClub(vector, vector2);
-//    myClub->pickLineUp();
+//    PlayersContainer* playersContainer = new PlayersContainer(vector);
+    std::vector<std::vector<std::string>> vector2 = FileReader::readFile("coaches.txt");
+    std::vector<std::vector<std::string>> vector3 = FileReader::readFile("clubs1.txt");
+    MyClub* myClub = new MyClub(vector, vector2);
+    myClub->pickLineUp();
 ////    cout<<"BREAK"<<endl;
-//    ClubsContainer* clubsContainer = new ClubsContainer(vector3);
-//    ChampionsLeague* cm = new ChampionsLeague(7, *clubsContainer, *myClub);
-//    cm->playNextRound();
-//    delete clubsContainer;
-//    delete myClub;
-//    delete cm;
+    ClubsContainer* clubsContainer = new ClubsContainer(vector3);
+    ChampionsLeague* cm = new ChampionsLeague(16, *clubsContainer, *myClub);
+    cm->playNextRound();
+    delete clubsContainer;
+    delete myClub;
+    delete cm;
 //    thread worker2(function2);
 //    thread worker1(function1);
 
