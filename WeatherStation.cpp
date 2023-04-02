@@ -1,6 +1,7 @@
 #include "WeatherStation.h"
 #include <iostream>
 #include <thread>
+using namespace std::this_thread;     // sleep_for, sleep_until
 using namespace std;
 
 //void function1(){
@@ -18,10 +19,34 @@ WeatherStation::WeatherStation()
     this->weatherType=RAINY;
 }
 void WeatherStation::updateWeather(){
+    int j = 0;
+    while(isOn && j<4){
+        srand((unsigned) time(NULL));
+        int i = rand()%3;
+        switch (i) {
+        case 0:
+            this->weatherType=RAINY;
+            break;
+        case 1:
+            this->weatherType=SNOWY;
+            break;
+        case 2:
+            this->weatherType=SUNNY;
+            break;
+        default:
+            break;
+        }
+        sleep_for(1s);
+        j++;
+    }
 
-//    thread worker1(function1);
-//    thread worker2(function2);
 }
 Weather WeatherStation::getWeather(){
     return this->weatherType;
+}
+void WeatherStation::tunOn(){
+    this->isOn=true;
+}
+void WeatherStation::turnOff(){
+    this->isOn=false;
 }

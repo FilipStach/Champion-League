@@ -15,6 +15,7 @@ SOURCES += \
     ClubsContainer.cpp \
     Coach.cpp \
     CoachesContainer.cpp \
+    Container.cpp \
     Defender.cpp \
     FileReader.cpp \
     Footballer.cpp \
@@ -25,6 +26,7 @@ SOURCES += \
     MyClub.cpp \
     PassingAbility.cpp \
     PlayersContainer.cpp \
+    ScoreTable.cpp \
     ShootingAbility.cpp \
     Striker.cpp \
     TackleAbility.cpp \
@@ -40,6 +42,7 @@ HEADERS += \
     ClubsContainer.h \
     Coach.h \
     CoachesContainer.h \
+    Container.h \
     Defender.h \
     FileReader.h \
     Footballer.h \
@@ -50,6 +53,7 @@ HEADERS += \
     MyClub.h \
     PassingAbility.h \
     PlayersContainer.h \
+    ScoreTable.h \
     ShootingAbility.h \
     Striker.h \
     TackleAbility.h \

@@ -1,22 +1,22 @@
-#include "mainwindow.h"
-#include "ui_mainwindow.h"
+//#include "mainwindow.h"
+//#include "ui_mainwindow.h"
 
-MainWindow::MainWindow(QWidget *parent)
-    : QMainWindow(parent)
-    , ui(new Ui::MainWindow)
-{
-    ui->setupUi(this);
-}
+//MainWindow::MainWindow(QWidget *parent)
+//    : QMainWindow(parent)
+//    , ui(new Ui::MainWindow)
+//{
+//    ui->setupUi(this);
+//}
 
-MainWindow::~MainWindow()
-{
-    delete ui;
-}
+//MainWindow::~MainWindow()
+//{
+//    delete ui;
+//}
 
 
-void MainWindow::on_btnOK_clicked()
-{
-    QString titleFilip = ui->editTitle->text();
-    this->setWindowTitle(titleFilip);
-}
+//void MainWindow::on_btnOK_clicked()
+//{
+//    QString titleFilip = ui->editTitle->text();
+//    this->setWindowTitle(titleFilip);
+//}
 

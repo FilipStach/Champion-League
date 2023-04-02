@@ -1,9 +1,9 @@
 #include "Match.h"
+#include "ChampionsLeague.h"
 #include <thread>
 
 
 using namespace std::this_thread;     // sleep_for, sleep_until
-using namespace std::chrono_literals;
 #include<iostream>
 #include<cstdlib>
 Match::Match()
@@ -34,12 +34,12 @@ void Match::playMatch(){
         this->attackingTeamGoals=3;
         minutes = 90;
     }
-    while(minutes<90){
+    while(minutes<30){
         attackingTeamFactor = attackingTeam->matchFactor(this->tournament->getWeatherStation(), this->ball->getBallPosition(),true);
         deffendingTeamFactor = deffendingTeam->matchFactor(this->tournament->getWeatherStation(), this->ball->getBallPosition(),false);
         passesFactor = this->ball->getBallFactor();
         if(this->ball->getCounter()>30){
-            cout<<this->attackingTeam->getName()+" loses the ball!"<<endl;
+//            cout<<this->attackingTeam->getName()+" loses the ball!"<<endl;
             this->deffendingTeam->takeBall(*this->attackingTeam->giveBall());
             this->ball->resetCounter();
             this->switchTeams();
@@ -54,12 +54,12 @@ void Match::playMatch(){
                 }
                 else{
                     this->ball->changeField(MIDFIELD);
-                    cout<<this->attackingTeam->getName()+" moves to midfield!"<<endl;
+//                    cout<<this->attackingTeam->getName()+" moves to midfield!"<<endl;
                     this->ball->increaseCounter();
                 }
             }
             else{
-                cout<<this->attackingTeam->getName()+" loses the ball!"<<endl;
+//                cout<<this->attackingTeam->getName()+" loses the ball!"<<endl;
                 this->deffendingTeam->takeBall(*this->attackingTeam->giveBall());
                 this->ball->resetCounter();
                 this->switchTeams();
@@ -74,12 +74,12 @@ void Match::playMatch(){
                 }
                 else{
                     this->ball->changeField(FORWARDFIELD);
-                    cout<<this->attackingTeam->getName()+" moves to forwardfield!"<<endl;
+//                    cout<<this->attackingTeam->getName()+" moves to forwardfield!"<<endl;
                     this->ball->increaseCounter();
                 }
             }
             else{
-                cout<<this->attackingTeam->getName()+" loses the ball!"<<endl;
+//                cout<<this->attackingTeam->getName()+" loses the ball!"<<endl;
                 this->deffendingTeam->takeBall(*this->attackingTeam->giveBall());
                 this->ball->resetCounter();
                 this->switchTeams();
@@ -101,18 +101,26 @@ void Match::playMatch(){
                 }
             }
             else{
-                cout<<this->attackingTeam->getName()+" loses the ball!"<<endl;
+//                cout<<this->attackingTeam->getName()+" loses the ball!"<<endl;
                 this->deffendingTeam->takeBall(*this->attackingTeam->giveBall());
                 this->ball->resetCounter();
                 this->switchTeams();
             }
         }
-        sleep_for(0.02s);
+        if(attackingTeam->getId()>1000 || deffendingTeam->getId()>1000){
+//            sleep_for(1s);
+        }
+        else{
+//            sleep_for(0.1s);
+        }
         minutes++;
     }
     attackingTeam->reduceStamina();
     deffendingTeam->reduceStamina();
-    cout<< "Score:\n"<< attackingTeam->getName()+" "<<attackingTeamGoals<<":"<< deffendingTeamGoals <<" "+deffendingTeam->getName()<<endl;
+    if(attackingTeam->getId()>1000 || deffendingTeam->getId()>1000){
+        cout<< "Score:\n"<< attackingTeam->getName()+" "<<attackingTeamGoals<<":"<< deffendingTeamGoals <<" "+deffendingTeam->getName()<<endl;
+    }
+
     if(attackingTeamGoals>deffendingTeamGoals){
         this->tournament->deleteClub(deffendingTeam->getId());
     }
@@ -122,11 +130,15 @@ void Match::playMatch(){
     else{
         randNum = rand()%2;
         if(randNum==1){
-            cout<<attackingTeam->getName()+" wins in penalty"<<endl;
+            if(attackingTeam->getId()>1000 || deffendingTeam->getId()>1000){
+                cout<<attackingTeam->getName()+" wins in penalty"<<endl;
+            }
             this->tournament->deleteClub(deffendingTeam->getId());
         }
         else{
-            cout<<deffendingTeam->getName()+" wins in penalty"<<endl;
+            if(attackingTeam->getId()>1000 || deffendingTeam->getId()>1000){
+                cout<<deffendingTeam->getName()+" wins in penalty"<<endl;
+            }
             this->tournament->deleteClub(attackingTeam->getId());
         }
     }

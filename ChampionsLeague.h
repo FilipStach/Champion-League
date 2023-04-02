@@ -1,14 +1,17 @@
 #pragma once
 #include "Club.h"
 #include "ClubsContainer.h"
+
 #include "WeatherStation.h"
+class Match;
 class ChampionsLeague
 {
-private:
+public:
     int size;
     unordered_map<int,Club*> clubs;
     bool isActive;
     WeatherStation weather;
+    vector<Match*> lastRoundScores;
 
 public:
     ChampionsLeague();
@@ -18,6 +21,8 @@ public:
     void deleteClub(int id);
     WeatherStation getWeatherStation() const;
     void updateSize();
+    void clearLastRoundScores();
+    void updateWeather();
 
 };
 

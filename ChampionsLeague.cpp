@@ -1,6 +1,6 @@
 #include "ChampionsLeague.h"
 #include "Match.h"
-#
+#include <thread>
 
 ChampionsLeague::ChampionsLeague()
 {
@@ -24,15 +24,33 @@ void ChampionsLeague::deleteClub(int id){
     this->clubs.erase(id);
 }
 void ChampionsLeague::playNextRound(){
-    Club* club;
+    this->weather.tunOn();
+    thread weatherThread(&ChampionsLeague::updateWeather,this);
+    this->clearLastRoundScores();
+    srand((unsigned) time(NULL));
+    int randNum;
+    vector<Club*> vector;
     unordered_map<int, Club*>::iterator it
             = clubs.begin();
     while (it != clubs.end()) {
-            Match match((it), *this->clubs[112], *this);
-            match.playMatch();
-            cout<<it->second->getName()<<endl;
-            it++;
-       }
+        vector.push_back(it->second);
+        it++;
+        }
+//            Match* match = new Match(*club,*it->second, *this);
+//                match->playMatch();
+    while(vector.size()>1){
+        randNum = rand()%vector.size();
+        Club* club1 = vector[randNum];
+        vector.erase(vector.begin()+randNum);
+        randNum = rand()%vector.size();
+        Club* club2 = vector[randNum];
+        vector.erase(vector.begin()+randNum);
+        this->lastRoundScores.push_back(new Match(*club1,*club2, *this));
+        this->lastRoundScores.back()->playMatch();
+    }
+    this->weather.turnOff();
+    weatherThread.join();
+
 //    Match match(*this->clubs[111], *this->clubs[112], *this);
 //    match.playMatch();
 //    this->updateSize();
@@ -41,6 +59,7 @@ WeatherStation ChampionsLeague::getWeatherStation() const{
     return this->weather;
 }
 ChampionsLeague::~ChampionsLeague(){
+    this->clearLastRoundScores();
     unordered_map<int, Club*>::iterator it
             = clubs.begin();
     while (it != clubs.end()) {
@@ -48,6 +67,16 @@ ChampionsLeague::~ChampionsLeague(){
 
            it++;
        }
+    clubs.clear();
+}
+void ChampionsLeague::clearLastRoundScores(){
+    for(Match* match : lastRoundScores){
+        delete match;
+    }
+    this->lastRoundScores.clear();
+}
+void ChampionsLeague::updateWeather(){
+    this->weather.updateWeather();
 }
 void ChampionsLeague::updateSize(){
     this->size=this->clubs.size();

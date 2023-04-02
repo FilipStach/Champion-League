@@ -160,8 +160,8 @@ void Club::passBall(){
                }while((item->second->getAbility(REFLEX)==0 && item->second->giveBall()!=NULL) || item->second->getAbility(REFLEX)!=0);
                item->second->takeBall(*it->second->giveBall());
                it->second->loseBall();
-               cout << it->second->getName() + " " + it->second->getSurrname()+" passes the ball to "
-                       +item->second->getName()+" "+item->second->getSurrname()<<endl;
+//               cout << it->second->getName() + " " + it->second->getSurrname()+" passes the ball to "
+//                       +item->second->getName()+" "+item->second->getSurrname()<<endl;
            }
         it++;
        }
@@ -189,7 +189,7 @@ void Club::takeBall(Ball& ball){
        std::advance( item, v1);
    }while(item->second->getAbility(REFLEX)!=0);
    item->second->takeBall(ball);
-   cout<< item->second->getName() + " " + item->second->getSurrname()+" is on the ball now"<<endl;
+//   cout<< item->second->getName() + " " + item->second->getSurrname()+" is on the ball now"<<endl;
 }
 void Club::reduceStamina(){
     unordered_map<int, Footballer*>::iterator it

@@ -1,23 +1,3 @@
-1.Czy właściwe jest podszywanie się pod interface (biorąc pod uwagę, że nie wszystkie klasy pochodne moga miec ten sam trening)
-2.Czy są wymogi co do złożoności klasy czy np bylo by lepiej rozbić  klasę championsLeague bardziej.
-2.5."Proszę pamiętać o porządnej symulacji spotkania"
-3.Zabezpieczanie wejścia i pliku:
--Czy ma sprawdzać poprawność pliku
--Czy okno tekstowe ma sprawdzać format wprowadzonych danych oraz zakres
-4.Czy taka struktura klas wystarczy.
-5. Rozdzielenie logiki programu od gui czyli po prstu gui ma służyć jako wprowadzenie danych 
-i ich wyśtwietlenie czy też np kontrola.
-6. Polimorfizm dynamiczny
-
-    void changeSkill(Coach coach);
-coach
-
-    void change_Skill(Coach *coach); - zmienia
-&coach
-
-    void change__Skill(Coach &coach);- zmienia
-coach
-
+1. Memory leak coused by thread.
+2. Problem with object file from container.
 notatki:
-Zatrzymanie przyciskiem chodzi o dodanie przycisku do qt ktory zatrzyma pętlę.
-dodaj mecz

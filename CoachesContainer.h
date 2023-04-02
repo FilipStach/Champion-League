@@ -1,20 +1,14 @@
 #pragma once
 
 #include "Coach.h"
+#include "Container.h"
 #include <unordered_map>
 #include <vector>
-class CoachesContainer
+class CoachesContainer : public Container<Coach>
 {
-private:
-
-    unordered_map<int,Coach*> coaches;
-
 public:
     CoachesContainer();
-    CoachesContainer(vector<vector<string>>);
+    CoachesContainer(vector<vector<string>> vector);
     ~CoachesContainer();
-    unordered_map<int,Coach*> getCoaches() const;
-    void deleteCoach(int id);
-    bool contains(int coachId);
 };
 

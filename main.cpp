@@ -1,9 +1,11 @@
 #include "ChampionsLeague.h"
 #include "CoachesContainer.h"
-#include "GoalKeeper.h"
+#include "Container.h"
+#include "Container.cpp"
 #include "Defender.h"
 #include "Midfielder.h"
 #include "PlayersContainer.h"
+#include "ScoreTable.h"
 #include "Striker.h"
 #include "Coach.h"
 #include "Club.h"
@@ -12,120 +14,100 @@
 #include "ClubsContainer.h"
 #include "MyClub.h"
 #include "WeatherStation.h"
+#include "qapplication.h"
 #include "thread"
 #include "Ball.h"
+#include "Match.h"
 #include<iostream>
 #include<cstdlib>
 using namespace std;
-//void function1(){
-//    for(int i=0;i<200;i++){
-//        cout<<"+";
-//    }
-//}
-//void function2(){
-//    for(int i=0;i<200;i++){
-//        cout<<"-";
-//    }
-//}
+using namespace std::this_thread;     // sleep_for, sleep_until
 
-int main()
+
+
+int main(int argc, char* argv[])
 {
-    int value = 2000000;
-    std::string photo = "filip.jpg";
-    std::string name1[] = {"Filip", "Stach"};
-    std::string name2[] = {"Ann", "Lex"};
-    std::string name3[] = {"Filip", "Spurs"};
-    std::string name4[] = {"Kanry", "Stach"};
-    std::string coachName[]= {"Pep","Guardiola"};
-    string tactics = "4-4-2";
-    int skills = 5;
-    int shooting = 56;
-    int reflex = 42;
-    int tackle = 23;
-    int passes = 67;
-    int headers = 89;
-
-    int zero = 0;
-    int jeden=0;
-    int dwa=0;
-    int trzy = 0;
-//        srand((unsigned) time(NULL));
-
-//        for(int i = 0 ; i<=10000;i++){
-//        int random = rand()%4;
-//        switch(random){
-//        case 0:
-//            zero++;
-//            break;
-//        case 1:
-//            jeden++;
-//            break;
-//        case 2:
-//            dwa++;
-//            break;
-//        case 3:
-//            trzy++;
-//            break;
-//        }
-
-//        // Print the random number
-//        cout<<random<<" ";
-//        }
-//       cout<<zero<<" "<<jeden<< " "<<dwa<<" "<<trzy<<endl;
-
-//    Goalkeeper *goalkeeper = new Goalkeeper( value,name1,tackle, reflex,52);
-//    Defender *defender = new Defender( value,name2,headers,tackle,54);
-//    Midfielder *midfielder = new Midfielder( value,name3,shooting,passes,tackle,58);
-//    Striker *striker = new Striker( value,name4,shooting,passes,headers,34);
-//    Coach *coach = new Coach(coachName,  skills,  value, tactics,89);
-//    Club *club = new Club(*goalkeeper,*defender,*midfielder,*striker,*coach, 102, "Lech Poznan");
-//    Club *club2 = new Club(*club);
-//    delete club2;
-//    delete goalkeeper;
-//    delete defender;
-//    delete midfielder;
-//    delete striker;
-//    delete coach;
 
 
-//    cout<< "deff"<< endl;
 
-//    Ball ball;
-//    switch (ball.getBallPosition()){
-//        case backField:
-//            cout<<"Im on the back"<<endl;
-//            break;
-//        case midField:
-//            cout<<"Im on the midField"<<endl;
-//            break;
-//        case forwardField:
-//            cout<<"Im on the forward"<<endl;
-//            break;
-//        default:
-//            cout<< "invalid value" <<endl;
-//    }
 
     std::vector<std::vector<std::string>> vector = FileReader::readFile("players.txt");
-//    PlayersContainer* playersContainer = new PlayersContainer(vector);
+////    PlayersContainer* playersContainer = new PlayersContainer(vector);
     std::vector<std::vector<std::string>> vector2 = FileReader::readFile("coaches.txt");
     std::vector<std::vector<std::string>> vector3 = FileReader::readFile("clubs1.txt");
+    CoachesContainer* coachesContainer = new CoachesContainer(vector2);
+    cout<< coachesContainer<<endl;
+    PlayersContainer* playerContainer = new PlayersContainer(vector);
+    cout<< playerContainer<<endl;
     MyClub* myClub = new MyClub(vector, vector2);
     myClub->pickLineUp();
-////    cout<<"BREAK"<<endl;
+    MyClub* myClub2 = new MyClub(vector, vector2);
+    myClub2->pickLineUp();
     ClubsContainer* clubsContainer = new ClubsContainer(vector3);
     ChampionsLeague* cm = new ChampionsLeague(16, *clubsContainer, *myClub);
-    cm->playNextRound();
-    delete clubsContainer;
+//    cm->weather.tunOn();
+//    cm->updateWeather();
+
+    thread weatherThread(&ChampionsLeague::updateWeather,cm);
+    sleep_for(3s);
+    cm->weather.turnOff();
+    weatherThread.join();
+//    Match* match = new Match(*myClub,*myClub2,*cm);
+//    cm->playNextRound();
+//    cm->playNextRound();
+//    cm->playNextRound();
+//    cm->playNextRound();
+    QApplication a(argc,argv);
+    ScoreTable w;
+    w.show();
+
+    return a.exec();
+    delete coachesContainer;
+    delete playerContainer;
     delete myClub;
+    delete myClub2;
+    delete clubsContainer;
     delete cm;
-//    thread worker2(function2);
-//    thread worker1(function1);
 
 
 
 }
 
+//#include <iostream>
+//#include <map>
 
+//// example class
+//class MyClass {
+//public:
+//    MyClass(int num) : m_num(num) {}
+//    void print() { std::cout << "MyClass(" << m_num << ")" << std::endl; }
+//private:
+//    int m_num;
+//};
+
+//// template class with map storing pointers to MyClass objects
+//template<typename T>
+//class MyMap {
+//public:
+//    void addElement(int key, int num) {
+//        m_map[key] = new T(num);
+//    }
+//    void printElements() {
+//        for (auto& kv : m_map) {
+//            kv.second->print();
+//        }
+//    }
+//private:
+//    std::map<int, T*> m_map;
+//};
+
+//int main() {
+//    MyMap<MyClass> myMap;
+//    myMap.addElement(1, 10);
+//    myMap.addElement(2, 20);
+//    myMap.printElements();
+//    return 0;
+//}
 
 
 

@@ -1,7 +1,7 @@
 #pragma once
-
 #include "Ball.h"
-#include "ChampionsLeague.h"
+#include "Club.h"
+class ChampionsLeague;
 class Match
 {
 private:

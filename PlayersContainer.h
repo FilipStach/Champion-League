@@ -1,22 +1,34 @@
 #pragma once
 
+#include "Container.h"
 #include "Footballer.h"
 #include <unordered_map>
-class PlayersContainer
+class PlayersContainer : public Container<Footballer>
 {
 private:
 
-    unordered_map<int,Footballer*> players;
     int minPrice;
-
 public:
     PlayersContainer();
-    PlayersContainer(vector<vector<string>>);
+    PlayersContainer(vector<vector<string>> vector);
     ~PlayersContainer();
-    unordered_map<int,Footballer*> getPlayers() const;
     int getMinPrice();
-    void deletePlayer(int id);
-    bool contains(int playerId);
     void calcMinPrice();
 };
+
+//private:
+
+//    unordered_map<int,Footballer*> players;
+//    int minPrice;
+
+//public:
+//    PlayersContainer();
+//    PlayersContainer(vector<vector<string>>);
+//    ~PlayersContainer();
+//    unordered_map<int,Footballer*> getPlayers() const;
+//    int getMinPrice();
+//    void deletePlayer(int id);
+//    bool contains(int playerId);
+//    void calcMinPrice();
+//};
 

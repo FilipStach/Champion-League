@@ -5,7 +5,7 @@
 #include "Midfielder.h"
 #include "PlayersContainer.h"
 #include "Striker.h"
-
+#include "Container.cpp"
 TransferWindow::TransferWindow()
 {
 
@@ -16,12 +16,13 @@ void TransferWindow::conductTransferWindow(vector<vector<string>> players, vecto
     int playersId[] = {1,32,3,39,63,66};
     int coachId = 15;
     int i = 0;
+    coachesContainer->contains(11);
     while(!club.hasCoach()){
-        if(coachesContainer->contains(coachId)&&coachesContainer->getCoaches()[coachId]->getValue() <= club.getBudget()){
-        club.buyCoach(*coachesContainer->getCoaches()[coachId]);
-        coachesContainer->deleteCoach(coachId);
+        if(coachesContainer->contains(coachId)&&coachesContainer->getElements()[coachId]->getValue() <= club.getBudget()){
+        club.buyCoach(*coachesContainer->getElements()[coachId]);
+        coachesContainer->deleteElement(coachId);
         }
-        else if(!coachesContainer->getCoaches().count(coachId)){
+        else if(!coachesContainer->getElements().count(coachId)){
             cout<<"Invalid coach id"<<endl;
         }
         else{
@@ -29,12 +30,12 @@ void TransferWindow::conductTransferWindow(vector<vector<string>> players, vecto
         }
     }
     while(club.getBudget() >= playersContainer->getMinPrice() && club.getSize()<6){
-        if(playersContainer->contains(playersId[i]) && playersContainer->getPlayers()[playersId[i]]->getValue() <= club.getBudget()){
-            club.buyPlayer(*playersContainer->getPlayers()[playersId[i]]);
-            playersContainer->deletePlayer(playersId[i]);
+        if(playersContainer->contains(playersId[i]) && playersContainer->getElements()[playersId[i]]->getValue() <= club.getBudget()){
+            club.buyPlayer(*playersContainer->getElements()[playersId[i]]);
+            playersContainer->deleteElement(playersId[i]);
             i++;
         }
-        else if(!playersContainer->getPlayers().count(playersId[i])){
+        else if(!playersContainer->getElements().count(playersId[i])){
             cout<<"Invalid player id"<<endl;
             //here write in new id
         }
