@@ -130,15 +130,17 @@ void Match::playMatch(){
     else{
         randNum = rand()%2;
         if(randNum==1){
-            if(attackingTeam->getId()>1000 || deffendingTeam->getId()>1000){
-                cout<<attackingTeam->getName()+" wins in penalty"<<endl;
-            }
+//            if(attackingTeam->getId()>1000 || deffendingTeam->getId()>1000){
+//                cout<<attackingTeam->getName()+" wins in penalty"<<endl;
+//            }
+            this->attackingTeamGoals++;
             this->tournament->deleteClub(deffendingTeam->getId());
         }
         else{
-            if(attackingTeam->getId()>1000 || deffendingTeam->getId()>1000){
-                cout<<deffendingTeam->getName()+" wins in penalty"<<endl;
-            }
+//            if(attackingTeam->getId()>1000 || deffendingTeam->getId()>1000){
+//                cout<<deffendingTeam->getName()+" wins in penalty"<<endl;
+//            }
+            this->deffendingTeamGoals++;
             this->tournament->deleteClub(attackingTeam->getId());
         }
     }
@@ -152,6 +154,20 @@ void Match::switchTeams(){
     this->attackingTeamGoals = this->deffendingTeamGoals;
     this->deffendingTeamGoals = tempGoals;
 }
+string Match::getDeffendingTeam(){
+    return this->deffendingTeam->getName();
+}
+string Match::getAttackingTeam(){
+    return this->attackingTeam->getName();
+}
+int Match::getAttackingTeamGoals(){
+    return this->attackingTeamGoals;
+}
+int Match::getDeffendingTeamGoals(){
+    return this->deffendingTeamGoals;
+}
 Match::~Match(){
     delete this->ball;
+    delete this->attackingTeam;
+    delete this->deffendingTeam;
 }

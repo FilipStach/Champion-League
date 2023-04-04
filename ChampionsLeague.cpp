@@ -40,10 +40,10 @@ void ChampionsLeague::playNextRound(){
 //                match->playMatch();
     while(vector.size()>1){
         randNum = rand()%vector.size();
-        Club* club1 = vector[randNum];
+        Club* club1 = new Club(*vector[randNum]);
         vector.erase(vector.begin()+randNum);
         randNum = rand()%vector.size();
-        Club* club2 = vector[randNum];
+        Club* club2 = new Club(*vector[randNum]);
         vector.erase(vector.begin()+randNum);
         this->lastRoundScores.push_back(new Match(*club1,*club2, *this));
         this->lastRoundScores.back()->playMatch();
@@ -80,4 +80,7 @@ void ChampionsLeague::updateWeather(){
 }
 void ChampionsLeague::updateSize(){
     this->size=this->clubs.size();
+}
+vector<Match*> ChampionsLeague::getlastRoundScores() const{
+    return this->lastRoundScores;
 }

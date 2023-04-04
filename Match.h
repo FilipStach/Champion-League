@@ -17,4 +17,8 @@ public:
     void playMatch();
     ~Match();
     void switchTeams();
+    string getAttackingTeam();
+    string getDeffendingTeam();
+    int getAttackingTeamGoals();
+    int getDeffendingTeamGoals();
 };

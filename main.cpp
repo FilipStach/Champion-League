@@ -9,7 +9,6 @@
 #include "Striker.h"
 #include "Coach.h"
 #include "Club.h"
-#include "iostream"
 #include "FileReader.h"
 #include "ClubsContainer.h"
 #include "MyClub.h"
@@ -23,16 +22,20 @@
 using namespace std;
 using namespace std::this_thread;     // sleep_for, sleep_until
 
-
+void function1(){
+    for(int i=0;i<100;i++){
+        cout<<i<<endl;
+    }
+}
 
 int main(int argc, char* argv[])
 {
-
-
+//    thread weatherThread(function1);
+//    weatherThread.join();
+//}
 
 
     std::vector<std::vector<std::string>> vector = FileReader::readFile("players.txt");
-////    PlayersContainer* playersContainer = new PlayersContainer(vector);
     std::vector<std::vector<std::string>> vector2 = FileReader::readFile("coaches.txt");
     std::vector<std::vector<std::string>> vector3 = FileReader::readFile("clubs1.txt");
     CoachesContainer* coachesContainer = new CoachesContainer(vector2);
@@ -45,23 +48,20 @@ int main(int argc, char* argv[])
     myClub2->pickLineUp();
     ClubsContainer* clubsContainer = new ClubsContainer(vector3);
     ChampionsLeague* cm = new ChampionsLeague(16, *clubsContainer, *myClub);
-//    cm->weather.tunOn();
-//    cm->updateWeather();
-
-    thread weatherThread(&ChampionsLeague::updateWeather,cm);
-    sleep_for(3s);
-    cm->weather.turnOff();
-    weatherThread.join();
+    cm->updateWeather();
 //    Match* match = new Match(*myClub,*myClub2,*cm);
+    cm->playNextRound();
+    cm->playNextRound();
 //    cm->playNextRound();
 //    cm->playNextRound();
-//    cm->playNextRound();
-//    cm->playNextRound();
+    QWidget *parent = 0;
     QApplication a(argc,argv);
-    ScoreTable w;
-    w.show();
+    ScoreTable w(parent,cm->getlastRoundScores());
 
+    w.show();
     return a.exec();
+
+
     delete coachesContainer;
     delete playerContainer;
     delete myClub;

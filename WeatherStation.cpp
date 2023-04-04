@@ -21,23 +21,23 @@ WeatherStation::WeatherStation()
 void WeatherStation::updateWeather(){
     int j = 0;
     while(isOn && j<4){
-        srand((unsigned) time(NULL));
-        int i = rand()%3;
-        switch (i) {
-        case 0:
-            this->weatherType=RAINY;
-            break;
-        case 1:
-            this->weatherType=SNOWY;
-            break;
-        case 2:
-            this->weatherType=SUNNY;
-            break;
-        default:
-            break;
-        }
-        sleep_for(1s);
-        j++;
+//        srand((unsigned) time(NULL));
+//        int i = rand()%3;
+//        switch (i) {
+//        case 0:
+//            this->weatherType=RAINY;
+//            break;
+//        case 1:
+//            this->weatherType=SNOWY;
+//            break;
+//        case 2:
+//            this->weatherType=SUNNY;
+//            break;
+//        default:
+//            break;
+//        }
+//        sleep_for(1s);
+//        j++;
     }
 
 }

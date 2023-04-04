@@ -23,6 +23,6 @@ public:
     void updateSize();
     void clearLastRoundScores();
     void updateWeather();
-
+    vector<Match*> getlastRoundScores() const;
 };
 
