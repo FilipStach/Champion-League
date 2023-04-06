@@ -3,6 +3,7 @@
 #include "ClubsContainer.h"
 
 #include "WeatherStation.h"
+#include "qapplication.h"
 class Match;
 class ChampionsLeague
 {

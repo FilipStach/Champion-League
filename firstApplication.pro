@@ -22,18 +22,18 @@ SOURCES += \
     GoalKeeper.cpp \
     HeaderAbility.cpp \
     Match.cpp \
+    MenagerWindow.cpp \
     Midfielder.cpp \
     MyClub.cpp \
     PassingAbility.cpp \
     PlayersContainer.cpp \
-    ScoreTable.cpp \
+    ResultWindow.cpp \
     ShootingAbility.cpp \
     Striker.cpp \
     TackleAbility.cpp \
     TransferWindow.cpp \
     WeatherStation.cpp \
-    main.cpp \
-    mainwindow.cpp
+    main.cpp
 
 HEADERS += \
     Ball.h \
@@ -49,22 +49,26 @@ HEADERS += \
     GoalKeeper.h \
     HeaderAbility.h \
     Match.h \
+    MenagerWindow.h \
     Midfielder.h \
     MyClub.h \
     PassingAbility.h \
     PlayersContainer.h \
-    ScoreTable.h \
+    ResultWindow.h \
     ShootingAbility.h \
     Striker.h \
     TackleAbility.h \
     TransferWindow.h \
-    WeatherStation.h \
-    mainwindow.h
+    WeatherStation.h
 
 FORMS += \
-    mainwindow.ui
+    MenagerWindow.ui \
+    ResultWindow.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
+
+RESOURCES += \
+    BackGround.qrc

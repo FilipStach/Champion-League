@@ -17,7 +17,7 @@ public:
     unordered_map<int,Club*> getClubs() const;
     void deleteClub(int id);
     bool contains(int clubId);
-
+    int returnID(string name);
 };
 
 

@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/">
+        <file>uefa_champions_league.jpg</file>
+        <file>UEFA_Back.jpg</file>
+    </qresource>
+</RCC>

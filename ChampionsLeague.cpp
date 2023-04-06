@@ -1,5 +1,6 @@
 #include "ChampionsLeague.h"
 #include "Match.h"
+#include "qwidget.h"
 #include <thread>
 
 ChampionsLeague::ChampionsLeague()

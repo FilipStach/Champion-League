@@ -17,7 +17,7 @@
    <string>MainWindow</string>
   </property>
   <property name="styleSheet">
-   <string notr="true"/>
+   <string notr="true">QMainWindow {background-image:url(:/UEFA_Back.jpg);}</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QPushButton" name="Button0">
@@ -34,11 +34,14 @@
     </property>
    </widget>
    <widget class="QTableWidget" name="tableWidget">
+    <property name="enabled">
+     <bool>false</bool>
+    </property>
     <property name="geometry">
      <rect>
       <x>100</x>
       <y>20</y>
-      <width>400</width>
+      <width>382</width>
       <height>370</height>
      </rect>
     </property>
@@ -55,12 +58,16 @@
      </size>
     </property>
     <property name="styleSheet">
-     <string notr="true">QTableWidget{
-	background-color: white;
-	border: 1px solid grey;
-	padding: 5x;
-	color: black;
-}</string>
+     <string notr="true">QHeaderView::section {
+    background-color: #3562A6;
+	color: black; 
+}
+QTableWidget{
+background-color: #0E1E5B;
+
+
+}
+</string>
     </property>
     <property name="rowCount">
      <number>5</number>
@@ -69,7 +76,7 @@
      <bool>true</bool>
     </attribute>
     <attribute name="horizontalHeaderCascadingSectionResizes">
-     <bool>true</bool>
+     <bool>false</bool>
     </attribute>
     <attribute name="horizontalHeaderMinimumSectionSize">
      <number>27</number>
@@ -78,16 +85,16 @@
      <number>100</number>
     </attribute>
     <attribute name="horizontalHeaderHighlightSections">
-     <bool>true</bool>
+     <bool>false</bool>
     </attribute>
     <attribute name="horizontalHeaderShowSortIndicator" stdset="0">
-     <bool>true</bool>
+     <bool>false</bool>
     </attribute>
     <attribute name="horizontalHeaderStretchLastSection">
-     <bool>true</bool>
+     <bool>false</bool>
     </attribute>
     <attribute name="verticalHeaderVisible">
-     <bool>true</bool>
+     <bool>false</bool>
     </attribute>
     <attribute name="verticalHeaderMinimumSectionSize">
      <number>27</number>
@@ -95,8 +102,11 @@
     <attribute name="verticalHeaderDefaultSectionSize">
      <number>50</number>
     </attribute>
+    <attribute name="verticalHeaderHighlightSections">
+     <bool>false</bool>
+    </attribute>
     <attribute name="verticalHeaderShowSortIndicator" stdset="0">
-     <bool>true</bool>
+     <bool>false</bool>
     </attribute>
     <attribute name="verticalHeaderStretchLastSection">
      <bool>false</bool>
@@ -108,17 +118,38 @@
     <row/>
     <column>
      <property name="text">
-      <string>HOME TEAM</string>
+      <string>HOME</string>
+     </property>
+     <property name="background">
+      <color>
+       <red>48</red>
+       <green>255</green>
+       <blue>33</blue>
+      </color>
      </property>
     </column>
     <column>
      <property name="text">
       <string>SCORE</string>
      </property>
+     <property name="background">
+      <color>
+       <red>255</red>
+       <green>51</green>
+       <blue>24</blue>
+      </color>
+     </property>
     </column>
     <column>
      <property name="text">
-      <string>AWAY TEAM</string>
+      <string>AWAY</string>
+     </property>
+     <property name="background">
+      <color>
+       <red>255</red>
+       <green>56</green>
+       <blue>245</blue>
+      </color>
      </property>
     </column>
    </widget>

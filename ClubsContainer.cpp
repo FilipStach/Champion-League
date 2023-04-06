@@ -87,3 +87,14 @@ ClubsContainer::~ClubsContainer(){
            it++;
        }
 }
+int ClubsContainer::returnID(string name){
+    unordered_map<int, Club*>::iterator it
+            = clubs.begin();
+    while (it != clubs.end()) {
+           if(it->second->getName()==name){
+               return it->second->getId();
+           }
+
+           it++;
+       }
+}

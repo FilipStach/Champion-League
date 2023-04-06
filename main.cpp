@@ -5,7 +5,7 @@
 #include "Defender.h"
 #include "Midfielder.h"
 #include "PlayersContainer.h"
-#include "ScoreTable.h"
+#include "ResultWindow.h"
 #include "Striker.h"
 #include "Coach.h"
 #include "Club.h"
@@ -19,14 +19,15 @@
 #include "Match.h"
 #include<iostream>
 #include<cstdlib>
+#include<vector>
 using namespace std;
-using namespace std::this_thread;     // sleep_for, sleep_until
+using namespace std::this_thread;
 
-void function1(){
-    for(int i=0;i<100;i++){
-        cout<<i<<endl;
-    }
-}
+//void function1(){
+//    for(int i=0;i<100;i++){
+//        cout<<i<<endl;
+//    }
+//}
 
 int main(int argc, char* argv[])
 {
@@ -47,19 +48,27 @@ int main(int argc, char* argv[])
     MyClub* myClub2 = new MyClub(vector, vector2);
     myClub2->pickLineUp();
     ClubsContainer* clubsContainer = new ClubsContainer(vector3);
+    ClubsContainer* clubsContainer2 = new ClubsContainer(vector3);
+    QApplication a(argc,argv);
     ChampionsLeague* cm = new ChampionsLeague(16, *clubsContainer, *myClub);
     cm->updateWeather();
 //    Match* match = new Match(*myClub,*myClub2,*cm);
     cm->playNextRound();
-    cm->playNextRound();
+
+    ::vector<int> id;
+//    cm->playNextRound();
 //    cm->playNextRound();
 //    cm->playNextRound();
     QWidget *parent = 0;
-    QApplication a(argc,argv);
-    ScoreTable w(parent,cm->getlastRoundScores());
+//    ResultWindow w(parent,cm->getlastRoundScores());
+    ResultWindow w(parent,*clubsContainer2);
 
     w.show();
-    return a.exec();
+    a.exec();
+    id = w.getIds();
+    cout<<"ID:"<<id[0]<<endl;
+
+
 
 
     delete coachesContainer;
@@ -68,7 +77,7 @@ int main(int argc, char* argv[])
     delete myClub2;
     delete clubsContainer;
     delete cm;
-
+    return 0;
 
 
 }
