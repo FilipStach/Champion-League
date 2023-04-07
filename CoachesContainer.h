@@ -10,5 +10,6 @@ public:
     CoachesContainer();
     CoachesContainer(vector<vector<string>> vector);
     ~CoachesContainer();
+    int returnId(string name);
 };
 

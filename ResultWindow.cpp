@@ -2,12 +2,19 @@
 #include "ui_ResultWindow.h"
 #include <string>
 #include "MenagerWindow.h"
+#include <QFile>
 ResultWindow::ResultWindow(QWidget *parent,vector<Match*> lastRoundScores):
     QMainWindow(parent),
     ui(new Ui::ResultWindow),
     Scores(lastRoundScores)
 {
     ui->setupUi(this);
+    ui->listWidget->hide();
+    ui->comboBox->hide();
+    ui->TransferButton->hide();
+    ui->AddButton->hide();
+    ui->SubmitButton->hide();
+    ui->label->hide();
     QPushButton *numButtons[2];
     int i =0;
     QString butName = "Button" + QString::number(i);
@@ -21,7 +28,13 @@ ResultWindow::ResultWindow(QWidget *parent,ClubsContainer& clubsContainer):
     QMainWindow(parent),
     ui(new Ui::ResultWindow)
 {
+    QFont f;
+    f.setFamily("Champions");
+    f.setPointSize(12);
     ui->setupUi(this);
+    ui->tableWidget->hide();
+    ui->ExitButton->hide();
+    ui->Button0->hide();
     this->size = 0;
     this->clubs=&clubsContainer;
     unordered_map<int,Club*> clubsMap = clubsContainer.getClubs();
@@ -31,13 +44,12 @@ ResultWindow::ResultWindow(QWidget *parent,ClubsContainer& clubsContainer):
     while (it != clubsMap.end()) {
         items.push_back(new QListWidgetItem(QString::fromStdString(it->second->getName())));
         cout<<it->second->getName()<<endl;
-//        QListWidgetItem* item1 = new QListWidgetItem(QString::fromStdString(it->second->getName()));
-//        ui->listWidget->addItem(item1);
            it++;
        }
     for(QListWidgetItem* item: items){
       item->setTextAlignment(Qt::AlignCenter);
       item->setBackground(QColor(	0,	0,	153));
+      item->setFont(f);
       ui->listWidget->addItem(item);
     }
 }
@@ -47,6 +59,12 @@ ResultWindow::~ResultWindow(){
         delete ui->tableWidget->item(row,1);
         delete ui->tableWidget->item(row,2);
     }
+    int itemCount = ui->listWidget->count();
+
+    for (int i = 0; i < itemCount; ++i) {
+        delete ui->listWidget->item(i);
+    }
+    delete ui->listWidget;
     delete ui->tableWidget;
     delete ui;
 }
@@ -111,7 +129,7 @@ void ResultWindow::on_NextWind_clicked()
 }
 void ResultWindow::on_AddButton_clicked()
 {
-    if(this->size!=0 && this->ids.size()<this->size){
+    if(this->size!=0 && this->ids.size()<(this->size-1)){
         bool contains = false;
         QListWidgetItem* item = ui->listWidget->currentItem();
         item->setBackground(QColor(255, 0, 0));
@@ -126,8 +144,8 @@ void ResultWindow::on_AddButton_clicked()
             ids.push_back(itemId);
         }
     }
-    else if(this->ids.size()==this->size&& this->size!=0){
-        cout<<"You have already enough items"<<endl;
+    else if(this->ids.size()==(this->size-1)&& this->size!=0){
+        cout<<"You have already enough clubs"<<endl;
     }
     else{
         cout<<"Pick tournament size first"<<endl;
@@ -135,7 +153,12 @@ void ResultWindow::on_AddButton_clicked()
 }
 void ResultWindow::on_TransferButton_clicked(){
 
-    QApplication::quit();
+    if(this->ids.size()==(this->size-1)){
+        QApplication::quit();
+    }
+    else{
+        cout<<"You dont have enough clubs"<<endl;
+    }
 }
 void ResultWindow::on_SubmitButton_clicked(){
 

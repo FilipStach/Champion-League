@@ -7,7 +7,7 @@
 class Match;
 class ChampionsLeague
 {
-public:
+private:
     int size;
     unordered_map<int,Club*> clubs;
     bool isActive;
@@ -16,7 +16,7 @@ public:
 
 public:
     ChampionsLeague();
-    ChampionsLeague(int size, ClubsContainer& clubsContainer, Club& myClub);
+    ChampionsLeague(int size, ClubsContainer& clubsContainer, Club& myClub, vector<int> ids);
     void playNextRound();//ustala fazę na podstawie ilosci drozyn w mapie, przegraną drużynę usuwa z mapy
     ~ChampionsLeague();
     void deleteClub(int id);

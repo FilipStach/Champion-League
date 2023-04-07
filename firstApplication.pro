@@ -31,6 +31,7 @@ SOURCES += \
     ShootingAbility.cpp \
     Striker.cpp \
     TackleAbility.cpp \
+    TransferDialog.cpp \
     TransferWindow.cpp \
     WeatherStation.cpp \
     main.cpp
@@ -58,12 +59,14 @@ HEADERS += \
     ShootingAbility.h \
     Striker.h \
     TackleAbility.h \
+    TransferDialog.h \
     TransferWindow.h \
     WeatherStation.h
 
 FORMS += \
     MenagerWindow.ui \
-    ResultWindow.ui
+    ResultWindow.ui \
+    TransferDialog.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
@@ -71,4 +74,5 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 RESOURCES += \
-    BackGround.qrc
+    BackGround.qrc \
+    Fonts.qrc

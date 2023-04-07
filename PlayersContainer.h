@@ -14,6 +14,7 @@ public:
     ~PlayersContainer();
     int getMinPrice();
     void calcMinPrice();
+    int returnId(string name);
 };
 
 //private:

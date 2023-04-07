@@ -8,8 +8,7 @@ ChampionsLeague::ChampionsLeague()
 
 }
 
-ChampionsLeague::ChampionsLeague(int tournamentSize, ClubsContainer& clubsContainer, Club& myClub){
-    int ids[] = {111,222,333,444,555,666,777,888,999,112,113,114,115,116,117};
+ChampionsLeague::ChampionsLeague(int tournamentSize, ClubsContainer& clubsContainer, Club& myClub, vector<int> ids){
     for(int id: ids){
         if(clubsContainer.contains(id)){
             clubs[id] = new Club(*clubsContainer.getClubs()[id]);

@@ -64,7 +64,16 @@ PlayersContainer::~PlayersContainer(){
 int PlayersContainer::getMinPrice(){
     return this->minPrice;
 }
-
+int PlayersContainer::returnId(string name){
+    unordered_map<int, Footballer*>::iterator it
+            = elements.begin();
+    while (it != elements.end()) {
+           if(it->second->getName()==name){
+               return it->second->getId();
+           }
+           it++;
+       }
+}
 
 //unordered_map<int,Footballer*> PlayersContainer::getPlayers() const{
 //    return this->players;

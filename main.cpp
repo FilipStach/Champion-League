@@ -20,6 +20,7 @@
 #include<iostream>
 #include<cstdlib>
 #include<vector>
+#include "TransferDialog.h"
 using namespace std;
 using namespace std::this_thread;
 
@@ -50,26 +51,31 @@ int main(int argc, char* argv[])
     ClubsContainer* clubsContainer = new ClubsContainer(vector3);
     ClubsContainer* clubsContainer2 = new ClubsContainer(vector3);
     QApplication a(argc,argv);
-    ChampionsLeague* cm = new ChampionsLeague(16, *clubsContainer, *myClub);
-    cm->updateWeather();
 //    Match* match = new Match(*myClub,*myClub2,*cm);
-    cm->playNextRound();
-
     ::vector<int> id;
 //    cm->playNextRound();
 //    cm->playNextRound();
 //    cm->playNextRound();
     QWidget *parent = 0;
+    TransferDialog* transferDialog = new TransferDialog(parent,*playerContainer,*coachesContainer,300 );
+    transferDialog->show();
+    a.exec();
+
 //    ResultWindow w(parent,cm->getlastRoundScores());
     ResultWindow w(parent,*clubsContainer2);
 
     w.show();
     a.exec();
     id = w.getIds();
-    cout<<"ID:"<<id[0]<<endl;
+    for(int clubId: id){
+        cout<<clubId<<endl;
+    }
+    ChampionsLeague* cm = new ChampionsLeague(16, *clubsContainer, *myClub,id);
+    cm->playNextRound();
 
-
-
+    ResultWindow m(parent,cm->getlastRoundScores());
+    m.show();
+    a.exec();
 
     delete coachesContainer;
     delete playerContainer;

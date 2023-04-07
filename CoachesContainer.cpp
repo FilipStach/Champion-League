@@ -32,3 +32,13 @@ CoachesContainer::~CoachesContainer(){
            it++;
        }
 }
+int CoachesContainer::returnId(string name){
+    unordered_map<int, Coach*>::iterator it
+            = elements.begin();
+    while (it != elements.end()) {
+           if(it->second->getName()==name){
+               return it->second->getId();
+           }
+           it++;
+       }
+}
