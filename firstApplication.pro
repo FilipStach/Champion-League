@@ -27,10 +27,10 @@ SOURCES += \
     MyClub.cpp \
     PassingAbility.cpp \
     PlayersContainer.cpp \
-    ResultWindow.cpp \
     ShootingAbility.cpp \
     Striker.cpp \
     TackleAbility.cpp \
+    TournamentCreationWindow.cpp \
     TransferDialog.cpp \
     TransferWindow.cpp \
     WeatherStation.cpp \
@@ -55,17 +55,17 @@ HEADERS += \
     MyClub.h \
     PassingAbility.h \
     PlayersContainer.h \
-    ResultWindow.h \
     ShootingAbility.h \
     Striker.h \
     TackleAbility.h \
+    TournamentCreationWindow.h \
     TransferDialog.h \
     TransferWindow.h \
     WeatherStation.h
 
 FORMS += \
     MenagerWindow.ui \
-    ResultWindow.ui \
+    TournamentCreationWindow.ui \
     TransferDialog.ui
 
 # Default rules for deployment.

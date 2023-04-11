@@ -1,5 +1,6 @@
 #include "ChampionsLeague.h"
 #include "Match.h"
+#include "MyClub.h"
 #include "qwidget.h"
 #include <thread>
 
@@ -8,16 +9,16 @@ ChampionsLeague::ChampionsLeague()
 
 }
 
-ChampionsLeague::ChampionsLeague(int tournamentSize, ClubsContainer& clubsContainer, Club& myClub, vector<int> ids){
+ChampionsLeague::ChampionsLeague(ClubsContainer& clubsContainer, Club& myClub, vector<int> ids){
     for(int id: ids){
         if(clubsContainer.contains(id)){
             clubs[id] = new Club(*clubsContainer.getClubs()[id]);
             clubsContainer.deleteClub(id);
         }
     }
-    clubs[myClub.getId()]= new Club(myClub);
+    clubs[myClub.getId()]= &myClub;
     this->isActive = true;
-    this->size = tournamentSize;
+    this->size = ids.size()+1;
 }
 void ChampionsLeague::deleteClub(int id){
     delete this->clubs[id];
@@ -63,8 +64,9 @@ ChampionsLeague::~ChampionsLeague(){
     unordered_map<int, Club*>::iterator it
             = clubs.begin();
     while (it != clubs.end()) {
+        if(it->second->getId()<1000){
            delete it->second;
-
+        }
            it++;
        }
     clubs.clear();

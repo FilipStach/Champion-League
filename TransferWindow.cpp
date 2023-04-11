@@ -10,34 +10,32 @@ TransferWindow::TransferWindow()
 {
 
 }
-void TransferWindow::conductTransferWindow(vector<vector<string>> players, vector<vector<string>> coaches, MyClub& club){
+void TransferWindow::conductTransferWindow(vector<vector<string>> players, vector<vector<string>> coaches, MyClub& club,
+                                           vector<int> playersId, int coachId){
     PlayersContainer* playersContainer = new PlayersContainer(players);
     CoachesContainer* coachesContainer = new CoachesContainer(coaches);
-    int playersId[] = {1,32,3,39,63,66};
-    int coachId = 15;
     int i = 0;
-    coachesContainer->contains(11);
-    while(!club.hasCoach()){
-        if(coachesContainer->contains(coachId)&&coachesContainer->getElements()[coachId]->getValue() <= club.getBudget()){
-        club.buyCoach(*coachesContainer->getElements()[coachId]);
-        coachesContainer->deleteElement(coachId);
-        }
-        else if(!coachesContainer->getElements().count(coachId)){
-            cout<<"Invalid coach id"<<endl;
-        }
-        else{
-            cout<<"Coach too expensive"<<endl;
-        }
+    if(coachesContainer->contains(coachId)&&coachesContainer->getElements()[coachId]->getValue() <= club.getBudget()){
+    club.buyCoach(*coachesContainer->getElements()[coachId]);
+    coachesContainer->deleteElement(coachId);
     }
-    while(club.getBudget() >= playersContainer->getMinPrice() && club.getSize()<6){
+    else if(!coachesContainer->getElements().count(coachId)){
+        cout<<"Invalid coach id"<<endl;
+        club.buyCoach(*coachesContainer->getElements()[55]);
+        coachesContainer->deleteElement(55);
+    }
+    else{
+        cout<<"Coach too expensive"<<endl;
+        club.buyCoach(*coachesContainer->getElements()[55]);
+        coachesContainer->deleteElement(55);
+    }
+    for(int i = 0;i<playersId.size();i++){
         if(playersContainer->contains(playersId[i]) && playersContainer->getElements()[playersId[i]]->getValue() <= club.getBudget()){
             club.buyPlayer(*playersContainer->getElements()[playersId[i]]);
             playersContainer->deleteElement(playersId[i]);
-            i++;
         }
         else if(!playersContainer->getElements().count(playersId[i])){
             cout<<"Invalid player id"<<endl;
-            //here write in new id
         }
         else{
             cout<<"Player too expensive"<<endl;

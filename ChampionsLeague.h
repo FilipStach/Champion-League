@@ -16,7 +16,7 @@ private:
 
 public:
     ChampionsLeague();
-    ChampionsLeague(int size, ClubsContainer& clubsContainer, Club& myClub, vector<int> ids);
+    ChampionsLeague(ClubsContainer& clubsContainer, Club& myClub, vector<int> ids);
     void playNextRound();//ustala fazę na podstawie ilosci drozyn w mapie, przegraną drużynę usuwa z mapy
     ~ChampionsLeague();
     void deleteClub(int id);

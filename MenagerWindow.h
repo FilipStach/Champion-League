@@ -1,25 +1,30 @@
-#ifndef MENAGERWINDOW_H
-#define MENAGERWINDOW_H
+#pragma once
 
-#include <QDialog>
-
-namespace Ui {
+#include "ClubsContainer.h"
+#include "Match.h"
+#include "MyClub.h"
+#include "qmainwindow.h"
+#include <QMainWindow>
+namespace Ui{
 class MenagerWindow;
 }
-
-class MenagerWindow : public QDialog
+class MenagerWindow : public QMainWindow
 {
     Q_OBJECT
-
 public:
-    explicit MenagerWindow(QWidget *parent = nullptr);
+    MenagerWindow(QWidget *parent,vector<Match*> lastRoundScores);
+    MenagerWindow(QWidget *parent,ChampionsLeague& tournament, MyClub& myClub);
     ~MenagerWindow();
-
-private slots:
-    void on_pushButton_clicked();
-
 private:
     Ui::MenagerWindow *ui;
+    vector<Match*> Scores;
+    ClubsContainer* clubs;
+    bool recovery;
+    MyClub* myClub;
+    ChampionsLeague* tournament;
+private slots:
+    void printScores();
+    void on_ExitButton_clicked();
+    void on_RecoveryButton_clicked();
+    void on_playersTable_cellClicked(int row, int column);
 };
-
-#endif // MENAGERWINDOW_H

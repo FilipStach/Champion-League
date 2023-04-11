@@ -8,15 +8,14 @@ MyClub::MyClub()
 {
 
 }
-MyClub::MyClub(vector<vector<string>> players, vector<vector<string>> coaches){
+MyClub::MyClub(vector<vector<string>> players, vector<vector<string>> coaches,  vector<int> playersId, int coachId){
     this->coach = NULL;
     srand (time(NULL));
     this->name= "Student FC";
     this->id = rand()%900+1000;
     this->budget = 300;
     this->trainings =5;
-    TransferWindow::conductTransferWindow(players, coaches,*this);
-
+    TransferWindow::conductTransferWindow(players, coaches,*this,playersId, coachId);
 }
 int MyClub::getBudget(){
     return this->budget;
@@ -50,8 +49,16 @@ MyClub::~MyClub(){
        }
 }
 void MyClub::pickLineUp(){
-    int id[] = {1,32,3,39};
-    for(int i: id){
-        this->lineup[i] = this->squad[i];
-    }
+    unordered_map<int, Footballer*>::iterator it
+            = squad.begin();
+    for(int i = 0;i<4;i++) {
+           this->lineup[i] = it->second;
+        it++;
+       }
+}
+void MyClub::recovery(int id){
+    this->squad[id]->recoveryTraining();
+}
+unordered_map<int,Footballer*> MyClub::getSquad() const{
+    return this->squad;
 }

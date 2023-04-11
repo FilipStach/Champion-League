@@ -33,6 +33,7 @@ public:
     Ball* giveBall() const;
     void loseBall();
     ~Footballer();
+    string getPosition();
 
 
 };

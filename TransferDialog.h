@@ -16,7 +16,7 @@ class TransferDialog : public QDialog
 public:
     TransferDialog(QWidget *parent, PlayersContainer& playersContainer, CoachesContainer& coachesContainer, int budget);
     ~TransferDialog();
-    vector<int> getIds();
+    vector<int> getIds() const;
     int getCoachId();
 
 private slots:
@@ -24,6 +24,7 @@ private slots:
 
     void on_buyButton_clicked();
     void onTableItemClicked();
+    void onPlayersTableItemClicked();
 
     void on_TransferButton_clicked();
 

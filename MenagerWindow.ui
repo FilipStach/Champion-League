@@ -1,30 +1,281 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
  <class>MenagerWindow</class>
- <widget class="QDialog" name="MenagerWindow">
+ <widget class="QMainWindow" name="MenagerWindow">
+  <property name="enabled">
+   <bool>true</bool>
+  </property>
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>400</width>
-    <height>300</height>
+    <width>907</width>
+    <height>469</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Dialog</string>
+   <string>MainWindow</string>
   </property>
-  <widget class="QPushButton" name="pushButton">
-   <property name="geometry">
-    <rect>
-     <x>260</x>
-     <y>250</y>
-     <width>121</width>
-     <height>29</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>play next Round</string>
-   </property>
+  <property name="styleSheet">
+   <string notr="true">QMainWindow {background-image:url(:/UEFA_Back.jpg);}</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QTableWidget" name="tableWidget">
+    <property name="enabled">
+     <bool>false</bool>
+    </property>
+    <property name="geometry">
+     <rect>
+      <x>-270</x>
+      <y>0</y>
+      <width>382</width>
+      <height>370</height>
+     </rect>
+    </property>
+    <property name="sizeIncrement">
+     <size>
+      <width>0</width>
+      <height>0</height>
+     </size>
+    </property>
+    <property name="baseSize">
+     <size>
+      <width>0</width>
+      <height>0</height>
+     </size>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QHeaderView::section {
+    background-color: #3562A6;
+	color: black; 
+}
+QTableWidget{
+background-color: #0E1E5B;
+
+
+}
+</string>
+    </property>
+    <property name="rowCount">
+     <number>5</number>
+    </property>
+    <attribute name="horizontalHeaderVisible">
+     <bool>true</bool>
+    </attribute>
+    <attribute name="horizontalHeaderCascadingSectionResizes">
+     <bool>false</bool>
+    </attribute>
+    <attribute name="horizontalHeaderMinimumSectionSize">
+     <number>27</number>
+    </attribute>
+    <attribute name="horizontalHeaderDefaultSectionSize">
+     <number>100</number>
+    </attribute>
+    <attribute name="horizontalHeaderHighlightSections">
+     <bool>false</bool>
+    </attribute>
+    <attribute name="horizontalHeaderShowSortIndicator" stdset="0">
+     <bool>false</bool>
+    </attribute>
+    <attribute name="horizontalHeaderStretchLastSection">
+     <bool>false</bool>
+    </attribute>
+    <attribute name="verticalHeaderVisible">
+     <bool>false</bool>
+    </attribute>
+    <attribute name="verticalHeaderMinimumSectionSize">
+     <number>27</number>
+    </attribute>
+    <attribute name="verticalHeaderDefaultSectionSize">
+     <number>50</number>
+    </attribute>
+    <attribute name="verticalHeaderHighlightSections">
+     <bool>false</bool>
+    </attribute>
+    <attribute name="verticalHeaderShowSortIndicator" stdset="0">
+     <bool>false</bool>
+    </attribute>
+    <attribute name="verticalHeaderStretchLastSection">
+     <bool>false</bool>
+    </attribute>
+    <row/>
+    <row/>
+    <row/>
+    <row/>
+    <row/>
+    <column>
+     <property name="text">
+      <string>HOME</string>
+     </property>
+     <property name="background">
+      <color>
+       <red>48</red>
+       <green>255</green>
+       <blue>33</blue>
+      </color>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>SCORE</string>
+     </property>
+     <property name="background">
+      <color>
+       <red>255</red>
+       <green>51</green>
+       <blue>24</blue>
+      </color>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>AWAY</string>
+     </property>
+     <property name="background">
+      <color>
+       <red>255</red>
+       <green>56</green>
+       <blue>245</blue>
+      </color>
+     </property>
+    </column>
+   </widget>
+   <widget class="QTableWidget" name="playersTable">
+    <property name="geometry">
+     <rect>
+      <x>120</x>
+      <y>30</y>
+      <width>601</width>
+      <height>401</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QHeaderView::section {
+    background-color: #3562A6;
+}
+QTableWidget{
+background-color: #0E1E5B;
+color: #0B0B0B;
+}
+
+</string>
+    </property>
+    <column>
+     <property name="text">
+      <string>Position</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>Name</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>Surrname</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>Stamina</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>Id</string>
+     </property>
+    </column>
+   </widget>
+   <widget class="QPushButton" name="NextRoundButton">
+    <property name="geometry">
+     <rect>
+      <x>730</x>
+      <y>390</y>
+      <width>161</width>
+      <height>61</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>Next Round</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="RecoveryButton">
+    <property name="geometry">
+     <rect>
+      <x>730</x>
+      <y>310</y>
+      <width>161</width>
+      <height>61</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>Recovery</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="SkillTrainingButton">
+    <property name="geometry">
+     <rect>
+      <x>730</x>
+      <y>230</y>
+      <width>161</width>
+      <height>61</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>Skill Training</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="PickLineupButton">
+    <property name="geometry">
+     <rect>
+      <x>730</x>
+      <y>150</y>
+      <width>161</width>
+      <height>61</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>Pick Lineup</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="ExitButton">
+    <property name="geometry">
+     <rect>
+      <x>730</x>
+      <y>70</y>
+      <width>161</width>
+      <height>61</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>EXIT</string>
+    </property>
+   </widget>
   </widget>
  </widget>
  <resources/>

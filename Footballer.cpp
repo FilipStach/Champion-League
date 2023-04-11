@@ -65,6 +65,28 @@ Ball* Footballer::giveBall() const{
 void Footballer::loseBall(){
     this->ball = NULL;
 }
+string Footballer::getPosition(){
+    string position;
+    int qualifier = this->id%5;
+    switch (qualifier){
+        case 1:
+            position = "GOALKEEPER";
+            break;
+        case 2:
+            position = "DEFENDER";
+            break;
+        case 3:
+            position = "MIDFIELDER";
+            break;
+        case 4:
+            position = "STRIKER";
+            break;
+        default:
+            position = "UNKOWN";
+            break;
+    }
+    return position;
+}
 Footballer::~Footballer(){
 
 }

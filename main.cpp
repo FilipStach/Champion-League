@@ -5,13 +5,14 @@
 #include "Defender.h"
 #include "Midfielder.h"
 #include "PlayersContainer.h"
-#include "ResultWindow.h"
+#include "MenagerWindow.h"
 #include "Striker.h"
 #include "Coach.h"
 #include "Club.h"
 #include "FileReader.h"
 #include "ClubsContainer.h"
 #include "MyClub.h"
+#include "TournamentCreationWindow.h"
 #include "WeatherStation.h"
 #include "qapplication.h"
 #include "thread"
@@ -44,10 +45,6 @@ int main(int argc, char* argv[])
     cout<< coachesContainer<<endl;
     PlayersContainer* playerContainer = new PlayersContainer(vector);
     cout<< playerContainer<<endl;
-    MyClub* myClub = new MyClub(vector, vector2);
-    myClub->pickLineUp();
-    MyClub* myClub2 = new MyClub(vector, vector2);
-    myClub2->pickLineUp();
     ClubsContainer* clubsContainer = new ClubsContainer(vector3);
     ClubsContainer* clubsContainer2 = new ClubsContainer(vector3);
     QApplication a(argc,argv);
@@ -60,29 +57,30 @@ int main(int argc, char* argv[])
     TransferDialog* transferDialog = new TransferDialog(parent,*playerContainer,*coachesContainer,300 );
     transferDialog->show();
     a.exec();
-
-//    ResultWindow w(parent,cm->getlastRoundScores());
-    ResultWindow w(parent,*clubsContainer2);
+    ::vector<int> playersIds = transferDialog->getIds();
+    int coachId = transferDialog->getCoachId();
+    MyClub* myClub = new MyClub(vector, vector2, playersIds, coachId);
+    myClub->pickLineUp();
+    TournamentCreationWindow w(parent,*clubsContainer2);
 
     w.show();
     a.exec();
     id = w.getIds();
-    for(int clubId: id){
-        cout<<clubId<<endl;
-    }
-    ChampionsLeague* cm = new ChampionsLeague(16, *clubsContainer, *myClub,id);
+
+    ChampionsLeague* cm = new ChampionsLeague(*clubsContainer, *myClub,id);
+    MenagerWindow menagerwindow = MenagerWindow(parent, *cm, *myClub);
+    menagerwindow.show();
+    a.exec();
+
     cm->playNextRound();
 
-    ResultWindow m(parent,cm->getlastRoundScores());
-    m.show();
-    a.exec();
 
     delete coachesContainer;
     delete playerContainer;
     delete myClub;
-    delete myClub2;
     delete clubsContainer;
     delete cm;
+    delete transferDialog;
     return 0;
 
 

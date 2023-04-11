@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>TournamentCreationWindow</class>
+ <widget class="QDialog" name="TournamentCreationWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>996</width>
+    <height>501</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Dialog</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QDialog
+{
+background-image:url(:/UEFA_Back.jpg);
+}</string>
+  </property>
+  <widget class="QComboBox" name="comboBox">
+   <property name="geometry">
+    <rect>
+     <x>770</x>
+     <y>200</y>
+     <width>82</width>
+     <height>28</height>
+    </rect>
+   </property>
+   <item>
+    <property name="text">
+     <string>2</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>4</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>8</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>16</string>
+    </property>
+   </item>
+  </widget>
+  <widget class="QLabel" name="label">
+   <property name="geometry">
+    <rect>
+     <x>750</x>
+     <y>170</y>
+     <width>171</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Tournament Size</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="TransferButton">
+   <property name="geometry">
+    <rect>
+     <x>460</x>
+     <y>380</y>
+     <width>251</width>
+     <height>29</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Transfer Window</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="AddButton">
+   <property name="geometry">
+    <rect>
+     <x>210</x>
+     <y>380</y>
+     <width>241</width>
+     <height>29</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Add</string>
+   </property>
+  </widget>
+  <widget class="QListWidget" name="listWidget">
+   <property name="geometry">
+    <rect>
+     <x>210</x>
+     <y>80</y>
+     <width>501</width>
+     <height>291</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="SubmitButton">
+   <property name="geometry">
+    <rect>
+     <x>770</x>
+     <y>240</y>
+     <width>83</width>
+     <height>29</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Submit</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="ExitButton">
+   <property name="geometry">
+    <rect>
+     <x>770</x>
+     <y>290</y>
+     <width>83</width>
+     <height>29</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>exit</string>
+   </property>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

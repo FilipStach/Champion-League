@@ -64,11 +64,11 @@ PlayersContainer::~PlayersContainer(){
 int PlayersContainer::getMinPrice(){
     return this->minPrice;
 }
-int PlayersContainer::returnId(string name){
+int PlayersContainer::returnId(string name, string surrname){
     unordered_map<int, Footballer*>::iterator it
             = elements.begin();
     while (it != elements.end()) {
-           if(it->second->getName()==name){
+           if(it->second->getName()==name && it->second->getSurrname()==surrname){
                return it->second->getId();
            }
            it++;
