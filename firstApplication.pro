@@ -15,7 +15,6 @@ SOURCES += \
     ClubsContainer.cpp \
     Coach.cpp \
     CoachesContainer.cpp \
-    Container.cpp \
     Defender.cpp \
     FileReader.cpp \
     Footballer.cpp \
@@ -27,12 +26,15 @@ SOURCES += \
     MyClub.cpp \
     PassingAbility.cpp \
     PlayersContainer.cpp \
+    ResultWindow.cpp \
     ShootingAbility.cpp \
     Striker.cpp \
     TackleAbility.cpp \
     TournamentCreationWindow.cpp \
+    TrainingWindow.cpp \
     TransferDialog.cpp \
     TransferWindow.cpp \
+    UpdateLineupWindow.cpp \
     WeatherStation.cpp \
     main.cpp
 
@@ -55,18 +57,24 @@ HEADERS += \
     MyClub.h \
     PassingAbility.h \
     PlayersContainer.h \
+    ResultWindow.h \
     ShootingAbility.h \
     Striker.h \
     TackleAbility.h \
     TournamentCreationWindow.h \
+    TrainingWindow.h \
     TransferDialog.h \
     TransferWindow.h \
+    UpdateLineupWindow.h \
     WeatherStation.h
 
 FORMS += \
     MenagerWindow.ui \
+    ResultWindow.ui \
     TournamentCreationWindow.ui \
-    TransferDialog.ui
+    TrainingWindow.ui \
+    TransferDialog.ui \
+    UpdateLineupWindow.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

@@ -41,14 +41,18 @@ void TransferWindow::conductTransferWindow(vector<vector<string>> players, vecto
             cout<<"Player too expensive"<<endl;
         }
     }
+    int id = rand()%90+100;
     while(club.getSize()<6){
             srand (time(NULL));
-            int id = rand()%4+100;
+
             int value = 0;
             string name[2];
             name[0] = "Academy";
             name[1] = "Player";
             int i = id%4+1;
+            if(id%5 ==0){
+                id+=3;
+            }
             switch(i){
                 case 1:
                     club.buyPlayer(*(new Goalkeeper(value,name,rand()%30+20,rand()%30+20,id)));
@@ -63,10 +67,11 @@ void TransferWindow::conductTransferWindow(vector<vector<string>> players, vecto
                     club.buyPlayer(*(new Striker(value,name,rand()%30+20,rand()%30+20,rand()%30+20,id)));
                     break;
                 default:
-                    cout<<"Something want wrong while assigning players"<<endl;
+                    cout<<"Something went wrong while assigning players"<<endl;
                     break;
             }
             cout << "Academy player added"<<endl;
+            id++;
         }
     delete playersContainer;
     delete coachesContainer;

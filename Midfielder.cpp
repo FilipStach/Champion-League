@@ -5,10 +5,7 @@
 #include <iostream>
 //#include "Coach.cpp"
 using namespace std;
-Midfielder::Midfielder()
-{
-    cout<<"You are inside default constructor"<< endl;
-}
+
 Midfielder::Midfielder(int value, std::string name[],int shooting, int passes, int tackles, int id) : Footballer(value,name,id){
     this->shooting=shooting;
     this->passes=passes;
@@ -36,8 +33,8 @@ void Midfielder::trainShooting(Coach coach){
     srand((unsigned) time(NULL));
     int random = rand()%6;
     if(coach.getSkills()>=random){
-        this->shooting+=coach.getSkills()-random;
-        cout << "Midfielder training succesful, shooting increased by "+ std::to_string(coach.getSkills()-random)<< endl;
+        this->shooting+=coach.getSkills()-(random-1);
+        cout << "Midfielder training succesful, shooting increased by "+ std::to_string(coach.getSkills()-(random-1))<< endl;
     }
     else{
         cout << "Midfielder training unsuccesful"<< endl;
@@ -48,8 +45,8 @@ void Midfielder::trainPasses(Coach coach){
     srand((unsigned) time(NULL));
     int random = rand()%6;
     if(coach.getSkills()>=random){
-        this->passes+=coach.getSkills()-random;
-        cout << "Midfielder training succesful, passes increased by "+ std::to_string(coach.getSkills()-random)<< endl;
+        this->passes+=coach.getSkills()-(random-1);
+        cout << "Midfielder training succesful, passes increased by "+ std::to_string(coach.getSkills()-(random-1))<< endl;
     }
     else{
         cout << "Midfielder training unsuccesful"<< endl;
@@ -60,8 +57,8 @@ void Midfielder::trainTackles(Coach coach){
     srand((unsigned) time(NULL));
     int random = rand()%6;
     if(coach.getSkills()>=random){
-        this->tackles+=coach.getSkills()-random;
-        cout << "Midfielder training succesful, tackles increased by "+ std::to_string(coach.getSkills()-random)<< endl;
+        this->tackles+=coach.getSkills()-(random-1);
+        cout << "Midfielder training succesful, tackles increased by "+ std::to_string(coach.getSkills()-(random-1))<< endl;
     }
     else{
         cout << "Midfielder training unsuccesful"<< endl;
@@ -82,5 +79,16 @@ int Midfielder::getAbility(Abilities ability){
     default:
         return 0;
         break;
+    }
+}
+void Midfielder::train(Abilities ability, Coach& coach){
+    if(ability == TACKLES){
+        this->trainTackles(coach);
+    }
+    else if(ability == SHOOTING){
+        this->trainShooting(coach);
+    }
+    else if(ability == PASSES){
+        this->trainPasses(coach);
     }
 }

@@ -16,5 +16,7 @@ public:
     void trainHeaders(Coach coach);
     void trainTackles(Coach coach);
     int getAbility(Abilities ability);
+    void train(Abilities ability, Coach& coach);
+
 
 };

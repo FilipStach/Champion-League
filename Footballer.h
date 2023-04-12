@@ -1,9 +1,17 @@
 #pragma once
 #include "Ball.h"
+#include "Coach.h"
 #include <string>
 #include <vector>
 using namespace std;
 enum Abilities {REFLEX, TACKLES, PASSES, HEADERS, SHOOTING};
+/**
+
+@class Footballer
+@brief Klasa reprezentująca piłkarza.
+Klasa zawiera informacje o wartości piłkarza, jego wytrzymałości oraz jego imieniu i nazwisku. Piłkarz
+może trenować swoje umiejętności oraz posiadać piłkę.
+*/
 class Footballer
 {
 private:
@@ -14,7 +22,7 @@ private:
     Ball* ball;
 
 public:
-    Footballer();
+//    Footballer();
     Footballer(int value, string name[], int id);
     Footballer(Footballer& footballer);
     void decreaseStamina();
@@ -28,6 +36,7 @@ public:
     virtual string toString();
     virtual Footballer* clone() = 0;
     virtual int getAbility(Abilities ability) = 0;
+    virtual void train(Abilities ability, Coach& coach) = 0;
     void recoveryTraining();
     void takeBall(Ball& ball);
     Ball* giveBall() const;

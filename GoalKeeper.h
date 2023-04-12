@@ -19,5 +19,6 @@ public:
     int getTackle();
     int getReflex();
     int getAbility(Abilities ability);
+    void train(Abilities ability, Coach& coach);
 
 };

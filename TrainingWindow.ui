@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>TrainingWindow</class>
+ <widget class="QDialog" name="TrainingWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1000</width>
+    <height>529</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Dialog</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QDialog
+{
+background-image:url(:/UEFA_Back.jpg);
+}</string>
+  </property>
+  <widget class="QTableWidget" name="squadTable">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>70</y>
+     <width>601</width>
+     <height>271</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QHeaderView::section {
+    background-color: #3562A6;
+}
+QTableWidget{
+background-color: #0E1E5B;
+color: #0B0B0B;
+}
+
+</string>
+   </property>
+   <column>
+    <property name="text">
+     <string>Position</string>
+    </property>
+   </column>
+   <column>
+    <property name="text">
+     <string>Name</string>
+    </property>
+   </column>
+   <column>
+    <property name="text">
+     <string>Surrname</string>
+    </property>
+   </column>
+   <column>
+    <property name="text">
+     <string>Stamina</string>
+    </property>
+   </column>
+   <column>
+    <property name="text">
+     <string>Id</string>
+    </property>
+   </column>
+  </widget>
+  <widget class="QLabel" name="label">
+   <property name="geometry">
+    <rect>
+     <x>50</x>
+     <y>390</y>
+     <width>131</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>12</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Trainings left</string>
+   </property>
+  </widget>
+  <widget class="QTextBrowser" name="trainingsBrowser">
+   <property name="geometry">
+    <rect>
+     <x>70</x>
+     <y>430</y>
+     <width>61</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>16</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QTextBrowser{
+background-color: #0E1E5B;
+}
+</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="tackleButton">
+   <property name="geometry">
+    <rect>
+     <x>710</x>
+     <y>120</y>
+     <width>131</width>
+     <height>61</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Tackle Training</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="headersButton">
+   <property name="geometry">
+    <rect>
+     <x>860</x>
+     <y>120</y>
+     <width>131</width>
+     <height>61</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Headers Training</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="passesButton">
+   <property name="geometry">
+    <rect>
+     <x>710</x>
+     <y>200</y>
+     <width>131</width>
+     <height>61</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Passes Training</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="shootingButton">
+   <property name="geometry">
+    <rect>
+     <x>860</x>
+     <y>200</y>
+     <width>131</width>
+     <height>61</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Shooting Training</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="reflexButton">
+   <property name="geometry">
+    <rect>
+     <x>860</x>
+     <y>280</y>
+     <width>131</width>
+     <height>61</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Reflex Training</string>
+   </property>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

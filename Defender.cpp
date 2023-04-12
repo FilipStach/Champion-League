@@ -6,9 +6,7 @@
 #include <iostream>
 //#include "Coach.cpp"
 using namespace std;
-Defender::Defender()
-{
-}
+
 Defender::Defender(int value, std::string name[],int headers, int tackles, int id) : Footballer(value,name,id){
     this->headers=headers;
     this->tackles=tackles;
@@ -35,8 +33,8 @@ void Defender::trainHeaders(Coach coach){
     srand((unsigned) time(NULL));
     int random = rand()%6;
     if(coach.getSkills()>=random){
-        this->headers+=coach.getSkills()-random;
-        cout << "Defender training succesful, headers increased by "+ std::to_string(coach.getSkills()-random)<< endl;
+        this->headers+=coach.getSkills()-(random-1);
+        cout << "Defender training succesful, headers increased by "+ std::to_string(coach.getSkills()-(random-1))<< endl;
     }
     else{
         cout << "Defender training unsuccesful"<< endl;
@@ -47,8 +45,8 @@ void Defender::trainTackles(Coach coach){
     srand((unsigned) time(NULL));
     int random = rand()%6;
     if(coach.getSkills()>=random){
-        this->tackles+=coach.getSkills()-random;
-        cout << "Defender training succesful, tackles increased by "+ std::to_string(coach.getSkills()-random)<< endl;
+        this->tackles+=coach.getSkills()-(random-1);
+        cout << "Defender training succesful, tackles increased by "+ std::to_string(coach.getSkills()-(random-1))<< endl;
     }
     else{
         cout << "Defender training unsuccesful"<< endl;
@@ -68,7 +66,14 @@ int Defender::getAbility(Abilities ability){
         break;
     }
 }
-
+void Defender::train(Abilities ability, Coach& coach){
+    if(ability == TACKLES){
+        this->trainTackles(coach);
+    }
+    else if(ability == HEADERS){
+        this->trainHeaders(coach);
+    }
+}
 
 //void Defender::changeSkill(Coach coach){
 //    cout<<"Skills shouldnt been changed" <<endl;

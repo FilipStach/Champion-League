@@ -140,13 +140,13 @@ background-color: #0E1E5B;
      </property>
     </column>
    </widget>
-   <widget class="QTableWidget" name="playersTable">
+   <widget class="QTableWidget" name="squadTable">
     <property name="geometry">
      <rect>
       <x>120</x>
-      <y>30</y>
+      <y>90</y>
       <width>601</width>
-      <height>401</height>
+      <height>271</height>
      </rect>
     </property>
     <property name="styleSheet">
@@ -255,7 +255,7 @@ color: #0B0B0B;
      </font>
     </property>
     <property name="text">
-     <string>Pick Lineup</string>
+     <string>Lineup</string>
     </property>
    </widget>
    <widget class="QPushButton" name="ExitButton">
@@ -274,6 +274,45 @@ color: #0B0B0B;
     </property>
     <property name="text">
      <string>EXIT</string>
+    </property>
+   </widget>
+   <widget class="QTextBrowser" name="trainingsBrowser">
+    <property name="geometry">
+     <rect>
+      <x>730</x>
+      <y>10</y>
+      <width>71</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>16</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QTextBrowser{
+background-color: #0E1E5B;
+}
+</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label">
+    <property name="geometry">
+     <rect>
+      <x>610</x>
+      <y>10</y>
+      <width>131</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>Trainings left</string>
     </property>
    </widget>
   </widget>

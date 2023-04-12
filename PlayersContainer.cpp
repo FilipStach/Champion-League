@@ -4,7 +4,7 @@
 #include "Midfielder.h"
 #include "Striker.h"
 #include <iostream>
-#include "Container.cpp"
+//#include "Container.cpp"
 
 using namespace std;
 PlayersContainer::PlayersContainer()

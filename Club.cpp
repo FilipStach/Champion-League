@@ -219,3 +219,6 @@ Club::~Club(){
        }
     delete this->coach;
 }
+unordered_map<int, Footballer*> Club::getLineup() const{
+    return this->lineup;
+}

@@ -52,13 +52,34 @@ void MyClub::pickLineUp(){
     unordered_map<int, Footballer*>::iterator it
             = squad.begin();
     for(int i = 0;i<4;i++) {
-           this->lineup[i] = it->second;
+           this->lineup[it->second->getId()] = it->second;
         it++;
        }
 }
 void MyClub::recovery(int id){
-    this->squad[id]->recoveryTraining();
+    if( this->trainings>0){
+        this->squad[id]->recoveryTraining();
+        this->trainings--;
+    }
+    else{
+        cout<<"You dont have enough trainings"<<endl;
+    }
 }
 unordered_map<int,Footballer*> MyClub::getSquad() const{
     return this->squad;
+}
+void MyClub::pickLineUp(vector<int> ids){
+    this->lineup.clear();
+    for(int i = 0;i<4;i++) {
+           this->lineup[this->squad[ids[i]]->getId()] = this->squad[ids[i]];
+       }
+}
+int MyClub::getTrainings(){
+    return this->trainings;
+}
+void MyClub::training(int id, Abilities ability){
+    if(this->squad[id]->getAbility(ability)>0){
+        this->squad[id]->train(ability,*coach);
+    }
+    this->trainings--;
 }

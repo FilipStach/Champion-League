@@ -214,7 +214,7 @@ background-color: #0E1E5B;
     </font>
    </property>
    <property name="text">
-    <string>EXIT</string>
+    <string>NEXT</string>
    </property>
   </widget>
   <widget class="QPushButton" name="TransferButton">

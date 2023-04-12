@@ -115,8 +115,8 @@ void Match::playMatch(){
         }
         minutes++;
     }
-    attackingTeam->reduceStamina();
-    deffendingTeam->reduceStamina();
+    this->tournament->decreaseStamina(attackingTeam->getId());
+    this->tournament->decreaseStamina(deffendingTeam->getId());
     if(attackingTeam->getId()>1000 || deffendingTeam->getId()>1000){
         cout<< "Score:\n"<< attackingTeam->getName()+" "<<attackingTeamGoals<<":"<< deffendingTeamGoals <<" "+deffendingTeam->getName()<<endl;
     }

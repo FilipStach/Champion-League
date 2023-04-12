@@ -17,7 +17,7 @@ private:
 public:
     ChampionsLeague();
     ChampionsLeague(ClubsContainer& clubsContainer, Club& myClub, vector<int> ids);
-    void playNextRound();//ustala fazę na podstawie ilosci drozyn w mapie, przegraną drużynę usuwa z mapy
+    void playNextRound();
     ~ChampionsLeague();
     void deleteClub(int id);
     WeatherStation getWeatherStation() const;
@@ -25,5 +25,9 @@ public:
     void clearLastRoundScores();
     void updateWeather();
     vector<Match*> getlastRoundScores() const;
+    bool getIsActive();
+    int getClubsSize();
+    void decreaseStamina(int id);
+
 };
 

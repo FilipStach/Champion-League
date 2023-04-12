@@ -61,6 +61,21 @@ TransferDialog::TransferDialog(QWidget *parent,PlayersContainer& playersContaine
 
 TransferDialog::~TransferDialog()
 {
+    for(int row = 0;row<ui->coachesTable->rowCount();row++){
+        delete ui->coachesTable->item(row,0);
+        delete ui->coachesTable->item(row,1);
+        delete ui->coachesTable->item(row,2);
+    }
+    delete ui->coachesTable;
+    if(coachId!=1){
+        for(int row = 0;row<ui->playersTable->rowCount();row++){
+            delete ui->playersTable->item(row,0);
+            delete ui->playersTable->item(row,1);
+            delete ui->playersTable->item(row,2);
+            delete ui->playersTable->item(row,3);
+        }
+        delete ui->playersTable;
+    }
     delete ui;
 }
 void TransferDialog::onTableItemClicked(){
@@ -130,7 +145,12 @@ void TransferDialog::on_buyButton_clicked()
 
 void TransferDialog::on_ExitButton_clicked()
 {
+    if(coachId!= 1){
         QApplication::quit();
+    }
+    else{
+        cout<<"Pick coach first"<<endl;
+    }
 }
 
 

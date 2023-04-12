@@ -26,7 +26,6 @@ TournamentCreationWindow::TournamentCreationWindow(QWidget *parent,ClubsContaine
       ui->listWidget->addItem(item);
     }
 }
-
 TournamentCreationWindow::~TournamentCreationWindow(){
     int itemCount = ui->listWidget->count();
 
@@ -69,7 +68,15 @@ void TournamentCreationWindow::on_SubmitButton_clicked(){
         QString str = ui->comboBox->currentText();
         this->size = str.toInt();
     }
+    else{
+        cout<<"You have already picked tournament size"<<endl;
+    }
 }
 void TournamentCreationWindow::on_ExitButton_clicked(){
-    QApplication::quit();
+//    if(this->ids.size()==this->size-1){
+        QApplication::quit();
+//    }
+//    else{
+//        cout<<"Pick clubs first"<<endl;
+//    }
 }

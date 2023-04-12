@@ -1,5 +1,6 @@
 #include "CoachesContainer.h"
-#include "Container.cpp"
+//#include "Container.cpp"
+
 #include <iostream>
 using namespace std;
 CoachesContainer::CoachesContainer()

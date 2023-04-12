@@ -21,7 +21,9 @@ ChampionsLeague::ChampionsLeague(ClubsContainer& clubsContainer, Club& myClub, v
     this->size = ids.size()+1;
 }
 void ChampionsLeague::deleteClub(int id){
-    delete this->clubs[id];
+    if(this->clubs[id]->getId()<1000){
+        delete this->clubs[id];
+    }
     this->clubs.erase(id);
 }
 void ChampionsLeague::playNextRound(){
@@ -51,6 +53,14 @@ void ChampionsLeague::playNextRound(){
     }
     this->weather.turnOff();
     weatherThread.join();
+    it = clubs.begin();
+    this->isActive = false;
+    while (it != clubs.end()) {
+        if(it->second->getId()>1000){
+            this->isActive = true;
+        }
+        it++;
+        }
 
 //    Match match(*this->clubs[111], *this->clubs[112], *this);
 //    match.playMatch();
@@ -64,7 +74,7 @@ ChampionsLeague::~ChampionsLeague(){
     unordered_map<int, Club*>::iterator it
             = clubs.begin();
     while (it != clubs.end()) {
-        if(it->second->getId()<1000){
+        if(it->first<1000){
            delete it->second;
         }
            it++;
@@ -80,9 +90,18 @@ void ChampionsLeague::clearLastRoundScores(){
 void ChampionsLeague::updateWeather(){
     this->weather.updateWeather();
 }
+void ChampionsLeague::decreaseStamina(int id){
+    this->clubs[id]->reduceStamina();
+}
 void ChampionsLeague::updateSize(){
     this->size=this->clubs.size();
 }
 vector<Match*> ChampionsLeague::getlastRoundScores() const{
     return this->lastRoundScores;
+}
+bool ChampionsLeague::getIsActive(){
+    return this->isActive;
+}
+int ChampionsLeague::getClubsSize(){
+    return this->clubs.size();
 }

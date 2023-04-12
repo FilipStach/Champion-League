@@ -25,19 +25,19 @@
 using namespace std;
 using namespace std::this_thread;
 
-//void function1(){
-//    for(int i=0;i<100;i++){
-//        cout<<i<<endl;
-//    }
-//}
 
 int main(int argc, char* argv[])
 {
-//    thread weatherThread(function1);
-//    weatherThread.join();
+//    std::vector<std::vector<std::string>> vector3 = FileReader::readFile("clubs1.txt");
+//    ClubsContainer* clubsContainer2 = new ClubsContainer(vector3);
+//    QApplication a(argc,argv);
+//    QWidget *parent = 0;
+//    TournamentCreationWindow w(parent,*clubsContainer2);
+//    w.show();
+//    a.exec();
+//    delete clubsContainer2;
+//    return 0;
 //}
-
-
     std::vector<std::vector<std::string>> vector = FileReader::readFile("players.txt");
     std::vector<std::vector<std::string>> vector2 = FileReader::readFile("coaches.txt");
     std::vector<std::vector<std::string>> vector3 = FileReader::readFile("clubs1.txt");
@@ -54,11 +54,11 @@ int main(int argc, char* argv[])
 //    cm->playNextRound();
 //    cm->playNextRound();
     QWidget *parent = 0;
-    TransferDialog* transferDialog = new TransferDialog(parent,*playerContainer,*coachesContainer,300 );
-    transferDialog->show();
+    TransferDialog transferDialog(parent,*playerContainer,*coachesContainer,300 );
+    transferDialog.show();
     a.exec();
-    ::vector<int> playersIds = transferDialog->getIds();
-    int coachId = transferDialog->getCoachId();
+    ::vector<int> playersIds = transferDialog.getIds();
+    int coachId = transferDialog.getCoachId();
     MyClub* myClub = new MyClub(vector, vector2, playersIds, coachId);
     myClub->pickLineUp();
     TournamentCreationWindow w(parent,*clubsContainer2);
@@ -72,7 +72,6 @@ int main(int argc, char* argv[])
     menagerwindow.show();
     a.exec();
 
-    cm->playNextRound();
 
 
     delete coachesContainer;
@@ -80,10 +79,8 @@ int main(int argc, char* argv[])
     delete myClub;
     delete clubsContainer;
     delete cm;
-    delete transferDialog;
+
     return 0;
-
-
 }
 
 //#include <iostream>

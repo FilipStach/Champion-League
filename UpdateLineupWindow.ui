@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>UpdateLineupWindow</class>
+ <widget class="QDialog" name="UpdateLineupWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>999</width>
+    <height>603</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Dialog</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QDialog
+{
+background-image:url(:/UEFA_Back.jpg);
+}</string>
+  </property>
+  <widget class="QTableWidget" name="squadTable">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>50</y>
+     <width>451</width>
+     <height>401</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QHeaderView::section {
+    background-color: #3562A6;
+}
+QTableWidget{
+background-color: #0E1E5B;
+color: #0B0B0B;
+}
+
+</string>
+   </property>
+   <column>
+    <property name="text">
+     <string>Position</string>
+    </property>
+   </column>
+   <column>
+    <property name="text">
+     <string>Name</string>
+    </property>
+   </column>
+   <column>
+    <property name="text">
+     <string>Surrname</string>
+    </property>
+   </column>
+   <column>
+    <property name="text">
+     <string>Stamina</string>
+    </property>
+   </column>
+   <column>
+    <property name="text">
+     <string>Id</string>
+    </property>
+   </column>
+  </widget>
+  <widget class="QTableWidget" name="lineupTable">
+   <property name="geometry">
+    <rect>
+     <x>490</x>
+     <y>50</y>
+     <width>451</width>
+     <height>401</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QHeaderView::section {
+    background-color: #3562A6;
+}
+QTableWidget{
+background-color: #0E1E5B;
+color: #0B0B0B;
+}
+
+</string>
+   </property>
+   <column>
+    <property name="text">
+     <string>Position</string>
+    </property>
+   </column>
+   <column>
+    <property name="text">
+     <string>Name</string>
+    </property>
+   </column>
+   <column>
+    <property name="text">
+     <string>Surrname</string>
+    </property>
+   </column>
+   <column>
+    <property name="text">
+     <string>Stamina</string>
+    </property>
+   </column>
+   <column>
+    <property name="text">
+     <string>Id</string>
+    </property>
+   </column>
+  </widget>
+  <widget class="QPushButton" name="pushButton">
+   <property name="geometry">
+    <rect>
+     <x>700</x>
+     <y>490</y>
+     <width>181</width>
+     <height>71</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>12</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Update Lineup</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label">
+   <property name="geometry">
+    <rect>
+     <x>160</x>
+     <y>10</y>
+     <width>101</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>14</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Squad</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_2">
+   <property name="geometry">
+    <rect>
+     <x>630</x>
+     <y>10</y>
+     <width>161</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>14</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Current lineup:</string>
+   </property>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

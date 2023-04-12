@@ -5,10 +5,7 @@
 #include <iostream>
 //#include "Coach.cpp"
 using namespace std;
-Striker::Striker()
-{
-    cout<<"You are inside default constructor"<< endl;
-}
+
 Striker::Striker(int value, std::string name[],int shooting, int passes,int headers, int id) : Footballer(value,name,id){
     this->shooting=shooting;
     this->passes=passes;
@@ -36,8 +33,8 @@ void Striker::trainShooting(Coach coach){
     srand((unsigned) time(NULL));
     int random = rand()%6;
     if(coach.getSkills()>=random){
-        this->shooting+=coach.getSkills()-random;
-        cout << "Striker training succesful, shooting increased by "+ std::to_string(coach.getSkills()-random)<< endl;
+        this->shooting+=coach.getSkills()-(random-1);
+        cout << "Striker training succesful, shooting increased by "+ std::to_string(coach.getSkills()-(random-1))<< endl;
     }
     else{
         cout << "Striker training unsuccesful"<< endl;
@@ -48,8 +45,8 @@ void Striker::trainPasses(Coach coach){
     srand((unsigned) time(NULL));
     int random = rand()%6;
     if(coach.getSkills()>=random){
-        this->passes+=coach.getSkills()-random;
-        cout << "Striker training succesful, passes increased by "+ std::to_string(coach.getSkills()-random)<< endl;
+        this->passes+=coach.getSkills()-(random-1);
+        cout << "Striker training succesful, passes increased by "+ std::to_string(coach.getSkills()-(random-1))<< endl;
     }
     else{
         cout << "Striker training unsuccesful"<< endl;
@@ -60,8 +57,8 @@ void Striker::trainHeaders(Coach coach){
     srand((unsigned) time(NULL));
     int random = rand()%6;
     if(coach.getSkills()>=random){
-        this->headers+=coach.getSkills()-random;
-        cout << "Striker training succesful, headers increased by "+ std::to_string(coach.getSkills()-random)<< endl;
+        this->headers+=coach.getSkills()-(random-1);
+        cout << "Striker training succesful, headers increased by "+ std::to_string(coach.getSkills()-(random-1))<< endl;
     }
     else{
         cout << "Striker training unsuccesful"<< endl;
@@ -82,5 +79,16 @@ int Striker::getAbility(Abilities ability){
     default:
         return 0;
         break;
+    }
+}
+void Striker::train(Abilities ability, Coach& coach){
+    if(ability == SHOOTING){
+        this->trainShooting(coach);
+    }
+    else if(ability == PASSES){
+        this->trainPasses(coach);
+    }
+    else if(ability == HEADERS){
+        this->trainHeaders(coach);
     }
 }

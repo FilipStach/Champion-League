@@ -10,14 +10,16 @@ private:
 public:
     MyClub();
     MyClub(vector<vector<string>> players, vector<vector<string>> coaches,  vector<int> playersId, int coachId);
-    void training();
+    void training(int id, Abilities ability);
     void recovery(int id);
     void pickLineUp();
+    void pickLineUp(vector<int> ids);
     int getBudget();
     int getSize();
     void buyPlayer(Footballer &player);
     void buyCoach(Coach& coach);
     bool hasCoach();
     ~MyClub();
-    unordered_map<int,Footballer*> getSquad() const;
+    unordered_map<int,Footballer*> getSquad() const ;
+    int getTrainings();
 };
