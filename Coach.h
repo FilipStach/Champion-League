@@ -1,6 +1,11 @@
 #pragma once
 #include <string>
 using namespace std;
+/**
+
+* @brief Klasa Coach reprezentuje trenera drużyny.
+* Zawiera informacje o nazwisku, umiejętnościach, wartości, identyfikatorze oraz taktyce trenera.
+*/
 class Coach
 {
 private:

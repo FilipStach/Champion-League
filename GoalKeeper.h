@@ -2,7 +2,12 @@
 #include "TackleAbility.h"
 #include "Coach.h"
 #include "Footballer.h"
-
+/**
+@class Goalkeeper
+@brief Klasa reprezentująca bramkrza w drużynie piłkarskiej, dziedziczy po klasach:
+TackleAbility, która dodaje nową umiejętność
+charakterystyczną dla tej pozycji. Ponadto wprowadza metody treningu.
+*/
 class Goalkeeper: public Footballer, public TackleAbility
 {
 private:

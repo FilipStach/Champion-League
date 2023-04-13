@@ -6,10 +6,25 @@
 #include "PlayersContainer.h"
 #include "Striker.h"
 #include "Container.cpp"
+/*
+
+@brief Konstruktor klasy TransferWindow.
+*/
 TransferWindow::TransferWindow()
 {
 
 }
+/**
+
+@brief Metoda umożliwiająca przeprowadzenie okna transferowego.
+Pozwala na dokonywanie transferów zawodników i trenerów przez klub, przydzielanie nowych zawodników z akademii oraz usuwanie elementów
+z kontenerów zawodników i trenerów po ich zakupie. W przypadku błędnych identyfikatorów zawodników lub trenerów wypisuje odpowiedni komunikat.
+@param players Wektor wektorów zawierający dane zawodników, których można transferować.
+@param coaches Wektor wektorów zawierający dane trenerów, których można transferować.
+@param club Referencja do obiektu klubu, który przeprowadza transfery.
+@param playersId Wektor identyfikatorów zawodników, którzy mają zostać kupieni.
+@param coachId Identyfikator trenera, który ma zostać kupiony.
+*/
 void TransferWindow::conductTransferWindow(vector<vector<string>> players, vector<vector<string>> coaches, MyClub& club,
                                            vector<int> playersId, int coachId){
     PlayersContainer* playersContainer = new PlayersContainer(players);

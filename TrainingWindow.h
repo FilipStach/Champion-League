@@ -3,7 +3,12 @@
 
 #include "MyClub.h"
 #include <QDialog>
+/**
 
+@brief Okno szkolenia piłkarzy
+Klasa implementująca interfejs graficzny dla okna szkolenia piłkarzy.
+Umożliwia wybór konkretnej umiejętności do treningu oraz przypisanie piłkarza do szkolenia.
+*/
 namespace Ui {
 class TrainingWindow;
 }

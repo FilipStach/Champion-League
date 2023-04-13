@@ -1,6 +1,11 @@
 #include "ResultWindow.h"
 #include "ui_ResultWindow.h"
-
+/**
+ * @brief Konstruktor klasy ResultWindow.
+ *
+ * @param parent Wskaźnik na obiekt QWidget reprezentujący rodzica okna.
+ * @param lastRoundScores Wektor przechowujący wyniki ostatniej rundy rozgrywek.
+ */
 ResultWindow::ResultWindow(QWidget *parent,vector<Match*> lastRoundScores) :
     QDialog(parent),
     ui(new Ui::ResultWindow),
@@ -33,7 +38,9 @@ ResultWindow::ResultWindow(QWidget *parent,vector<Match*> lastRoundScores) :
 
     }
 }
-
+/**
+ * @brief Destruktor klasy ResultWindow.
+ */
 ResultWindow::~ResultWindow()
 {
     for(int row = 0;row<ui->tableWidget->rowCount();row++){

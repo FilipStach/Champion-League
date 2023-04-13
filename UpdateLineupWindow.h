@@ -5,6 +5,11 @@
 #include <QDialog>
 
 namespace Ui {
+/**
+@class UpdateLineupWindow
+@brief Okno służące do aktualizacji składu drużyny. W oparciu o wybór użytkownika
+dokonuje edycji parametru lineup obiektu klasy MyClub
+*/
 class UpdateLineupWindow;
 }
 

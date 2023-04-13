@@ -3,7 +3,12 @@
 #include "TackleAbility.h"
 #include "Coach.h"
 #include "Footballer.h"
-
+/**
+@class Defender
+@brief Klasa reprezentująca obrońcę w drużynie piłkarskiej, dziedziczy po klasach:
+HeaderAbility, TackleAbility, które dodają nowe umiejętności
+charakterystyczne dla tej pozycji. Ponadto wprowadza metody ich treningu.
+*/
 class Defender: public Footballer,public HeaderAbility, public TackleAbility
 {
 public:

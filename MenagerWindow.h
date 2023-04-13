@@ -5,6 +5,11 @@
 #include "MyClub.h"
 #include "qmainwindow.h"
 #include <QMainWindow>
+/**
+@class MenagerWindow
+@brief Klasa MenagerWindow reprezentuje interfejs graficzny aplikacji menedżera drużyny w rozgrywkach Ligi Mistrzów.
+Klasa zawiera metody i sloty, które umożliwiają użytkownikowi zarządzanie swoją drużyną, jej składem i szkoleniem umiejętności.
+*/
 namespace Ui{
 class MenagerWindow;
 }

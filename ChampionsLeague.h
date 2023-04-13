@@ -4,6 +4,11 @@
 
 #include "WeatherStation.h"
 #include "qapplication.h"
+/**
+
+@brief Klasa reprezentująca turniej Ligę Mistrzów.
+Klasa zawiera funkcjonalności związane z rozgrywką Ligi Mistrzów.
+*/
 class Match;
 class ChampionsLeague
 {

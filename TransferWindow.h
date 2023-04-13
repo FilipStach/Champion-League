@@ -6,7 +6,12 @@
 using namespace std;
 
 #pragma once
+/**
+@class TransferWindow
+@brief Klasa reprezentująca okno transferowe w grze piłkarskiej.
 
+Pozwala na dokonywanie transferów zawodników i trenerów przez klub oraz przydzielenie nowych zawodników z akademii.
+*/
 class TransferWindow
 {
 public:

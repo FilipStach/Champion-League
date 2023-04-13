@@ -2,6 +2,12 @@
 #include "ui_UpdateLineupWindow.h"
 #include <algorithm>
 #include <iostream>
+/**
+* @brief Konstruktor klasy UpdateLineupWindow.
+*
+* @param parent Wskaźnik na obiekt klasy nadrzędnej.
+* @param myClub Referencja na obiekt klasy MyClub.
+*/
 UpdateLineupWindow::UpdateLineupWindow(QWidget *parent, MyClub& myClub) :
     QDialog(parent),
     ui(new Ui::UpdateLineupWindow)
@@ -84,7 +90,10 @@ UpdateLineupWindow::UpdateLineupWindow(QWidget *parent, MyClub& myClub) :
 
 
 }
-
+/**
+ * @brief Destruktor klasy UpdateLineupWindow.
+ *
+ */
 UpdateLineupWindow::~UpdateLineupWindow()
 {
     for(int row = 0;row<ui->squadTable->rowCount();row++){
@@ -105,14 +114,22 @@ UpdateLineupWindow::~UpdateLineupWindow()
     delete ui->squadTable;
     delete ui;
 }
-
+/**
+* @brief Slot wywoływany po naciśnięciu przycisku "Update Lineup".
+*
+*/
 void UpdateLineupWindow::on_pushButton_clicked()
 {
     this->update = true;
     this->ids.clear();
 }
 
-
+/**
+ * @brief Slot wywoływany po kliknięciu na komórkę tabeli drużyny.
+ *
+ * @param row Numer wiersza.
+ * @param column Numer kolumny.
+ */
 void UpdateLineupWindow::on_squadTable_cellClicked(int row, int column)
 {
     int id = ui->squadTable->item(row,4)->text().toInt();
@@ -125,6 +142,11 @@ void UpdateLineupWindow::on_squadTable_cellClicked(int row, int column)
         cout<<"First press updateKey"<<endl;
     }
 }
+/**
+ * @brief Metoda zwracająca identyfikatory piłkarzy z zaznaczonej w tabeli drużyny.
+ *
+ * @return vector<int> Wektor identyfikatorów piłkarzy.
+ */
 vector<int> UpdateLineupWindow::getIds() const{
     return this->ids;
 }

@@ -1,7 +1,12 @@
 #include "TrainingWindow.h"
 #include "ui_TrainingWindow.h"
 #include <iostream>
-
+/**
+* @brief Konstruktor parametryczny klasy
+*
+* @param parent Wskaźnik na obiekt nadrzędny okna
+* @param myClub Referencja na obiekt klasy MyClub
+*/
 TrainingWindow::TrainingWindow(QWidget *parent, MyClub& myClub) :
     QDialog(parent),
     ui(new Ui::TrainingWindow)
@@ -19,12 +24,18 @@ TrainingWindow::TrainingWindow(QWidget *parent, MyClub& myClub) :
     ui->squadTable->setColumnWidth(4,40);
     this->defaultTable();
 }
+/**
+ * @brief Destruktor klasy
+ */
 TrainingWindow::~TrainingWindow()
 {
     this->deleteTableItems();
     delete ui->squadTable;
     delete ui;
 }
+/**
+ * @brief Usunięcie elementów z tabeli piłkarzy
+ */
 void TrainingWindow::deleteTableItems(){
     for(int row = 0;row<ui->squadTable->rowCount();row++){
         delete ui->squadTable->item(row,0);
@@ -34,6 +45,9 @@ void TrainingWindow::deleteTableItems(){
         delete ui->squadTable->item(row,4);
     }
 }
+/**
+ * @brief Przywrócenie domyślnych ustawień tabeli piłkarzy
+ */
 void TrainingWindow::defaultTable(){
     this->deleteTableItems();
     unordered_map<int,Footballer*> squad = this->myClub->getSquad();
@@ -68,6 +82,10 @@ void TrainingWindow::defaultTable(){
         i++;
     }
 }
+/**
+ * @brief Aktualizacja elementów z tabeli piłkarzy zgodnie z dostarczoną umiejętnością
+ * @param training Umiejętność, która ma być wyróżniona
+ */
 void TrainingWindow::updateTable(Abilities training){
     unordered_map<int,Footballer*> squad = this->myClub->getSquad();
     vector<Footballer*> items;
@@ -153,7 +171,9 @@ void TrainingWindow::updateTable(Abilities training){
         i++;
     }
 }
-
+/**
+ * @brief Slot obsługujący kliknięcie przycisku tackleButton.
+ */
 void TrainingWindow::on_tackleButton_clicked()
 {
     this->headersTraining = false;
@@ -164,7 +184,9 @@ void TrainingWindow::on_tackleButton_clicked()
     this->updateTable(TACKLES);
 }
 
-
+/**
+ * @brief Slot obsługujący kliknięcie przycisku headersButton.
+ */
 void TrainingWindow::on_headersButton_clicked()
 {
     this->tackleTraining  = false;
@@ -175,7 +197,9 @@ void TrainingWindow::on_headersButton_clicked()
     this->updateTable(HEADERS);
 }
 
-
+/**
+ * @brief Slot obsługujący kliknięcie przycisku passesButton.
+ */
 void TrainingWindow::on_passesButton_clicked()
 {
     this->headersTraining = false;
@@ -186,7 +210,9 @@ void TrainingWindow::on_passesButton_clicked()
     this->updateTable(PASSES);
 }
 
-
+/**
+ * @brief Slot obsługujący kliknięcie przycisku shootingButton.
+ */
 void TrainingWindow::on_shootingButton_clicked()
 {
     this->headersTraining = false;
@@ -196,7 +222,9 @@ void TrainingWindow::on_shootingButton_clicked()
     this->shootingTraining = true;
     this->updateTable(SHOOTING);
 }
-
+/**
+ * @brief Slot obsługujący kliknięcie przycisku reflexButton.
+ */
 
 void TrainingWindow::on_reflexButton_clicked()
 {
@@ -208,7 +236,9 @@ void TrainingWindow::on_reflexButton_clicked()
     this->updateTable(REFLEX);
 }
 
-
+/**
+ * @brief Slot obsługujący kliknięcie elementu w tabeli.
+ */
 void TrainingWindow::on_squadTable_cellClicked(int row, int column)
 {
     if(this->myClub->getTrainings()>0){

@@ -5,11 +5,18 @@
 #include <string>
 #include <vector>
 using namespace std;
+/**
+* @brief Konstruktor klasy FileReader.
+*/
 FileReader::FileReader()
 {
 
 }
-
+/**
+* @brief Metoda odczytuje dane z pliku i zwraca je w postaci wektora wektorów stringów.
+* @param fileName Ścieżka do pliku, z którego mają zostać odczytane dane.
+* @return Wektor wektorów stringów reprezentujący zawartość pliku.
+*/
 vector<vector<string>> FileReader::readFile(string fileName){
     vector<vector<string>> output;
 //    std::ifstream in("footballers.txt");

@@ -4,7 +4,12 @@
 #include "HeaderAbility.h"
 #include "PassingAbility.h"
 #include "ShootingAbility.h"
-
+/**
+@class Striker
+@brief Klasa reprezentująca napastnika w drużynie piłkarskiej, dziedziczy po klasach:
+HeaderAbility, ShootingAbility, PassesAbility, które dodają nowe umiejętności
+charakterystyczne dla tej pozycji. Ponadto wprowadza metody ich treningu.
+*/
 class Striker: public Footballer,public ShootingAbility, public PassingAbility, public HeaderAbility
 {
 

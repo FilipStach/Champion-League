@@ -7,10 +7,17 @@
 //#include "Container.cpp"
 
 using namespace std;
+/**
+@brief Konstruktor domyślny klasy PlayersContainer
+*/
 PlayersContainer::PlayersContainer()
 {
 
 }
+/**
+@brief Konstruktor klasy PlayersContainer, który tworzy obiekt na podstawie podanego wektora danych.
+@param Wektor danych, na podstawie którego tworzony jest kontener piłkarzy.
+*/
 PlayersContainer::PlayersContainer(vector<vector<string>> data){
     string name[2];
     int qualifier;
@@ -45,6 +52,9 @@ PlayersContainer::PlayersContainer(vector<vector<string>> data){
         this->minPrice = stoi(element[1])<this->minPrice ? stoi(element[1]) : this->minPrice;
     }
 }
+/**
+@brief Metoda obliczająca minimalną wartość piłkarza w kontenerze i przypisująca ją do zmiennej minPrice.
+*/
 void PlayersContainer::calcMinPrice(){
     unordered_map<int, Footballer*>::iterator it
             = elements.begin();
@@ -53,6 +63,9 @@ void PlayersContainer::calcMinPrice(){
            it++;
        }
 }
+/**
+@brief Destruktor klasy PlayersContainer, usuwający zawartość kontenera.
+*/
 PlayersContainer::~PlayersContainer(){
     unordered_map<int, Footballer*>::iterator it
             = elements.begin();
@@ -61,9 +74,19 @@ PlayersContainer::~PlayersContainer(){
            it++;
        }
 }
+/**
+@brief Metoda zwracająca minimalną wartość piłkarza w kontenerze.
+@return Minimalna wartość piłkarza w kontenerze.
+*/
 int PlayersContainer::getMinPrice(){
     return this->minPrice;
 }
+/**
+@brief Metoda zwracająca identyfikator piłkarza o podanych imieniu i nazwisku.
+@param name Imię piłkarza.
+@param surrname Nazwisko piłkarza.
+@return Identyfikator piłkarza o podanych imieniu i nazwisku.
+*/
 int PlayersContainer::returnId(string name, string surrname){
     unordered_map<int, Footballer*>::iterator it
             = elements.begin();
@@ -75,32 +98,3 @@ int PlayersContainer::returnId(string name, string surrname){
        }
 }
 
-//unordered_map<int,Footballer*> PlayersContainer::getPlayers() const{
-//    return this->players;
-//}
-//void PlayersContainer::calcMinPrice(){
-//    unordered_map<int, Footballer*>::iterator it
-//            = players.begin();
-//    while (it != players.end()) {
-//           this->minPrice = (minPrice>it->second->getValue()) ? it->second->getValue() : this->minPrice;
-//           it++;
-//       }
-//}
-//PlayersContainer::~PlayersContainer(){
-//    unordered_map<int, Footballer*>::iterator it
-//            = players.begin();
-//    while (it != players.end()) {
-//           delete it->second;
-//           it++;
-//       }
-//}
-//bool PlayersContainer::contains(int playerId){
-//    return this->players.count(playerId);
-//}
-//int PlayersContainer::getMinPrice(){
-//    return this->minPrice;
-//}
-//void PlayersContainer::deletePlayer(int id){
-//    this->players.erase(id);
-//    this->calcMinPrice();
-//}

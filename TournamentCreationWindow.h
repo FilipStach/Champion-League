@@ -4,6 +4,11 @@
 #include "ClubsContainer.h"
 #include "Match.h"
 #include "qdialog.h"
+/**
+@class TournamentCreationWindow
+@brief Klasa TournamentCreationWindow reprezentuje interfejs graficzny służący do tworzenia nowych rozgrywek Ligi Mistrzów.
+Klasa zawiera metody umożliwiające wyświetlanie i edycję informacji o klubach biorących udział w rozgrywkach.
+*/
 namespace Ui {
 class TournamentCreationWindow;
 }
@@ -13,7 +18,6 @@ class TournamentCreationWindow : public QDialog
     Q_OBJECT
 
 public:
-    TournamentCreationWindow(QWidget *parent,vector<Match*> lastRoundScores);
     TournamentCreationWindow(QWidget *parent,ClubsContainer& clubsContainer);
     ~TournamentCreationWindow();
     vector<int> getIds();

@@ -1,6 +1,11 @@
 #include "TournamentCreationWindow.h"
 #include "ui_TournamentCreationWindow.h"
-
+/**
+ * @brief Konstruktor klasy TournamentCreationWindow.
+ *
+ * @param parent Wskaźnik na obiekt QWidget reprezentujący rodzica okna.
+ * @param clubsContainer Obiekt klasy ClubsContainer przechowujący informacje o klubach.
+ */
 TournamentCreationWindow::TournamentCreationWindow(QWidget *parent,ClubsContainer& clubsContainer):
     QDialog(parent),
     ui(new Ui::TournamentCreationWindow)
@@ -26,6 +31,9 @@ TournamentCreationWindow::TournamentCreationWindow(QWidget *parent,ClubsContaine
       ui->listWidget->addItem(item);
     }
 }
+/**
+ * @brief Destruktor klasy TournamentCreationWindow.
+ */
 TournamentCreationWindow::~TournamentCreationWindow(){
     int itemCount = ui->listWidget->count();
 
@@ -35,9 +43,17 @@ TournamentCreationWindow::~TournamentCreationWindow(){
     delete ui->listWidget;
     delete ui;
 }
+/**
+ * @brief Metoda zwracająca wektor identyfikatorów klubów biorących udział w rozgrywkach.
+ *
+ * @return Wektor identyfikatorów klubów.
+ */
 vector<int> TournamentCreationWindow::getIds(){
     return this->ids;
 }
+/**
+ * @brief Slot obsługujący kliknięcie przycisku AddButton.
+ */
 void TournamentCreationWindow::on_AddButton_clicked()
 {
     if(this->size!=0 && this->ids.size()<(this->size-1)){
@@ -62,6 +78,9 @@ void TournamentCreationWindow::on_AddButton_clicked()
         cout<<"Pick tournament size first"<<endl;
     }
 }
+/**
+ * @brief Slot obsługujący kliknięcie przycisku SubmitButton.
+ */
 void TournamentCreationWindow::on_SubmitButton_clicked(){
 
     if(this->size==0){
@@ -72,11 +91,14 @@ void TournamentCreationWindow::on_SubmitButton_clicked(){
         cout<<"You have already picked tournament size"<<endl;
     }
 }
+/**
+ * @brief Slot obsługujący kliknięcie przycisku ExitButton.
+ */
 void TournamentCreationWindow::on_ExitButton_clicked(){
-//    if(this->ids.size()==this->size-1){
+    if(this->ids.size()==this->size-1){
         QApplication::quit();
-//    }
-//    else{
-//        cout<<"Pick clubs first"<<endl;
-//    }
+    }
+    else{
+        cout<<"Pick clubs first"<<endl;
+    }
 }

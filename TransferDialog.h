@@ -5,6 +5,11 @@
 #include "PlayersContainer.h"
 #include <QDialog>
 using namespace std;
+/**TransferDialog
+@class
+@brief Klasa TransferDialog reprezentuje okno dialogowe służące do przeprowadzania transferów piłkarzy i trenerów.
+Klasa umożliwia wybieranie piłkarzy i trenerów oraz przeprowadzanie transakcji kupna.
+*/
 namespace Ui {
 class TransferDialog;
 }

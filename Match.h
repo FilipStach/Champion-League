@@ -2,6 +2,13 @@
 #include "Ball.h"
 #include "Club.h"
 class ChampionsLeague;
+/**
+@class Match
+@brief Klasa  reprezentuje pojedynczy mecz pomiędzy dwoma drużynami piłkarskimi
+Klasa pozwala na rozegranie pojedynczego meczu pomiędzy dwoma drużynami piłkarskimi.
+Umożliwia to symulowanie różnych sytuacji meczowych oraz zwraca wynik w postaci liczby
+bramek strzelonych przez każdą z drużyn.
+*/
 class Match
 {
 private:

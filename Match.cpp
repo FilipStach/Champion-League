@@ -6,10 +6,22 @@
 using namespace std::this_thread;     // sleep_for, sleep_until
 #include<iostream>
 #include<cstdlib>
+/**
+@brief Konstruktor domyślny klasy Match
+*/
 Match::Match()
 {
 
 }
+/**
+@brief Konstruktor parametryczny klasy Match
+Konstruktor ten przyjmuje trzy argumenty - obiekty dwóch drużyn biorących udział w meczu
+oraz turniej, w ramach którego mecz jest rozgrywany. Wykorzystuje te informacje do
+ustawienia początkowych parametrów meczu (liczba bramek, posiadanie piłki, itp.).
+@param fistTeam Referencja do obiektu pierwszej drużyny.
+@param secondTeam Referencja do obiektu drugiej drużyny.
+@param cl Referencja do obiektu turnieju, w ramach którego mecz jest rozgrywany.
+*/
 Match::Match(Club& fistTeam, Club& secondTeam,ChampionsLeague& cl){
     this->attackingTeam = &fistTeam;
     this->deffendingTeam = &secondTeam;
@@ -19,6 +31,12 @@ Match::Match(Club& fistTeam, Club& secondTeam,ChampionsLeague& cl){
     this->deffendingTeamGoals = 0;
     this->attackingTeam->takeBall(*this->ball);
 }
+/**
+@brief Metoda rozgrywająca mecz.
+Metoda ta odpowiada za symulowanie pojedynczego meczu. W trakcie meczu występują różne
+sytuacje takie jak strzelanie bramek, przejmowanie piłki, itp. Funkcja kończy się po
+upływie 30 minut (dla celów symulacji).
+*/
 void Match::playMatch(){
     srand((unsigned) time(NULL));
     int minutes=0;
@@ -108,10 +126,10 @@ void Match::playMatch(){
             }
         }
         if(attackingTeam->getId()>1000 || deffendingTeam->getId()>1000){
-//            sleep_for(1s);
+            sleep_for(0.3s);
         }
         else{
-//            sleep_for(0.1s);
+            sleep_for(0.1s);
         }
         minutes++;
     }
@@ -145,6 +163,12 @@ void Match::playMatch(){
         }
     }
 }
+/**
+
+@brief Metoda do zmiany drużyn atakującej i broniącej.
+Metoda ta zamienia wartości pól attackingTeam i deffendingTeam na rzecz siebie,
+a także wartości attackingTeamGoals i deffendingTeamGoals.
+*/
 void Match::switchTeams(){
     Club* tempClub = this->attackingTeam;
     this->attackingTeam = this->deffendingTeam;
@@ -154,18 +178,42 @@ void Match::switchTeams(){
     this->attackingTeamGoals = this->deffendingTeamGoals;
     this->deffendingTeamGoals = tempGoals;
 }
+/**
+
+@brief Metoda zwracająca nazwę drużyny broniącej.
+@return Nazwa drużyny broniącej.
+*/
 string Match::getDeffendingTeam(){
     return this->deffendingTeam->getName();
 }
+/**
+
+@brief Metoda zwracająca nazwę drużyny atakującej.
+@return Nazwa drużyny atakującej.
+*/
 string Match::getAttackingTeam(){
     return this->attackingTeam->getName();
 }
+/**
+
+@brief Metoda zwracająca liczbę bramek strzelonych przez drużynę atakującą.
+@return Liczba bramek strzelonych przez drużynę atakującą.
+*/
 int Match::getAttackingTeamGoals(){
     return this->attackingTeamGoals;
 }
+/**
+
+@brief Metoda zwracająca liczbę bramek strzelonych przez drużynę broniącą.
+@return Liczba bramek strzelonych przez drużynę broniącą.
+*/
 int Match::getDeffendingTeamGoals(){
     return this->deffendingTeamGoals;
 }
+/**
+@brief Destruktor klasy Match
+Destruktor ten usuwa obiekt piłki utworzony w konstruktorze klasy.
+*/
 Match::~Match(){
     delete this->ball;
     delete this->attackingTeam;

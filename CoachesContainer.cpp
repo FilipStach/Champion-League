@@ -3,10 +3,19 @@
 
 #include <iostream>
 using namespace std;
+/**
+* @brief Konstruktor domyślny klasy CoachesContainer
+*/
 CoachesContainer::CoachesContainer()
 {
 
 }
+/**
+* @brief Konstruktor klasy CoachesContainer
+* @param Wektor wektorów stringów, z których każdy odpowiada pojedynczemu obiektowi typu Coach
+* Konstruktor klasy CoachesContainer, który na podstawie przekazanego wektora wektorów tworzy obiekty typu Coach
+* i dodaje je do kolekcji.
+*/
 CoachesContainer::CoachesContainer(vector<vector<string>> data){
     string name[2];
     int qualifier;
@@ -25,6 +34,10 @@ CoachesContainer::CoachesContainer(vector<vector<string>> data){
         }
     }
 }
+/**
+* @brief Destruktor klasy CoachesContainer
+* Destruktor klasy CoachesContainer, który usuwa wszystkie obiekty typu Coach przechowywane w kolekcji.
+*/
 CoachesContainer::~CoachesContainer(){
     unordered_map<int, Coach*>::iterator it
             = elements.begin();
@@ -33,6 +46,13 @@ CoachesContainer::~CoachesContainer(){
            it++;
        }
 }
+/**
+* @brief Metoda zwracająca id obiektu o podanej nazwie
+* @param name Nazwa szukanej osoby
+* @return Id obiektu typu Coach o podanej nazwie
+* Metoda zwraca id obiektu typu Coach o podanej nazwie. Jeśli taka osoba nie znajduje się w kolekcji,
+* metoda zwraca wartość -1.
+*/
 int CoachesContainer::returnId(string name){
     unordered_map<int, Coach*>::iterator it
             = elements.begin();

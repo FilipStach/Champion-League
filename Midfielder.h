@@ -4,7 +4,12 @@
 #include "TackleAbility.h"
 #include "Coach.h"
 #include "Footballer.h"
-
+/**
+@class Midfielder
+@brief Klasa reprezentująca pomocnika w drużynie piłkarskiej, dziedziczy po klasach:
+TackleAbility, ShootingAbility, PassesAbility, które dodają nowe umiejętności
+charakterystyczne dla tej pozycji. Ponadto wprowadza metody ich treningu.
+*/
 class Midfielder: public Footballer,public ShootingAbility, public PassingAbility, public TackleAbility
 {
 public:

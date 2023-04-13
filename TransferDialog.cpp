@@ -1,7 +1,14 @@
 #include "TransferDialog.h"
 #include <algorithm>
 #include "ui_TransferDialog.h"
-
+/**
+* @brief Konstruktor klasy TransferDialog.
+*
+* @param parent Wskaźnik na obiekt nadrzędny.
+* @param playersContainer Kontener zawierający dostępnych piłkarzy.
+* @param coachesContainer Kontener zawierający dostępnych trenerów.
+* @param budget Budżet drużyny.
+*/
 TransferDialog::TransferDialog(QWidget *parent,PlayersContainer& playersContainer, CoachesContainer& coachesContainer,int budget) :
     QDialog(parent),
     ui(new Ui::TransferDialog)
@@ -58,7 +65,9 @@ TransferDialog::TransferDialog(QWidget *parent,PlayersContainer& playersContaine
     connect(ui->playersTable, &QTableWidget::itemClicked, this, &TransferDialog::onPlayersTableItemClicked);
 
 }
-
+/**
+ * @brief Destruktor klasy TransferDialog.
+ */
 TransferDialog::~TransferDialog()
 {
     for(int row = 0;row<ui->coachesTable->rowCount();row++){
@@ -78,12 +87,18 @@ TransferDialog::~TransferDialog()
     }
     delete ui;
 }
+/**
+ * @brief Slot obsługujący kliknięcie elementu w tabeli trenerów.
+ */
 void TransferDialog::onTableItemClicked(){
     int row =ui->coachesTable->currentItem()->row();
     ui->coachesTable->item(row,0)->setBackground(Qt::blue);
     ui->coachesTable->item(row,1)->setBackground(Qt::blue);
     ui->coachesTable->item(row,2)->setBackground(Qt::blue);
 }
+/**
+ * @brief Slot obsługujący kliknięcie elementu w tabeli piłkarzy.
+ */
 void TransferDialog::onPlayersTableItemClicked(){
     int row =ui->playersTable->currentItem()->row();
     ui->playersTable->item(row,0)->setBackground(Qt::blue);
@@ -91,6 +106,11 @@ void TransferDialog::onPlayersTableItemClicked(){
     ui->playersTable->item(row,2)->setBackground(Qt::blue);
     ui->playersTable->item(row,3)->setBackground(Qt::blue);
 }
+/**
+ * @brief Slot obsługujący kliknięcie przycisku "Buy".
+ * w oparciu o wybranego z tabeli zawodnika dodaje go do obiektu klasy
+ * MyClub jednocześnie regulując budżet
+ */
 void TransferDialog::on_buyButton_clicked()
 {
    if(coachId == 1){
@@ -102,9 +122,6 @@ void TransferDialog::on_buyButton_clicked()
        ui->coachesTable->item(row,2)->setBackground(Qt::red);
        this->coachId = this->coaches->returnId((ui->coachesTable->item(row,0)->text().toStdString()));
    }
-//   else if(coachId != 1 && ui->playersTable.){
-//       cout<<"You have alread bought coach, go to players transfer now"<<endl;
-//   }
       else{
             if(ui->playersTable->isHidden()==true){
                cout<<"You have alread bought coach, go to players transfer now"<<endl;
@@ -142,7 +159,9 @@ void TransferDialog::on_buyButton_clicked()
       }
 }
 
-
+/**
+ * @brief Slot obsługujący kliknięcie przycisku "Wyjdź".
+ */
 void TransferDialog::on_ExitButton_clicked()
 {
     if(coachId!= 1){
@@ -153,7 +172,10 @@ void TransferDialog::on_ExitButton_clicked()
     }
 }
 
-
+/**
+ * @brief Slot obsługujący kliknięcie przycisku TransferButton.
+ * Jeżeli trener został zakupiony przekierowuje do okna transferowego piłkarzy.
+ */
 void TransferDialog::on_TransferButton_clicked()
 {
     if(coachId!=1){
@@ -200,9 +222,19 @@ void TransferDialog::on_TransferButton_clicked()
         cout<<"Buy coach first"<<endl;
     }
 }
+/**
+ * @brief Metoda zwracająca identyfikator wybranego trenera.
+ *
+ * @return Identyfikator wybranego trenera.
+ */
 int TransferDialog::getCoachId(){
     return this->coachId;
 }
+/**
+ * @brief Metoda zwracająca identyfikatory wybranych piłkarzy i trenera.
+ *
+ * @return Wektor identyfikatorów wybranych piłkarzy i trenera.
+ */
 vector<int> TransferDialog::getIds() const{
     return this->ids;
 }

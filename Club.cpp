@@ -2,10 +2,24 @@
 #include <algorithm>
 #include <iostream>
 #include <iterator>
+/**
+* @brief Domyślny konstruktor klasy Club.
+*
+*/
 Club::Club()
 {
 
 }
+/**
+ * @brief Konstruktor klasy Club, który tworzy nowy klub piłkarski.
+ * @param player1 Pierwszy piłkarz w klubie.
+ * @param player2 Drugi piłkarz w klubie.
+ * @param player3 Trzeci piłkarz w klubie.
+ * @param player4 Czwarty piłkarz w klubie.
+ * @param coach Trener klubu.
+ * @param id Identyfikator klubu.
+ * @param name Nazwa klubu.
+ */
 Club::Club(Footballer &player1, Footballer &player2,
            Footballer &player3, Footballer &player4, Coach &coach1, int id, string name){
     Footballer *footballer= player1.clone();
@@ -21,10 +35,13 @@ Club::Club(Footballer &player1, Footballer &player2,
     coach = new Coach(coach1);
     this->name = name;
     this->id = id;
-    calcTeamStrength();
     this->hasBall=false;
 
 }
+/**
+ * @brief Konstruktor kopiujący klasy Club.
+ * @param club Istniejący klub piłkarski.
+ */
 Club::Club(Club& club){
 
     coach = new Coach(*club.coach);
@@ -37,10 +54,6 @@ Club::Club(Club& club){
            counter++;
            it++;
        }
-//    Footballer *footballer1= tempArray[0]->clone();
-//    Footballer *footballer2= tempArray[1]->clone();
-//    Footballer *footballer3= tempArray[2]->clone();
-//    Footballer *footballer4= tempArray[3]->clone();
     lineup[tempVector[0]->getId()]=tempVector[0]->clone();
     lineup[tempVector[1]->getId()]=tempVector[1]->clone();
     lineup[tempVector[2]->getId()]=tempVector[2]->clone();
@@ -51,20 +64,25 @@ Club::Club(Club& club){
     for(int i = 0;i<tempVector.size();i++){
         delete tempVector[i];
     }
-    calcTeamStrength();
 }
-void Club::calcTeamStrength(){
-    this->teamStrength=0;
-}
-int Club::getTeamStrength(){
-    return this->teamStrength;
-}
+/**
+ * @brief Metoda zwracająca nazwę klubu.
+ * @return string Nazwa klubu.
+ */
 string Club::getName(){
     return this->name;
 }
+/**
+ * @brief Metoda zwracająca identyfikator klubu.
+ * @return int Identyfikator klubu.
+ */
 int Club::getId(){
     return this->id;
 }
+/**
+ * @brief Metoda zwracająca opis klubu.
+ * @return string Opis klubu w formie tekstowej.
+ */
 string Club::toString(){
     string players = "\nPlayers: \n";
     unordered_map<int, Footballer*>::iterator it
@@ -75,6 +93,15 @@ string Club::toString(){
 
     return this->name +"\nCoach: "+coach->getName()+"\n"+players;
 }
+/**
+ * @brief Metoda zwracająca obliczająca i zwracająca współczynnik meczu klubu.
+ * Korzysta z dostarczonej stacji pogodowej, pozycji na boisku i posiadania piłki
+ * na ich podstawie oblicza współczynnik
+ * @param weatherStation Stacja pogodowa turnieju
+ * @param ballPosition Miejsce piłki na boisku
+ * @param hasBall Czy klub ma piłkę
+ * @return współczynnik meczu klubu.
+ */
 double Club::matchFactor(WeatherStation weatherStation, GamePhase ballPosition, bool hasBall){
     double weatherFactor;
     if(weatherStation.getWeather()==RAINY){
@@ -127,6 +154,12 @@ double Club::matchFactor(WeatherStation weatherStation, GamePhase ballPosition, 
         }
     }
 }
+/**
+
+@brief Pobiera wartość umiejętności piłkarzy w danym klubie.
+@param ability Umiejętność, dla której ma zostać zwrócona wartość.
+@return Średnia zdolność piłkarzy w klubie dla danej umiejętności.
+*/
 int Club::getAbilities(Abilities ability){
     int counter=0;
     int output=0;
@@ -141,9 +174,18 @@ int Club::getAbilities(Abilities ability){
        }
     return output/(counter*1.1);
 }
+/**
+
+@brief Pobiera taktykę klubu.
+@return Reprezentacja taktyki klubu.
+*/
 string Club::getTactics(){
     return this->coach->getTactics();
 }
+/**
+
+@brief Przekazuje piłkę między piłkarzami.
+*/
 void Club::passBall(){
     int v1;
     srand( time(NULL) );
@@ -160,12 +202,15 @@ void Club::passBall(){
                }while((item->second->getAbility(REFLEX)==0 && item->second->giveBall()!=NULL) || item->second->getAbility(REFLEX)!=0);
                item->second->takeBall(*it->second->giveBall());
                it->second->loseBall();
-//               cout << it->second->getName() + " " + it->second->getSurrname()+" passes the ball to "
-//                       +item->second->getName()+" "+item->second->getSurrname()<<endl;
            }
         it++;
        }
 }
+/**
+
+@brief Przekazuje piłkę z piłkarza do innego klubu.
+@return Wskaźnik na obiekt piłki.
+*/
 Ball* Club::giveBall(){
     unordered_map<int, Footballer*>::iterator it
             = lineup.begin();
@@ -179,6 +224,11 @@ Ball* Club::giveBall(){
         it++;
        }
 }
+/**
+
+@brief Odbiera piłkę od przeciwnika.
+@param ball Obiekt piłki, który ma zostać odebrany.
+*/
 void Club::takeBall(Ball& ball){
     int v1;
     unordered_map<int, Footballer*>::iterator item;
@@ -189,8 +239,11 @@ void Club::takeBall(Ball& ball){
        std::advance( item, v1);
    }while(item->second->getAbility(REFLEX)!=0);
    item->second->takeBall(ball);
-//   cout<< item->second->getName() + " " + item->second->getSurrname()+" is on the ball now"<<endl;
 }
+/**
+
+@brief Zmniejsza kondycję piłkarzy w klubie.
+*/
 void Club::reduceStamina(){
     unordered_map<int, Footballer*>::iterator it
             = lineup.begin();
@@ -199,6 +252,11 @@ void Club::reduceStamina(){
         it++;
        }
 }
+/**
+
+@brief Sprawdza, czy wszyscy piłkarze w klubie mają wystarczającą kondycję.
+@return Wartość logiczna, czy wszyscy piłkarze w klubie mają wystarczającą kondycję.
+*/
 bool Club::hasStamina(){
     unordered_map<int, Footballer*>::iterator it
             = lineup.begin();
@@ -210,6 +268,10 @@ bool Club::hasStamina(){
        }
     return true;
 }
+/**
+
+@brief Destruktor klubu piłkarskiego.
+*/
 Club::~Club(){
     unordered_map<int, Footballer*>::iterator it
             = lineup.begin();
@@ -219,6 +281,11 @@ Club::~Club(){
        }
     delete this->coach;
 }
+/**
+
+@brief Pobiera listę piłkarzy w klubie.
+@return Mapa z piłkarzami w klubie.
+*/
 unordered_map<int, Footballer*> Club::getLineup() const{
     return this->lineup;
 }

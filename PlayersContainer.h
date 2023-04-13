@@ -3,6 +3,11 @@
 #include "Container.h"
 #include "Footballer.h"
 #include <unordered_map>
+/**
+* @class PlayersContainer
+* @brief Klasa PlayersContainer reprezentuje kontener przechowujący piłkarzy.
+* Klasa ta dziedziczy po klasie Container i zawiera dodatkowe metody służące do manipulacji zawartością kontenera.
+*/
 class PlayersContainer : public Container<Footballer>
 {
 private:
@@ -16,20 +21,4 @@ public:
     void calcMinPrice();
     int returnId(string name, string surrname);
 };
-
-//private:
-
-//    unordered_map<int,Footballer*> players;
-//    int minPrice;
-
-//public:
-//    PlayersContainer();
-//    PlayersContainer(vector<vector<string>>);
-//    ~PlayersContainer();
-//    unordered_map<int,Footballer*> getPlayers() const;
-//    int getMinPrice();
-//    void deletePlayer(int id);
-//    bool contains(int playerId);
-//    void calcMinPrice();
-//};
 

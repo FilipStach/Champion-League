@@ -2,7 +2,11 @@
 
 #include "Match.h"
 #include <QDialog>
-
+/**
+@class ResultWindow
+@brief Klasa ResultWindow reprezentuje interfejs graficzny wyświetlający wyniki ostatniej rundy rozgrywek Ligi Mistrzów.
+Klasa zawiera metody umożliwiające wyświetlanie wyników oraz ich formatowanie.
+*/
 namespace Ui {
 class ResultWindow;
 }
