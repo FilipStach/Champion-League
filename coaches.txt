@@ -1,0 +1,15 @@
+0;Pep;Guardiola;5;30;attack;
+5;Eric;ten Hag;5;20;mid;
+10;Mikel;Arteta;4;50;attack;
+15;Carlo;Ancelotti;4;12;mid;
+20;Xavi;Hernandez;4;20;attack;
+25;Edin;Terzic;3;5;deffend;
+30;Luciano;Spalleti;3;10;attack;
+35;Stefano;Pioli;3;5;mid;
+40;Johnny;Heitinga;2;1;mid;
+45;Hein;Vanhaezebrouck;2;3;attack;
+50;Marco;Rose;3;9;attack;
+55;John;van den Brom;2;1;attack;
+60;Niko;Kovac;3;5;mid;
+65;Franck;Haise;2;3;attack;
+70;Igor;Tudor;3;7;deffend;

@@ -44,13 +44,21 @@ void Match::playMatch(){
     double attackingTeamFactor;
     double deffendingTeamFactor;
     int randNum;
+    if(!hasFieldPlayers(*this->deffendingTeam)){
+        this->attackingTeamGoals = 3;
+        minutes = 30;
+    }
+    if(!hasFieldPlayers(*this->attackingTeam)){
+        this->deffendingTeamGoals = 3;
+        minutes = 30;
+    }
     if(!this->attackingTeam->hasStamina()){
         this->deffendingTeamGoals=3;
-        minutes = 90;
+        minutes = 30;
     }
-    else if(!this->deffendingTeam->hasStamina()){
+    if(!this->deffendingTeam->hasStamina()){
         this->attackingTeamGoals=3;
-        minutes = 90;
+        minutes = 30;
     }
     while(minutes<30){
         attackingTeamFactor = attackingTeam->matchFactor(this->tournament->getWeatherStation(), this->ball->getBallPosition(),true);
@@ -112,7 +120,7 @@ void Match::playMatch(){
                 }
                 else{
                     this->attackingTeamGoals++;
-                    cout<<this->attackingTeam->getName()+" scores a GOAL!"<<endl;
+//                    cout<<this->attackingTeam->getName()+" scores a GOAL!"<<endl;
                     this->deffendingTeam->takeBall(*this->attackingTeam->giveBall());
                     this->ball->resetCounter();
                     this->switchTeams();
@@ -136,7 +144,7 @@ void Match::playMatch(){
     this->tournament->decreaseStamina(attackingTeam->getId());
     this->tournament->decreaseStamina(deffendingTeam->getId());
     if(attackingTeam->getId()>1000 || deffendingTeam->getId()>1000){
-        cout<< "Score:\n"<< attackingTeam->getName()+" "<<attackingTeamGoals<<":"<< deffendingTeamGoals <<" "+deffendingTeam->getName()<<endl;
+//        cout<< "Score:\n"<< attackingTeam->getName()+" "<<attackingTeamGoals<<":"<< deffendingTeamGoals <<" "+deffendingTeam->getName()<<endl;
     }
 
     if(attackingTeamGoals>deffendingTeamGoals){
@@ -207,8 +215,33 @@ int Match::getAttackingTeamGoals(){
 @brief Metoda zwracająca liczbę bramek strzelonych przez drużynę broniącą.
 @return Liczba bramek strzelonych przez drużynę broniącą.
 */
+
 int Match::getDeffendingTeamGoals(){
     return this->deffendingTeamGoals;
+}
+/**
+
+@brief Metoda sprawdzająca czy przekazany klub ma min 2 piłkarzy z pola.
+@param team Klub, który ma być zbadany.
+@return Wartość logiczna, czy klub ma min 2 piłkarzy z pola.
+*/
+bool Match::hasFieldPlayers(Club& team){
+    int counter = 0;
+    unordered_map<int,Footballer*> players =  team.getLineup();
+    unordered_map<int, Footballer*>::iterator it
+            = players.begin();
+    while (it != players.end()) {
+           if(it->second->getAbility(REFLEX)==0){
+               counter++;
+           }
+        it++;
+       }
+    if(counter>1){
+        return true;
+    }
+    else{
+        return false;
+    }
 }
 /**
 @brief Destruktor klasy Match

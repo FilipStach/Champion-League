@@ -1,8 +1,9 @@
 #include "ChampionsLeague.h"
 #include "Match.h"
-#include "MyClub.h"
-#include "qwidget.h"
+//#include "MyClub.h"
+//#include "qwidget.h"
 #include <thread>
+#include "FileReader.h"
 /**
 * @brief Konstruktor domyślny klasy ChampionsLeague.
 */
@@ -12,20 +13,23 @@ ChampionsLeague::ChampionsLeague()
 }
 /**
  * @brief Konstruktor parametryczny klasy ChampionsLeague.
- * @param clubsContainer Obiekt klasy ClubsContainer zawierający informacje o klubach.
+ * @param clubsFile Nazwa pliku zawierającego informacje o klubach.
  * @param myClub Obiekt reprezentujący klub, którym steruje użytkownik.
  * @param ids Wektor identyfikatorów klubów, które biorą udział w lidze.
  */
-ChampionsLeague::ChampionsLeague(ClubsContainer& clubsContainer, Club& myClub, vector<int> ids){
+ChampionsLeague::ChampionsLeague(string clubsFile, Club& myClub, vector<int> ids){
+    std::vector<std::vector<std::string>> vector3 = FileReader::readFile(clubsFile);
+    ClubsContainer* clubsContainer = new ClubsContainer(vector3);
     for(int id: ids){
-        if(clubsContainer.contains(id)){
-            clubs[id] = new Club(*clubsContainer.getClubs()[id]);
-            clubsContainer.deleteClub(id);
+        if(clubsContainer->contains(id)){
+            clubs[id] = new Club(*clubsContainer->getClubs()[id]);
+            clubsContainer->deleteClub(id);
         }
     }
     clubs[myClub.getId()]= &myClub;
     this->isActive = true;
     this->size = ids.size()+1;
+    delete clubsContainer;
 }
 /**
  * @brief Funkcja usuwająca klub o podanym identyfikatorze z ligi.

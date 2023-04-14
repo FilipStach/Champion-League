@@ -16,6 +16,6 @@ class TransferWindow
 {
 public:
     TransferWindow();
-    static void conductTransferWindow(vector<vector<string>> players, vector<vector<string>> coaches, MyClub& club,
+    static void conductTransferWindow(string playersFile, string coachesFile, MyClub& club,
                                       vector<int> playersId, int coachId);
 };

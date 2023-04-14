@@ -22,6 +22,7 @@ private:
 public:
     ChampionsLeague();
     ChampionsLeague(ClubsContainer& clubsContainer, Club& myClub, vector<int> ids);
+    ChampionsLeague(string clubsFile, Club& myClub, vector<int> ids);
     void playNextRound();
     ~ChampionsLeague();
     void deleteClub(int id);

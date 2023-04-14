@@ -17,129 +17,11 @@
    <string>MainWindow</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">QMainWindow {background-image:url(:/UEFA_Back.jpg);}</string>
+   <string notr="true">QMainWindow {
+background-image:url(:/UEFA_Back.jpg);
+}</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QTableWidget" name="tableWidget">
-    <property name="enabled">
-     <bool>false</bool>
-    </property>
-    <property name="geometry">
-     <rect>
-      <x>-270</x>
-      <y>0</y>
-      <width>382</width>
-      <height>370</height>
-     </rect>
-    </property>
-    <property name="sizeIncrement">
-     <size>
-      <width>0</width>
-      <height>0</height>
-     </size>
-    </property>
-    <property name="baseSize">
-     <size>
-      <width>0</width>
-      <height>0</height>
-     </size>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">QHeaderView::section {
-    background-color: #3562A6;
-	color: black; 
-}
-QTableWidget{
-background-color: #0E1E5B;
-
-
-}
-</string>
-    </property>
-    <property name="rowCount">
-     <number>5</number>
-    </property>
-    <attribute name="horizontalHeaderVisible">
-     <bool>true</bool>
-    </attribute>
-    <attribute name="horizontalHeaderCascadingSectionResizes">
-     <bool>false</bool>
-    </attribute>
-    <attribute name="horizontalHeaderMinimumSectionSize">
-     <number>27</number>
-    </attribute>
-    <attribute name="horizontalHeaderDefaultSectionSize">
-     <number>100</number>
-    </attribute>
-    <attribute name="horizontalHeaderHighlightSections">
-     <bool>false</bool>
-    </attribute>
-    <attribute name="horizontalHeaderShowSortIndicator" stdset="0">
-     <bool>false</bool>
-    </attribute>
-    <attribute name="horizontalHeaderStretchLastSection">
-     <bool>false</bool>
-    </attribute>
-    <attribute name="verticalHeaderVisible">
-     <bool>false</bool>
-    </attribute>
-    <attribute name="verticalHeaderMinimumSectionSize">
-     <number>27</number>
-    </attribute>
-    <attribute name="verticalHeaderDefaultSectionSize">
-     <number>50</number>
-    </attribute>
-    <attribute name="verticalHeaderHighlightSections">
-     <bool>false</bool>
-    </attribute>
-    <attribute name="verticalHeaderShowSortIndicator" stdset="0">
-     <bool>false</bool>
-    </attribute>
-    <attribute name="verticalHeaderStretchLastSection">
-     <bool>false</bool>
-    </attribute>
-    <row/>
-    <row/>
-    <row/>
-    <row/>
-    <row/>
-    <column>
-     <property name="text">
-      <string>HOME</string>
-     </property>
-     <property name="background">
-      <color>
-       <red>48</red>
-       <green>255</green>
-       <blue>33</blue>
-      </color>
-     </property>
-    </column>
-    <column>
-     <property name="text">
-      <string>SCORE</string>
-     </property>
-     <property name="background">
-      <color>
-       <red>255</red>
-       <green>51</green>
-       <blue>24</blue>
-      </color>
-     </property>
-    </column>
-    <column>
-     <property name="text">
-      <string>AWAY</string>
-     </property>
-     <property name="background">
-      <color>
-       <red>255</red>
-       <green>56</green>
-       <blue>245</blue>
-      </color>
-     </property>
-    </column>
-   </widget>
    <widget class="QTableWidget" name="squadTable">
     <property name="geometry">
      <rect>
@@ -313,6 +195,23 @@ background-color: #0E1E5B;
     </property>
     <property name="text">
      <string>Trainings left</string>
+    </property>
+   </widget>
+   <widget class="QTextBrowser" name="commandBox">
+    <property name="geometry">
+     <rect>
+      <x>270</x>
+      <y>400</y>
+      <width>261</width>
+      <height>35</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QTextBrowser{
+background-color: #0E1E5B;
+font-size: 12px;
+}
+</string>
     </property>
    </widget>
   </widget>

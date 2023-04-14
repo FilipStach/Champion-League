@@ -19,7 +19,7 @@ class TransferDialog : public QDialog
     Q_OBJECT
 
 public:
-    TransferDialog(QWidget *parent, PlayersContainer& playersContainer, CoachesContainer& coachesContainer, int budget);
+    TransferDialog(QWidget *parent, string playersFile, string coachesFile, int budget);
     ~TransferDialog();
     vector<int> getIds() const;
     int getCoachId();

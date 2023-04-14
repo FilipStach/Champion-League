@@ -7,7 +7,14 @@
 #include "MenagerWindow.h"
 #include <QFile>
 #include "ResultWindow.h"
-
+/**
+@class MenagerWindow
+@brief Konstruktor klasy MenagerWindow
+Konstruktor klasy MenagerWindow tworzy interfejs graficzny aplikacji menadżera drużyny piłkarskiej.
+@param parent wskaźnik na obiekt QWidget rodzica
+@param tournament obiekt klasy ChampionsLeague
+@param myClub obiekt klasy MyClub
+*/
 MenagerWindow::MenagerWindow(QWidget *parent,ChampionsLeague& tournament, MyClub& myClub):
     QMainWindow(parent),
     ui(new Ui::MenagerWindow)
@@ -16,13 +23,19 @@ MenagerWindow::MenagerWindow(QWidget *parent,ChampionsLeague& tournament, MyClub
     this->tournament = &tournament;
     unordered_map<int,Footballer*> squad = this->myClub->getSquad();
     ui->setupUi(this);
-    ui->tableWidget->hide();
     this->recovery = false;
     this->isActive = true;
-    QTextCursor cursor = ui->trainingsBrowser->textCursor();
+
     QTextOption center(Qt::AlignCenter);
     ui->trainingsBrowser->document()->setDefaultTextOption(center);
+    ui->commandBox->document()->setDefaultTextOption(center);
     ui->trainingsBrowser->setText((QString::fromStdString(to_string(this->myClub->getTrainings()))));
+    ui->commandBox->setText(QString::fromStdString(""));
+    QTextCharFormat format;
+    format.setFontPointSize(12);
+
+    ui->commandBox->selectAll();
+    ui->commandBox->mergeCurrentCharFormat(format);
     vector<Footballer*> items;
     int i = 0;
     ui->squadTable->setColumnWidth(0,100);
@@ -59,9 +72,10 @@ MenagerWindow::MenagerWindow(QWidget *parent,ChampionsLeague& tournament, MyClub
         i++;
 
     }
-//    connect(ui->playersTable, &QTableWidget::itemClicked, this, &MenagerWindow::on_playersTableItem_clicked);
 }
-
+/**
+@brief Destruktor klasy MenagerWindow
+*/
 MenagerWindow::~MenagerWindow(){
 
     for(int row = 0;row<ui->squadTable->rowCount();row++){
@@ -78,29 +92,36 @@ MenagerWindow::~MenagerWindow(){
 
 
 
-
+/**
+@brief slot wywoływany po kliknięciu przycisku ExitButton, który kończy działanie aplikacji
+*/
 void MenagerWindow::on_ExitButton_clicked()
 {
     QApplication::quit();
 }
 
 
-
+/**
+@brief slot wywoływany po kliknięciu przycisku RecoveryButton, który uruchamia regenerację
+*/
 void MenagerWindow::on_RecoveryButton_clicked()
 {
     if(this->isActive&& this->myClub->getTrainings()>0){
-        cout<<"Pick player for recovery"<<endl;
+        ui->commandBox->setText(QString::fromStdString("Pick player for recovery"));
         this->recovery = true;
     }
     else if(this->myClub->getTrainings()==0){
-        cout<<"You dont have enough trainings left"<<endl;
+        ui->commandBox->setText(QString::fromStdString("No trainings left"));
     }
     else{
-        cout<<"Tournament ended"<<endl;
+        ui->commandBox->setText(QString::fromStdString("Tournament ended"));
     }
 }
 
-
+/**
+@brief slot wywoływany po kliknięciu elementu w tablicy Zawodników.
+Wprowadza obsługę treningu "recovery" jeżeli taki został aktywowany.
+*/
 void MenagerWindow::on_squadTable_cellClicked(int row, int column)
 {
     if(this->recovery){
@@ -109,15 +130,19 @@ void MenagerWindow::on_squadTable_cellClicked(int row, int column)
         this->recovery=false;
         this->updateStamina();
         ui->trainingsBrowser->setText((QString::fromStdString(to_string(this->myClub->getTrainings()))));
+        ui->commandBox->setText(QString::fromStdString("Training carried out"));
+
     }
-    else{
-        cout<<"Recovery is unactive"<<endl;
-    }
+
 }
 
-
+/**
+@brief slot wywoływany po kliknięciu przycisku NextRoundButton.
+Uruchamia czynności związane z rozegraniem kolejnej rundy turnieju.
+*/
 void MenagerWindow::on_NextRoundButton_clicked()
 {
+    ui->commandBox->setText(QString::fromStdString(""));
     if(this->isActive){
         QWidget *parent = 0;
         this->tournament->playNextRound();
@@ -127,20 +152,27 @@ void MenagerWindow::on_NextRoundButton_clicked()
         resultWindow.show();
         resultWindow.exec();
         if(!this->tournament->getIsActive()){
-            cout<<"Your team lost"<<endl;
+            ui->commandBox->setText(QString::fromStdString("Your team lost"));
             this->isActive = false;
         }
         else if(this->tournament->getClubsSize()==1 && this->tournament->getIsActive()){
-            cout << "Your team won tournament"<<endl;
+            ui->commandBox->setText(QString::fromStdString("Your team won tournament"));
+
             this->isActive = false;
         }
 
     }
     else{
-        cout<<"Tournament ended"<<endl;
+        ui->commandBox->setText(QString::fromStdString("Tournament ended"));
+
     }
 
 }
+
+/**
+@brief metoda wywoływany mająca za zadanie odświeżyć kolumnę
+wytrzymałości w tablicy składu.
+*/
 void MenagerWindow::updateStamina(){
     unordered_map<int,Footballer*> squad = this->myClub->getSquad();
         vector<Footballer*> items;
@@ -157,8 +189,13 @@ void MenagerWindow::updateStamina(){
         }
 }
 
+/**
+@brief slot wywoływany po kliknięciu przycisku PickLineupButton.
+Tworzy i uruchamia okno wyboru składu.
+*/
 void MenagerWindow::on_PickLineupButton_clicked()
 {
+    ui->commandBox->setText(QString::fromStdString(""));
     if(this->isActive){
         QWidget *parent = 0;
         UpdateLineupWindow updateLineupWindow(parent, *this->myClub);
@@ -167,17 +204,24 @@ void MenagerWindow::on_PickLineupButton_clicked()
         updateLineupWindow.exec();
         if(updateLineupWindow.getIds().size()>0){
             this->myClub->pickLineUp(updateLineupWindow.getIds());
+            ui->commandBox->setText(QString::fromStdString("Lineup updated"));
         }
+
 
     }
     else{
-        cout<<"Tournament ended"<<endl;
+
+        ui->commandBox->setText(QString::fromStdString("Tournament ended"));
     }
 }
 
-
+/**
+@brief slot wywoływany po kliknięciu przycisku SkillTrainingButton.
+Tworzy i uruchamia okno treningu umiejętności.
+*/
 void MenagerWindow::on_SkillTrainingButton_clicked()
 {
+    ui->commandBox->setText(QString::fromStdString(""));
     if(this->isActive && this->myClub->getTrainings()>0){
         QWidget *parent = 0;
         TrainingWindow trainingWindow(parent, *this->myClub);
@@ -186,12 +230,13 @@ void MenagerWindow::on_SkillTrainingButton_clicked()
         trainingWindow.exec();
         this->updateStamina();
         ui->trainingsBrowser->setText((QString::fromStdString(to_string(this->myClub->getTrainings()))));
+        ui->commandBox->setText(QString::fromStdString("Training ended"));
     }
     else if(this->myClub->getTrainings()==0){
-        cout<<"You dont have enough trainings left"<<endl;
+        ui->commandBox->setText(QString::fromStdString("No trainings left"));
     }
     else{
-        cout<<"Tournament ended"<<endl;
+        ui->commandBox->setText(QString::fromStdString("Tournament ended"));
     }
 }
 

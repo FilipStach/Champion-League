@@ -1,6 +1,7 @@
 #include "TransferDialog.h"
 #include <algorithm>
 #include "ui_TransferDialog.h"
+#include "FileReader.h"
 /**
 * @brief Konstruktor klasy TransferDialog.
 *
@@ -9,18 +10,19 @@
 * @param coachesContainer Kontener zawierający dostępnych trenerów.
 * @param budget Budżet drużyny.
 */
-TransferDialog::TransferDialog(QWidget *parent,PlayersContainer& playersContainer, CoachesContainer& coachesContainer,int budget) :
+TransferDialog::TransferDialog(QWidget *parent, string playersFile, string coachesFile, int budget) :
     QDialog(parent),
     ui(new Ui::TransferDialog)
 
 {
+    std::vector<std::vector<std::string>> vector1 = FileReader::readFile(playersFile);
+    std::vector<std::vector<std::string>> vector2 = FileReader::readFile(coachesFile);
     this->coachId=1;
-    this->coaches=&coachesContainer;
-    this->players=&playersContainer;
+    this->coaches= new CoachesContainer(vector2);
+    this->players= new PlayersContainer(vector1);
     ui->setupUi(this);
     ui->playersTable->hide();
     ui->label_2->hide();
-    QTextCursor cursor = ui->budgetBrowser->textCursor();
     QTextOption center(Qt::AlignCenter);
     ui->budgetBrowser->document()->setDefaultTextOption(center);
     ui->budgetBrowser->setText(QString::fromStdString(to_string(budget)));
@@ -84,6 +86,8 @@ TransferDialog::~TransferDialog()
             delete ui->playersTable->item(row,3);
         }
         delete ui->playersTable;
+        delete this->players;
+        delete this->coaches;
     }
     delete ui;
 }
@@ -123,10 +127,11 @@ void TransferDialog::on_buyButton_clicked()
        this->coachId = this->coaches->returnId((ui->coachesTable->item(row,0)->text().toStdString()));
    }
       else{
-            if(ui->playersTable->isHidden()==true){
+            if(ui->playersTable->isHidden()){
                cout<<"You have alread bought coach, go to players transfer now"<<endl;
             }
-            else{
+            else if(!ui->playersTable->selectedItems().isEmpty() &&
+                    !ui->playersTable->isHidden()){
                 int row = ui->playersTable->currentItem()->row();
                 int id = this->players->returnId((ui->playersTable->item(row,1)->text().toStdString()),
                                                  ui->playersTable->item(row,2)->text().toStdString());
@@ -155,6 +160,9 @@ void TransferDialog::on_buyButton_clicked()
                 else{
                     cout<< "You dont have money for this player"<<endl;
                 }
+            }
+            else{
+               cout<<"Pick player first"<<endl;
             }
       }
 }

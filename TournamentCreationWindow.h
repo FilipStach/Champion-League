@@ -19,6 +19,7 @@ class TournamentCreationWindow : public QDialog
 
 public:
     TournamentCreationWindow(QWidget *parent,ClubsContainer& clubsContainer);
+    TournamentCreationWindow(QWidget *parent,string clubsFile);
     ~TournamentCreationWindow();
     vector<int> getIds();
 private:

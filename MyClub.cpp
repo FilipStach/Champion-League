@@ -19,14 +19,14 @@ MyClub::MyClub()
  * @param playersId Wektor id zawodników do transferu.
  * @param coachId Id trenera do transferu.
  */
-MyClub::MyClub(vector<vector<string>> players, vector<vector<string>> coaches,  vector<int> playersId, int coachId){
+MyClub::MyClub(string playersFile, string coachesFile,  vector<int> playersId, int coachId){
     this->coach = NULL;
     srand (time(NULL));
     this->name= "Student FC";
     this->id = rand()%900+1000;
     this->budget = 300;
     this->trainings =5;
-    TransferWindow::conductTransferWindow(players, coaches,*this,playersId, coachId);
+    TransferWindow::conductTransferWindow(playersFile, coachesFile,*this,playersId, coachId);
 }
 /**
  * @brief Metoda zwracająca budżet klubu.

@@ -17,7 +17,7 @@ private:
     unordered_map<int,Footballer*> squad;
 public:
     MyClub();
-    MyClub(vector<vector<string>> players, vector<vector<string>> coaches,  vector<int> playersId, int coachId);
+    MyClub(string playersFile, string coachesFile,  vector<int> playersId, int coachId);
     void training(int id, Abilities ability);
     void recovery(int id);
     void pickLineUp();

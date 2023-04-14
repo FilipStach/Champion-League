@@ -6,6 +6,7 @@
 #include "PlayersContainer.h"
 #include "Striker.h"
 #include "Container.cpp"
+#include "FileReader.h"
 /*
 
 @brief Konstruktor klasy TransferWindow.
@@ -25,11 +26,12 @@ z kontenerów zawodników i trenerów po ich zakupie. W przypadku błędnych ide
 @param playersId Wektor identyfikatorów zawodników, którzy mają zostać kupieni.
 @param coachId Identyfikator trenera, który ma zostać kupiony.
 */
-void TransferWindow::conductTransferWindow(vector<vector<string>> players, vector<vector<string>> coaches, MyClub& club,
+void TransferWindow::conductTransferWindow(string playersFile, string coachesFile, MyClub& club,
                                            vector<int> playersId, int coachId){
-    PlayersContainer* playersContainer = new PlayersContainer(players);
-    CoachesContainer* coachesContainer = new CoachesContainer(coaches);
-    int i = 0;
+    std::vector<std::vector<std::string>> vector1 = FileReader::readFile(playersFile);
+    std::vector<std::vector<std::string>> vector2 = FileReader::readFile(coachesFile);
+    PlayersContainer* playersContainer = new PlayersContainer(vector1);
+    CoachesContainer* coachesContainer = new CoachesContainer(vector2);
     if(coachesContainer->contains(coachId)&&coachesContainer->getElements()[coachId]->getValue() <= club.getBudget()){
     club.buyCoach(*coachesContainer->getElements()[coachId]);
     coachesContainer->deleteElement(coachId);

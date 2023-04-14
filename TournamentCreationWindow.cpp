@@ -1,22 +1,24 @@
 #include "TournamentCreationWindow.h"
 #include "ui_TournamentCreationWindow.h"
+#include "FileReader.h"
 /**
  * @brief Konstruktor klasy TournamentCreationWindow.
  *
  * @param parent Wskaźnik na obiekt QWidget reprezentujący rodzica okna.
  * @param clubsContainer Obiekt klasy ClubsContainer przechowujący informacje o klubach.
  */
-TournamentCreationWindow::TournamentCreationWindow(QWidget *parent,ClubsContainer& clubsContainer):
+TournamentCreationWindow::TournamentCreationWindow(QWidget *parent,string clubsFile):
     QDialog(parent),
     ui(new Ui::TournamentCreationWindow)
 {
     QFont f;
     f.setFamily("Champions");
+    std::vector<std::vector<std::string>> vector3 = FileReader::readFile(clubsFile);
     f.setPointSize(12);
     ui->setupUi(this);
     this->size = 0;
-    this->clubs=&clubsContainer;
-    unordered_map<int,Club*> clubsMap = clubsContainer.getClubs();
+    this->clubs = new ClubsContainer(vector3);;
+    unordered_map<int,Club*> clubsMap = this->clubs->getClubs();
     unordered_map<int, Club*>::iterator it
             = clubsMap.begin();
     vector<QListWidgetItem*> items;
@@ -41,6 +43,7 @@ TournamentCreationWindow::~TournamentCreationWindow(){
         delete ui->listWidget->item(i);
     }
     delete ui->listWidget;
+    delete this->clubs;
     delete ui;
 }
 /**
@@ -56,7 +59,8 @@ vector<int> TournamentCreationWindow::getIds(){
  */
 void TournamentCreationWindow::on_AddButton_clicked()
 {
-    if(this->size!=0 && this->ids.size()<(this->size-1)){
+    if(this->size!=0 && this->ids.size()<(this->size-1) &&
+            !ui->listWidget->selectedItems().isEmpty()){
         bool contains = false;
         QListWidgetItem* item = ui->listWidget->currentItem();
         item->setBackground(QColor(255, 0, 0));
@@ -74,8 +78,11 @@ void TournamentCreationWindow::on_AddButton_clicked()
     else if(this->ids.size()==(this->size-1)&& this->size!=0){
         cout<<"You have already enough clubs"<<endl;
     }
-    else{
+    else if(this->ids.size()==0){
         cout<<"Pick tournament size first"<<endl;
+    }
+    else{
+        cout<<"Pick club first"<<endl;
     }
 }
 /**

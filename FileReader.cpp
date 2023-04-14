@@ -26,7 +26,6 @@ vector<vector<string>> FileReader::readFile(string fileName){
         string str;
         while (getline(in, str))
         {
-    //        std::vector<std::string> *vct = new std::vector<std::string>;
             vector<string> vct;
             string segment;
             stringstream stream(str);

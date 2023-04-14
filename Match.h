@@ -24,6 +24,7 @@ public:
     void playMatch();
     ~Match();
     void switchTeams();
+    bool hasFieldPlayers(Club& team);
     string getAttackingTeam();
     string getDeffendingTeam();
     int getAttackingTeamGoals();
